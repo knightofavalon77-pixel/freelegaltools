@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statute of Limitations Lookup — Find Your Legal Deadline by State Free</title>
+<meta name="description" content="Find out exactly how long you have to file your lawsuit. Free state by state statute of limitations lookup with exact deadline dates. No sign up required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B35;
+    --navy-mid: #1A2E50;
+    --gold: #C4973A;
+    --gold-light: #D4A84A;
+    --gold-pale: rgba(196,151,58,0.12);
+    --cream: #FAF8F4;
+    --cream-dark: #F0EDE6;
+    --cream-darker: #E8E4DC;
+    --text: #1C2B3A;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --border: #E2DDD4;
+    --white: #FFFFFF;
+    --green: #1A6B45;
+    --green-bg: #EBF5F0;
+    --red: #8B1A1A;
+    --red-bg: #FBF0F0;
+    --amber: #92600A;
+    --amber-bg: #FEF3DC;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(13,27,53,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── HEADER ─── */
+  header { background: var(--cream); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-divider { width: 1.5px; height: 32px; background: var(--gold); opacity: 0.6; }
+  .logo-text { font-family: var(--serif); font-size: 20px; font-weight: 600; }
+  .logo-text .free { color: var(--navy); }
+  .logo-text .legal { color: var(--gold); }
+  .logo-text .tools { color: var(--navy); }
+  nav { display: flex; align-items: center; gap: 8px; }
+  .nav-item { position: relative; padding: 8px 14px; font-size: 14px; color: var(--text-mid); cursor: pointer; border-radius: 6px; transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 4px; }
+  .nav-item:hover { background: var(--cream-dark); color: var(--navy); }
+  .nav-arrow { font-size: 10px; transition: transform 0.2s; color: var(--text-light); }
+  .nav-item:hover .nav-arrow { transform: rotate(180deg); }
+  .mega-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 8px; width: 480px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .mega-menu::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
+  .nav-item:hover .mega-menu { opacity: 1; pointer-events: auto; }
+  .mega-menu-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; border-radius: 8px; transition: background 0.12s; }
+  .mega-menu-item:hover { background: var(--cream); }
+  .mega-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+  .mega-item-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 2px; font-family: var(--serif); }
+  .mega-item-desc { font-size: 12px; color: var(--text-light); line-height: 1.4; }
+
+  /* ─── PAGE HERO ─── */
+  .page-hero { background: var(--navy); padding: 52px 32px; text-align: center; }
+  .page-hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-pale); border: 1px solid rgba(196,151,58,0.25); color: var(--gold); font-size: 12px; letter-spacing: 0.06em; padding: 5px 16px; border-radius: 20px; margin-bottom: 16px; }
+  .page-hero h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; color: var(--white); margin-bottom: 12px; line-height: 1.2; }
+  .page-hero h1 span { color: var(--gold); }
+  .page-hero p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+  /* ─── MAIN ─── */
+  .main { max-width: 860px; margin: 0 auto; padding: 48px 32px 72px; }
+
+  /* ─── AD SLOT ─── */
+  .ad-slot { background: var(--cream-darker); border: 1px dashed var(--border); border-radius: 6px; text-align: center; padding: 12px; font-size: 11px; color: var(--text-light); margin: 24px 0; letter-spacing: 0.04em; }
+
+  /* ─── TOOL CARD ─── */
+  .tool-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 32px; box-shadow: var(--shadow); }
+  .tool-header { background: var(--navy); padding: 20px 28px; display: flex; align-items: center; gap: 16px; }
+  .tool-header-icon { font-size: 28px; }
+  .tool-header-title { font-family: var(--serif); font-size: 20px; color: var(--white); font-weight: 600; }
+  .tool-header-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+  /* ─── PROGRESS ─── */
+  .progress-wrap { padding: 20px 28px 0; }
+  .progress-label { font-size: 12px; color: var(--text-light); margin-bottom: 8px; display: flex; justify-content: space-between; }
+  .progress-bar { height: 4px; background: var(--cream-darker); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.4s ease; }
+
+  /* ─── STEPS ─── */
+  .steps-wrap { padding: 28px; }
+  .step { display: none; }
+  .step.active { display: block; }
+  .step-title { font-family: var(--serif); font-size: 20px; color: var(--navy); margin-bottom: 6px; }
+  .step-sub { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.5; }
+
+  /* ─── FORM ELEMENTS ─── */
+  .form-select { width: 100%; padding: 12px 16px; font-family: var(--sans); font-size: 14px; color: var(--text); background: var(--cream); border: 1px solid var(--border); border-radius: 8px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23718096' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; transition: border-color 0.15s; }
+  .form-select:focus { outline: none; border-color: var(--gold); }
+
+  .form-date { width: 100%; padding: 12px 16px; font-family: var(--sans); font-size: 14px; color: var(--text); background: var(--cream); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: border-color 0.15s; }
+  .form-date:focus { outline: none; border-color: var(--gold); }
+
+  /* ─── NAV BUTTONS ─── */
+  .step-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 28px; border-top: 1px solid var(--border); background: var(--cream); }
+  .btn-back { padding: 10px 20px; background: transparent; border: 1px solid var(--border); border-radius: 7px; font-family: var(--sans); font-size: 14px; color: var(--text-mid); cursor: pointer; transition: all 0.15s; }
+  .btn-back:hover { border-color: var(--navy); color: var(--navy); }
+  .btn-next { padding: 11px 28px; background: var(--navy); border: none; border-radius: 7px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--white); cursor: pointer; transition: background 0.15s; }
+  .btn-next:hover { background: var(--navy-mid); }
+  .step-indicator { font-size: 13px; color: var(--text-light); }
+
+  /* ─── RESULTS ─── */
+  #results { display: none; }
+
+  .result-urgent { background: var(--red-bg); border: 1px solid rgba(139,26,26,0.2); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }
+  .result-warning { background: var(--amber-bg); border: 1px solid rgba(146,96,10,0.2); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }
+  .result-ok { background: var(--green-bg); border: 1px solid rgba(26,107,69,0.2); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }
+
+  .result-status { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .result-urgent .result-status { color: var(--red); }
+  .result-warning .result-status { color: var(--amber); }
+  .result-ok .result-status { color: var(--green); }
+
+  .result-headline { font-family: var(--serif); font-size: 22px; margin-bottom: 8px; }
+  .result-urgent .result-headline { color: var(--red); }
+  .result-warning .result-headline { color: var(--amber); }
+  .result-ok .result-headline { color: var(--green); }
+
+  .result-detail { font-size: 14px; line-height: 1.6; }
+  .result-urgent .result-detail { color: #5C1A1A; }
+  .result-warning .result-detail { color: #6B4A10; }
+  .result-ok .result-detail { color: #1A4A30; }
+
+  .deadline-box { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }
+  .deadline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+  .deadline-item { background: var(--cream); border-radius: 8px; padding: 14px 16px; text-align: center; }
+  .deadline-item-label { font-size: 11px; color: var(--text-light); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+  .deadline-item-val { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--navy); }
+  .deadline-item-val.urgent { color: var(--red); }
+  .deadline-item-val.warning { color: var(--amber); }
+  .deadline-item-val.ok { color: var(--green); }
+
+  .deadline-date-display { background: var(--navy); border-radius: 8px; padding: 16px 20px; text-align: center; }
+  .deadline-date-label { font-size: 12px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+  .deadline-date-val { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--gold); }
+
+  .notes-box { background: var(--cream-dark); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 24px; }
+  .notes-title { font-family: var(--serif); font-size: 16px; color: var(--navy); margin-bottom: 12px; }
+  .note-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+  .note-icon { flex-shrink: 0; font-size: 15px; }
+
+  /* ─── ATTORNEY SECTION ─── */
+  .attorney-section { background: var(--cream-dark); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin: 28px 0; }
+  .attorney-title { font-family: var(--serif); font-size: 17px; color: var(--navy); margin-bottom: 6px; }
+  .attorney-sub { font-size: 13px; color: var(--text-light); margin-bottom: 18px; }
+  .attorney-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .attorney-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; transition: border-color 0.15s, box-shadow 0.15s; }
+  .attorney-card:hover { border-color: var(--gold); box-shadow: var(--shadow); }
+  .attorney-name { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .attorney-desc { font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+  .attorney-btn { display: block; background: var(--navy); color: var(--white); font-size: 12px; font-weight: 500; padding: 8px 12px; border-radius: 6px; transition: background 0.15s; }
+  .attorney-btn:hover { background: var(--navy-mid); }
+
+  /* ─── SEO COPY ─── */
+  .seo-section { margin-top: 48px; }
+  .seo-section h2 { font-family: var(--serif); font-size: 26px; color: var(--navy); margin-bottom: 14px; }
+  .seo-section h3 { font-family: var(--serif); font-size: 18px; color: var(--navy); margin: 24px 0 10px; }
+  .seo-section p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
+
+  /* ─── DISCLAIMER & FOOTER ─── */
+  .disclaimer-strip { background: var(--cream-darker); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 32px; text-align: center; }
+  .disclaimer-strip p { font-size: 12px; color: var(--text-light); max-width: 800px; margin: 0 auto; line-height: 1.6; }
+  .disclaimer-strip a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+  footer { background: var(--navy); padding: 56px 32px 32px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand-name { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .footer-brand-name .legal { color: var(--gold); }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 12px; font-style: italic; }
+  .footer-disclaimer-note { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6; max-width: 280px; }
+  .footer-col-heading { font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 10px; transition: color 0.12s; }
+  .footer-link:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-bottom-links { display: flex; gap: 20px; }
+  .footer-bottom-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: color 0.12s; }
+  .footer-bottom-link:hover { color: rgba(255,255,255,0.6); }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 26px; }
+    .main { padding: 32px 16px; }
+    .deadline-grid { grid-template-columns: 1fr; }
+    .attorney-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
+        <polygon points="2,13 18,2 34,13" fill="#0D1B35"/>
+        <rect x="6"  y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="13" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="20" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="27" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="2"  y="29" width="32" height="3.5" fill="#0D1B35" rx="1"/>
+      </svg>
+      <div class="logo-divider"></div>
+      <div class="logo-text"><span class="free">Free</span><span class="legal">Legal</span><span class="tools">Tools</span></div>
+    </a>
+    <nav>
+      <a href="index.html" class="nav-item">Home</a>
+      <div class="nav-item">
+        Tools <span class="nav-arrow">▾</span>
+        <div class="mega-menu">
+          <a href="llc-comparison.html" class="mega-menu-item">
+            <div class="mega-icon">🏛️</div>
+            <div><div class="mega-item-title">LLC State Comparison Tool</div><div class="mega-item-desc">Find the best state to form your LLC based on fees, privacy, and taxes</div></div>
+          </a>
+          <a href="statute-of-limitations.html" class="mega-menu-item">
+            <div class="mega-icon">⏱️</div>
+            <div><div class="mega-item-title">Statute of Limitations Lookup</div><div class="mega-item-desc">Find your exact legal deadline by state and case type</div></div>
+          </a>
+          <a href="non-compete-checker.html" class="mega-menu-item">
+            <div class="mega-icon">📋</div>
+            <div><div class="mega-item-title">Non-Compete Enforceability Checker</div><div class="mega-item-desc">Find out if your non-compete agreement is likely enforceable</div></div>
+          </a>
+          <a href="severance-evaluator.html" class="mega-menu-item">
+            <div class="mega-icon">💼</div>
+            <div><div class="mega-item-title">Severance Package Evaluator</div><div class="mega-item-desc">Find out if your severance offer is fair for your situation</div></div>
+          </a>
+        </div>
+      </div>
+      <a href="about.html" class="nav-item">About</a>
+      <a href="disclaimer.html" class="nav-item">Disclaimer</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero">
+  <div class="page-hero-eyebrow">⏱️ Free Tool · All 50 States · Exact Date Calculation</div>
+  <h1>Statute of Limitations <span>Lookup</span></h1>
+  <p>Missing a legal deadline can cost you everything — even if you have a strong case. Find your exact filing deadline by state and case type, with a precise countdown so you know exactly how much time you have left.</p>
+</div>
+
+<!-- ─── MAIN ─── -->
+<div class="main">
+
+  <div class="ad-slot">Advertisement — Google AdSense</div>
+
+  <!-- ─── TOOL ─── -->
+  <div class="tool-card" id="tool-card">
+    <div class="tool-header">
+      <div class="tool-header-icon">⏱️</div>
+      <div>
+        <div class="tool-header-title">Statute of Limitations Lookup</div>
+        <div class="tool-header-sub">Free · No sign up · Exact deadline calculated instantly</div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="progress-text">Step 1 of 3</span>
+        <span id="progress-pct">33%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:33%"></div></div>
+    </div>
+
+    <div class="steps-wrap">
+
+      <!-- Step 1: State -->
+      <div class="step active" id="step-1">
+        <div class="step-title">What state did the incident occur in?</div>
+        <div class="step-sub">Statute of limitations laws are set by each state — the location of the incident determines which deadline applies to you.</div>
+        <select class="form-select" id="state-select">
+          <option value="">— Select your state —</option>
+          <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+          <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+          <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+          <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+          <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+          <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+          <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+          <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+          <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+          <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+          <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+          <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+          <option>Wisconsin</option><option>Wyoming</option>
+        </select>
+      </div>
+
+      <!-- Step 2: Case Type -->
+      <div class="step" id="step-2">
+        <div class="step-title">What type of legal situation do you have?</div>
+        <div class="step-sub">Select the category that best matches your situation. If you're unsure, pick the closest match — you can always consult an attorney for clarification.</div>
+        <select class="form-select" id="case-type">
+          <option value="">— Select your situation —</option>
+          <optgroup label="Personal Injury">
+            <option value="personal-injury">Car / Auto Accident</option>
+            <option value="personal-injury">Truck Accident</option>
+            <option value="personal-injury">Motorcycle Accident</option>
+            <option value="personal-injury">Bicycle Accident</option>
+            <option value="personal-injury">Pedestrian Accident</option>
+            <option value="personal-injury">Slip and Fall</option>
+            <option value="personal-injury">Trip and Fall</option>
+            <option value="personal-injury">Dog Bite / Animal Attack</option>
+            <option value="personal-injury">Assault / Battery</option>
+            <option value="personal-injury">Nursing Home Abuse</option>
+            <option value="personal-injury">Daycare Abuse</option>
+            <option value="personal-injury">Sports Injury</option>
+            <option value="personal-injury">Amusement Park Injury</option>
+            <option value="personal-injury">Swimming Pool Accident</option>
+            <option value="personal-injury">Burn Injury</option>
+            <option value="personal-injury">Brain / Head Injury</option>
+            <option value="personal-injury">Spinal Cord Injury</option>
+          </optgroup>
+          <optgroup label="Medical & Professional Malpractice">
+            <option value="medical-malpractice">Medical Malpractice</option>
+            <option value="medical-malpractice">Surgical Errors</option>
+            <option value="medical-malpractice">Misdiagnosis / Delayed Diagnosis</option>
+            <option value="medical-malpractice">Birth Injuries</option>
+            <option value="medical-malpractice">Pharmacy Errors</option>
+            <option value="medical-malpractice">Dental Malpractice</option>
+            <option value="medical-malpractice">Mental Health Malpractice</option>
+            <option value="medical-malpractice">Nursing Malpractice</option>
+            <option value="medical-malpractice">Legal Malpractice</option>
+            <option value="medical-malpractice">Accountant Malpractice</option>
+          </optgroup>
+          <optgroup label="Product Liability">
+            <option value="product-liability">Defective Product</option>
+            <option value="product-liability">Dangerous Drug / Medication</option>
+            <option value="product-liability">Defective Medical Device</option>
+            <option value="product-liability">Defective Vehicle / Auto Parts</option>
+            <option value="product-liability">Dangerous Children's Products</option>
+            <option value="product-liability">Defective Machinery / Equipment</option>
+          </optgroup>
+          <optgroup label="Property & Housing">
+            <option value="property">Property Damage</option>
+            <option value="property">Landlord / Tenant Dispute</option>
+            <option value="property">Security Deposit Dispute</option>
+            <option value="property">Wrongful Eviction</option>
+            <option value="property">Housing Discrimination</option>
+            <option value="property">Neighbor Dispute</option>
+            <option value="property">Trespassing</option>
+            <option value="property">Vandalism</option>
+          </optgroup>
+          <optgroup label="Employment">
+            <option value="employment">Wrongful Termination</option>
+            <option value="employment">Employment Discrimination</option>
+            <option value="employment">Sexual Harassment</option>
+            <option value="employment">Workplace Harassment</option>
+            <option value="employment">Wage Theft / Unpaid Wages</option>
+            <option value="employment">Unpaid Overtime</option>
+            <option value="employment">Workers Compensation</option>
+            <option value="employment">Retaliation / Whistleblower</option>
+            <option value="employment">FMLA Violations</option>
+            <option value="employment">ADA Violations</option>
+            <option value="employment">Age Discrimination</option>
+            <option value="employment">Race Discrimination</option>
+            <option value="employment">Gender Discrimination</option>
+          </optgroup>
+          <optgroup label="Contract & Business">
+            <option value="contract">Written Contract Dispute</option>
+            <option value="contract">Verbal Contract Dispute</option>
+            <option value="contract">Breach of Contract</option>
+            <option value="contract">Business Partnership Dispute</option>
+            <option value="contract">Intellectual Property / Copyright</option>
+            <option value="contract">Trademark Infringement</option>
+            <option value="contract">Non-Compete Violation</option>
+            <option value="contract">Non-Disclosure Agreement Violation</option>
+            <option value="fraud">Fraud / Misrepresentation</option>
+            <option value="contract">Consumer Protection Violation</option>
+          </optgroup>
+          <optgroup label="Debt & Finance">
+            <option value="debt">Debt Collection</option>
+            <option value="debt">Credit Card Debt</option>
+            <option value="debt">Medical Debt</option>
+            <option value="debt">Student Loan Dispute</option>
+            <option value="debt">Mortgage / Foreclosure</option>
+            <option value="fraud">Identity Theft</option>
+            <option value="contract">Insurance Dispute</option>
+            <option value="debt">Tax Dispute</option>
+          </optgroup>
+          <optgroup label="Family & Estate">
+            <option value="family">Divorce / Separation</option>
+            <option value="family">Child Custody</option>
+            <option value="family">Child Support</option>
+            <option value="family">Alimony / Spousal Support</option>
+            <option value="family">Adoption Dispute</option>
+            <option value="family">Guardianship</option>
+            <option value="property">Will / Probate Dispute</option>
+            <option value="personal-injury">Elder Abuse</option>
+            <option value="personal-injury">Domestic Violence</option>
+          </optgroup>
+          <optgroup label="Criminal & Civil Rights">
+            <option value="civil-rights">False Arrest</option>
+            <option value="civil-rights">Police Misconduct</option>
+            <option value="civil-rights">Civil Rights Violation</option>
+            <option value="defamation">Defamation / Libel / Slander</option>
+            <option value="civil-rights">Invasion of Privacy</option>
+            <option value="civil-rights">Malicious Prosecution</option>
+            <option value="wrongful-death">Wrongful Death</option>
+            <option value="wrongful-death">Survival Action</option>
+          </optgroup>
+          <optgroup label="Environmental">
+            <option value="personal-injury">Environmental Contamination</option>
+            <option value="personal-injury">Water Contamination</option>
+            <option value="personal-injury">Toxic Exposure</option>
+            <option value="personal-injury">Asbestos / Mesothelioma</option>
+            <option value="personal-injury">Lead Paint Exposure</option>
+          </optgroup>
+          <option value="personal-injury">I'm not sure / Other</option>
+        </select>
+      </div>
+
+      <!-- Step 3: Incident Date -->
+      <div class="step" id="step-3">
+        <div class="step-title">When did the incident occur?</div>
+        <div class="step-sub">Enter the date of the incident — this is how we calculate your exact filing deadline and how many days you have left. If you're unsure of the exact date, enter your best estimate.</div>
+        <input type="date" class="form-date" id="incident-date" max="">
+        <div style="margin-top:14px; background:var(--cream-dark); border-radius:8px; padding:12px 14px;">
+          <p style="font-size:13px; color:var(--text-light); line-height:1.5;">⚠️ <strong>Important:</strong> The "clock" doesn't always start on the date of the incident. In some cases — particularly medical malpractice and fraud — the clock may start when you discovered (or should have discovered) the harm. An attorney can help clarify your specific start date.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" id="btn-back" onclick="prevStep()" style="visibility:hidden">← Back</button>
+      <span class="step-indicator" id="step-indicator">Step 1 of 3</span>
+      <button class="btn-next" id="btn-next" onclick="nextStep()">Next →</button>
+    </div>
+  </div>
+
+  <!-- ─── RESULTS ─── -->
+  <div id="results">
+    <div id="urgency-banner"></div>
+
+    <div class="deadline-box">
+      <div class="deadline-grid">
+        <div class="deadline-item">
+          <div class="deadline-item-label">Statute of Limitations</div>
+          <div class="deadline-item-val" id="sol-years"></div>
+        </div>
+        <div class="deadline-item">
+          <div class="deadline-item-label">Days Remaining</div>
+          <div class="deadline-item-val" id="days-remaining"></div>
+        </div>
+        <div class="deadline-item">
+          <div class="deadline-item-label">Time Elapsed</div>
+          <div class="deadline-item-val" id="time-elapsed"></div>
+        </div>
+      </div>
+      <div class="deadline-date-display">
+        <div class="deadline-date-label">Your Filing Deadline</div>
+        <div class="deadline-date-val" id="deadline-date"></div>
+      </div>
+    </div>
+
+    <div class="ad-slot">Advertisement — Google AdSense</div>
+
+    <div class="notes-box">
+      <div class="notes-title">⚠️ Important Exceptions & Notes</div>
+      <div id="notes-content"></div>
+    </div>
+
+    <div class="attorney-section">
+      <div class="attorney-title">Don't Wait — Consult an Attorney Now</div>
+      <div class="attorney-sub">Even if you have time remaining, the sooner you speak with an attorney the stronger your case will be. Evidence is preserved, witnesses remember more clearly, and you have time to build a strong claim.</div>
+      <div class="attorney-grid">
+        <div class="attorney-card">
+          <div class="attorney-name">Avvo</div>
+          <div class="attorney-desc">Free attorney profiles and Q&A</div>
+          <a href="https://www.avvo.com" target="_blank" rel="noopener noreferrer" class="attorney-btn">Find an Attorney →</a>
+        </div>
+        <div class="attorney-card">
+          <div class="attorney-name">FindLaw</div>
+          <div class="attorney-desc">Search attorneys by practice area</div>
+          <a href="https://lawyers.findlaw.com" target="_blank" rel="noopener noreferrer" class="attorney-btn">Find an Attorney →</a>
+        </div>
+        <div class="attorney-card">
+          <div class="attorney-name">LegalMatch</div>
+          <div class="attorney-desc">Get matched with local attorneys</div>
+          <a href="https://www.legalmatch.com" target="_blank" rel="noopener noreferrer" class="attorney-btn">Get Matched →</a>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="resetTool()" style="background:var(--cream-dark); border:1px solid var(--border); border-radius:7px; padding:10px 20px; font-family:var(--sans); font-size:14px; color:var(--text-mid); cursor:pointer; margin-bottom:32px;">← Look Up Another Deadline</button>
+  </div>
+
+  <!-- ─── SEO COPY ─── -->
+  <div class="seo-section">
+    <h2>Understanding Statute of Limitations Deadlines</h2>
+    <p>Missing a legal deadline can cost you everything — even if you have a strong case. Every legal claim has a statute of limitations, a strict deadline set by state law that limits how long you have to file a lawsuit. Once that window closes it closes forever, regardless of how valid your claim is.</p>
+    <p>Use our free Statute of Limitations Lookup tool to find your exact deadline by state and case type. We calculate the precise date your deadline expires so you know exactly how much time you have left to take action.</p>
+
+    <h3>Why Statute of Limitations Deadlines Vary by State</h3>
+    <p>Each state legislature sets its own deadlines for different types of legal claims. A car accident victim in Kentucky has just 1 year to file, while the same victim in Maine has 6 years. These differences reflect each state's policy choices about balancing victims' rights against defendants' need for finality.</p>
+
+    <h3>When Does the Clock Start?</h3>
+    <p>In most cases, the statute of limitations clock starts on the date the incident occurred. However there are important exceptions. In medical malpractice cases, the clock may start when you discovered — or reasonably should have discovered — the harm. In fraud cases, the clock often starts at discovery. Minors typically have additional time after reaching age 18.</p>
+
+    <h3>What Happens If You Miss the Deadline?</h3>
+    <p>If you file a lawsuit after the statute of limitations has expired, the defendant will almost certainly file a motion to dismiss — and courts will grant it. Your case will be thrown out regardless of its merits. This is why acting quickly is so important, even if you're not sure you want to pursue legal action.</p>
+
+    <h3>Can the Deadline Be Extended?</h3>
+    <p>In some limited circumstances, the statute of limitations can be "tolled" (paused or extended). Common tolling situations include: the victim is a minor, the defendant concealed the harm, the defendant left the state, or the victim was mentally incapacitated. An attorney can advise whether tolling applies to your situation.</p>
+
+    <h3>Frequently Asked Questions</h3>
+
+    <h3>What if I'm not sure when the incident happened?</h3>
+    <p>Use your best estimate of the date. For calculating your deadline, even an approximate date gives you a useful timeframe. However for actually filing a claim, you'll want to work with an attorney to determine the precise start date for your specific situation.</p>
+
+    <h3>Does filing a police report stop the clock?</h3>
+    <p>No. Filing a police report does not pause the statute of limitations clock. Only filing an actual lawsuit in court stops the clock. You must file before the deadline expires — even if negotiations or settlements are ongoing.</p>
+
+    <h3>What if the at-fault party is a government entity?</h3>
+    <p>Claims against government agencies have much shorter deadlines — often just 6 months — and require special notice procedures before you can even file a lawsuit. If a government entity is involved, consult an attorney immediately.</p>
+  </div>
+
+</div>
+
+<!-- ─── DISCLAIMER ─── -->
+<div class="disclaimer-strip">
+  <p><strong>Important:</strong> FreeLegalTools.com provides general legal information for educational purposes only. Statute of limitations laws change frequently and have many exceptions. This tool provides estimates only — always verify your specific deadline with a licensed attorney before making any legal decisions. <a href="disclaimer.html">Read full disclaimer →</a></p>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Free<span class="legal">Legal</span>Tools</div>
+        <p class="footer-tagline">"Free legal tools. No lawyer needed."</p>
+        <p class="footer-disclaimer-note">General legal information only. Not legal advice. Not a law firm. Always consult a licensed attorney for your specific situation.</p>
+      </div>
+      <div>
+        <div class="footer-col-heading">Our Tools</div>
+        <a href="llc-comparison.html" class="footer-link">LLC State Comparison</a>
+        <a href="statute-of-limitations.html" class="footer-link">Statute of Limitations</a>
+        <a href="non-compete-checker.html" class="footer-link">Non-Compete Checker</a>
+        <a href="severance-evaluator.html" class="footer-link">Severance Evaluator</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Site</div>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="disclaimer.html" class="footer-link">Disclaimer</a>
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Legal Notice</div>
+        <p class="footer-disclaimer-note" style="font-size:12px;">FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this site constitutes legal advice or creates an attorney-client relationship.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 FreeLegalTools.com · All Rights Reserved · Not a law firm · Not legal advice</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
+        <a href="disclaimer.html" class="footer-bottom-link">Disclaimer</a>
+        <a href="contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── STATUTE OF LIMITATIONS DATA ───────────────────────────────
+// Years by state and case type
+const solData = {
+  "Alabama":        { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 6, "employment": 2, "contract": 6, "debt": 6, "fraud": 2, "defamation": 2, "wrongful-death": 2, "civil-rights": 2, "family": 6 },
+  "Alaska":         { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 3, "employment": 2, "contract": 3, "debt": 3, "fraud": 2, "defamation": 2, "wrongful-death": 2, "civil-rights": 2, "family": 3 },
+  "Arizona":        { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 2, "employment": 1, "contract": 6, "debt": 6, "fraud": 3, "defamation": 2, "wrongful-death": 2, "civil-rights": 2, "family": 6 },
+  "Arkansas":       { "personal-injury": 3, "medical-malpractice": 2, "product-liability": 3, "property": 3, "employment": 3, "contract": 5, "debt": 5, "fraud": 3, "defamation": 3, "wrongful-death": 3, "civil-rights": 3, "family": 5 },
+  "California":     { "personal-injury": 2, "medical-malpractice": 3, "product-liability": 2, "property": 3, "employment": 1, "contract": 4, "debt": 4, "fraud": 3, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 4 },
+  "Colorado":       { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 2, "employment": 2, "contract": 3, "debt": 6, "fraud": 3, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 3 },
+  "Connecticut":    { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 3, "property": 3, "employment": 2, "contract": 6, "debt": 6, "fraud": 3, "defamation": 2, "wrongful-death": 2, "civil-rights": 3, "family": 6 },
+  "Delaware":       { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 3, "employment": 2, "contract": 3, "debt": 3, "fraud": 3, "defamation": 2, "wrongful-death": 2, "civil-rights": 2, "family": 3 },
+  "Florida":        { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 4, "property": 4, "employment": 4, "contract": 5, "debt": 5, "fraud": 4, "defamation": 2, "wrongful-death": 2, "civil-rights": 4, "family": 4 },
+  "Georgia":        { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 4, "employment": 2, "contract": 6, "debt": 6, "fraud": 4, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 6 },
+  "Hawaii":         { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 2, "employment": 2, "contract": 6, "debt": 6, "fraud": 6, "defamation": 2, "wrongful-death": 2, "civil-rights": 2, "family": 6 },
+  "Idaho":          { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 3, "employment": 2, "contract": 5, "debt": 5, "fraud": 3, "defamation": 2, "wrongful-death": 2, "civil-rights": 2, "family": 5 },
+  "Illinois":       { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 5, "employment": 2, "contract": 5, "debt": 5, "fraud": 5, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 5 },
+  "Indiana":        { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 6, "employment": 2, "contract": 6, "debt": 6, "fraud": 6, "defamation": 2, "wrongful-death": 2, "civil-rights": 2, "family": 6 },
+  "Iowa":           { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 5, "employment": 2, "contract": 5, "debt": 5, "fraud": 5, "defamation": 2, "wrongful-death": 2, "civil-rights": 2, "family": 5 },
+  "Kansas":         { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 2, "employment": 2, "contract": 5, "debt": 5, "fraud": 2, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 5 },
+  "Kentucky":       { "personal-injury": 1, "medical-malpractice": 1, "product-liability": 1, "property": 5, "employment": 1, "contract": 5, "debt": 5, "fraud": 5, "defamation": 1, "wrongful-death": 1, "civil-rights": 1, "family": 5 },
+  "Louisiana":      { "personal-injury": 1, "medical-malpractice": 1, "product-liability": 1, "property": 1, "employment": 1, "contract": 3, "debt": 3, "fraud": 1, "defamation": 1, "wrongful-death": 1, "civil-rights": 1, "family": 3 },
+  "Maine":          { "personal-injury": 6, "medical-malpractice": 3, "product-liability": 6, "property": 6, "employment": 6, "contract": 6, "debt": 6, "fraud": 6, "defamation": 2, "wrongful-death": 2, "civil-rights": 6, "family": 6 },
+  "Maryland":       { "personal-injury": 3, "medical-malpractice": 5, "product-liability": 3, "property": 3, "employment": 3, "contract": 3, "debt": 3, "fraud": 3, "defamation": 1, "wrongful-death": 3, "civil-rights": 3, "family": 3 },
+  "Massachusetts":  { "personal-injury": 3, "medical-malpractice": 3, "product-liability": 3, "property": 3, "employment": 3, "contract": 6, "debt": 6, "fraud": 3, "defamation": 3, "wrongful-death": 3, "civil-rights": 3, "family": 6 },
+  "Michigan":       { "personal-injury": 3, "medical-malpractice": 2, "product-liability": 3, "property": 3, "employment": 3, "contract": 6, "debt": 6, "fraud": 6, "defamation": 1, "wrongful-death": 3, "civil-rights": 3, "family": 6 },
+  "Minnesota":      { "personal-injury": 2, "medical-malpractice": 4, "product-liability": 2, "property": 6, "employment": 2, "contract": 6, "debt": 6, "fraud": 6, "defamation": 2, "wrongful-death": 3, "civil-rights": 2, "family": 6 },
+  "Mississippi":    { "personal-injury": 3, "medical-malpractice": 2, "product-liability": 3, "property": 3, "employment": 3, "contract": 3, "debt": 3, "fraud": 3, "defamation": 1, "wrongful-death": 3, "civil-rights": 3, "family": 3 },
+  "Missouri":       { "personal-injury": 5, "medical-malpractice": 2, "product-liability": 5, "property": 5, "employment": 5, "contract": 5, "debt": 5, "fraud": 5, "defamation": 2, "wrongful-death": 3, "civil-rights": 5, "family": 5 },
+  "Montana":        { "personal-injury": 3, "medical-malpractice": 3, "product-liability": 3, "property": 5, "employment": 3, "contract": 5, "debt": 5, "fraud": 2, "defamation": 2, "wrongful-death": 3, "civil-rights": 3, "family": 5 },
+  "Nebraska":       { "personal-injury": 4, "medical-malpractice": 2, "product-liability": 4, "property": 4, "employment": 4, "contract": 5, "debt": 5, "fraud": 4, "defamation": 1, "wrongful-death": 2, "civil-rights": 4, "family": 5 },
+  "Nevada":         { "personal-injury": 2, "medical-malpractice": 3, "product-liability": 2, "property": 3, "employment": 2, "contract": 6, "debt": 6, "fraud": 3, "defamation": 2, "wrongful-death": 2, "civil-rights": 2, "family": 6 },
+  "New Hampshire":  { "personal-injury": 3, "medical-malpractice": 3, "product-liability": 3, "property": 3, "employment": 3, "contract": 3, "debt": 3, "fraud": 3, "defamation": 3, "wrongful-death": 3, "civil-rights": 3, "family": 3 },
+  "New Jersey":     { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 6, "employment": 2, "contract": 6, "debt": 6, "fraud": 6, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 6 },
+  "New Mexico":     { "personal-injury": 3, "medical-malpractice": 3, "product-liability": 3, "property": 6, "employment": 2, "contract": 6, "debt": 6, "fraud": 4, "defamation": 3, "wrongful-death": 3, "civil-rights": 3, "family": 6 },
+  "New York":       { "personal-injury": 3, "medical-malpractice": 2.5, "product-liability": 3, "property": 3, "employment": 3, "contract": 6, "debt": 6, "fraud": 6, "defamation": 1, "wrongful-death": 2, "civil-rights": 3, "family": 6 },
+  "North Carolina": { "personal-injury": 3, "medical-malpractice": 3, "product-liability": 3, "property": 3, "employment": 3, "contract": 3, "debt": 3, "fraud": 3, "defamation": 1, "wrongful-death": 2, "civil-rights": 3, "family": 3 },
+  "North Dakota":   { "personal-injury": 6, "medical-malpractice": 2, "product-liability": 6, "property": 6, "employment": 6, "contract": 6, "debt": 6, "fraud": 6, "defamation": 2, "wrongful-death": 2, "civil-rights": 6, "family": 6 },
+  "Ohio":           { "personal-injury": 2, "medical-malpractice": 1, "product-liability": 2, "property": 4, "employment": 6, "contract": 8, "debt": 6, "fraud": 4, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 8 },
+  "Oklahoma":       { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 2, "employment": 2, "contract": 5, "debt": 5, "fraud": 2, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 5 },
+  "Oregon":         { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 6, "employment": 2, "contract": 6, "debt": 6, "fraud": 2, "defamation": 1, "wrongful-death": 3, "civil-rights": 2, "family": 6 },
+  "Pennsylvania":   { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 2, "employment": 2, "contract": 4, "debt": 4, "fraud": 2, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 4 },
+  "Rhode Island":   { "personal-injury": 3, "medical-malpractice": 3, "product-liability": 3, "property": 10, "employment": 3, "contract": 10, "debt": 10, "fraud": 3, "defamation": 3, "wrongful-death": 3, "civil-rights": 3, "family": 10 },
+  "South Carolina": { "personal-injury": 3, "medical-malpractice": 3, "product-liability": 3, "property": 3, "employment": 3, "contract": 3, "debt": 3, "fraud": 3, "defamation": 2, "wrongful-death": 3, "civil-rights": 3, "family": 3 },
+  "South Dakota":   { "personal-injury": 3, "medical-malpractice": 2, "product-liability": 3, "property": 6, "employment": 3, "contract": 6, "debt": 6, "fraud": 6, "defamation": 2, "wrongful-death": 3, "civil-rights": 3, "family": 6 },
+  "Tennessee":      { "personal-injury": 1, "medical-malpractice": 1, "product-liability": 1, "property": 3, "employment": 1, "contract": 6, "debt": 6, "fraud": 3, "defamation": 1, "wrongful-death": 1, "civil-rights": 1, "family": 6 },
+  "Texas":          { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 2, "employment": 2, "contract": 4, "debt": 4, "fraud": 4, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 4 },
+  "Utah":           { "personal-injury": 4, "medical-malpractice": 2, "product-liability": 2, "property": 3, "employment": 4, "contract": 6, "debt": 6, "fraud": 3, "defamation": 1, "wrongful-death": 2, "civil-rights": 4, "family": 6 },
+  "Vermont":        { "personal-injury": 3, "medical-malpractice": 3, "product-liability": 3, "property": 6, "employment": 6, "contract": 6, "debt": 6, "fraud": 6, "defamation": 3, "wrongful-death": 2, "civil-rights": 3, "family": 6 },
+  "Virginia":       { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 5, "employment": 2, "contract": 5, "debt": 5, "fraud": 2, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 5 },
+  "Washington":     { "personal-injury": 3, "medical-malpractice": 3, "product-liability": 3, "property": 3, "employment": 3, "contract": 6, "debt": 6, "fraud": 3, "defamation": 2, "wrongful-death": 3, "civil-rights": 3, "family": 6 },
+  "West Virginia":  { "personal-injury": 2, "medical-malpractice": 2, "product-liability": 2, "property": 10, "employment": 2, "contract": 10, "debt": 10, "fraud": 2, "defamation": 1, "wrongful-death": 2, "civil-rights": 2, "family": 10 },
+  "Wisconsin":      { "personal-injury": 3, "medical-malpractice": 3, "product-liability": 3, "property": 6, "employment": 3, "contract": 6, "debt": 6, "fraud": 6, "defamation": 2, "wrongful-death": 3, "civil-rights": 3, "family": 6 },
+  "Wyoming":        { "personal-injury": 4, "medical-malpractice": 2, "product-liability": 4, "property": 8, "employment": 4, "contract": 8, "debt": 8, "fraud": 4, "defamation": 1, "wrongful-death": 2, "civil-rights": 4, "family": 8 }
+};
+
+const caseNotes = {
+  "personal-injury": [
+    { icon: "⚠️", text: "The clock typically starts on the date of the injury or accident." },
+    { icon: "👶", text: "If the victim was a minor at the time, the clock may not start until they turn 18." },
+    { icon: "🏛️", text: "If the at-fault party is a government entity, you may have as little as 60-180 days to file a notice of claim — much shorter than the standard deadline." },
+    { icon: "📋", text: "Even if you're negotiating a settlement, the lawsuit filing deadline still applies. File to protect your rights." }
+  ],
+  "medical-malpractice": [
+    { icon: "🔍", text: "The clock may start when you discovered (or should have discovered) the harm — not always the date of treatment." },
+    { icon: "👶", text: "Special rules often apply for minors — the deadline may be extended." },
+    { icon: "📋", text: "Many states require a certificate of merit from a medical expert before filing — plan extra time for this." },
+    { icon: "⚠️", text: "Medical malpractice cases are complex — consult an attorney immediately." }
+  ],
+  "contract": [
+    { icon: "📝", text: "Written contracts typically have longer deadlines than verbal agreements." },
+    { icon: "🔍", text: "The clock generally starts when the breach occurred — when one party failed to perform." },
+    { icon: "📋", text: "Some contracts include their own limitation clauses which may be shorter than state law." }
+  ],
+  "debt": [
+    { icon: "💳", text: "For credit card debt, the clock typically starts from your last payment or last activity on the account." },
+    { icon: "⚠️", text: "Making a payment on old debt can 'restart' the clock in many states — consult an attorney before paying old debts." },
+    { icon: "📋", text: "Even after the statute of limitations expires, the debt still exists — creditors just can't sue to collect it." }
+  ],
+  "employment": [
+    { icon: "🏛️", text: "Federal employment discrimination claims typically require filing with the EEOC within 180-300 days before you can sue — much shorter than state deadlines." },
+    { icon: "⚠️", text: "For federal claims, the EEOC filing deadline is separate from — and usually shorter than — the state court deadline." },
+    { icon: "📋", text: "Wage theft claims may have different deadlines under federal vs. state law." }
+  ],
+  "wrongful-death": [
+    { icon: "⚠️", text: "Wrongful death claims are typically brought by the surviving family members or estate — not the victim." },
+    { icon: "📅", text: "The clock starts on the date of death, not the date of the underlying incident that caused it." },
+    { icon: "🏛️", text: "If a government entity is involved, notice requirements may apply with much shorter deadlines." }
+  ],
+  "defamation": [
+    { icon: "📰", text: "Defamation (libel and slander) cases have some of the shortest statutes of limitations — often just 1-2 years." },
+    { icon: "🔍", text: "The clock typically starts when the defamatory statement was published or spoken." },
+    { icon: "⚠️", text: "Online defamation may have different rules depending on when the content was first published." }
+  ],
+  "civil-rights": [
+    { icon: "🏛️", text: "Federal civil rights claims under Section 1983 typically borrow the state's personal injury statute of limitations." },
+    { icon: "⚠️", text: "Claims against government entities often require advance notice within 90-180 days." },
+    { icon: "📋", text: "Administrative exhaustion may be required before filing certain civil rights claims in court." }
+  ],
+  "product-liability": [
+    { icon: "🔍", text: "Many states also have a 'statute of repose' for product liability — an absolute deadline measured from when the product was sold, regardless of when injury occurred." },
+    { icon: "📋", text: "Class action lawsuits may toll (pause) the individual deadline in some circumstances." }
+  ],
+  "property": [
+    { icon: "📋", text: "Property damage claims and landlord-tenant disputes may have different deadlines in your state." },
+    { icon: "🔍", text: "The clock typically starts when the damage occurred or when you discovered it." }
+  ],
+  "fraud": [
+    { icon: "🔍", text: "For fraud, the clock often starts when you discovered (or should have discovered) the fraud — not when it occurred." },
+    { icon: "⚠️", text: "Many states have both a discovery rule and an absolute maximum deadline — whichever comes first applies." }
+  ],
+  "family": [
+    { icon: "⚠️", text: "Family law matters like divorce, custody, and support often have their own procedural rules rather than a standard statute of limitations." },
+    { icon: "📋", text: "Consult a family law attorney in your state for deadlines specific to your situation." }
+  ]
+};
+
+// ─── TOOL LOGIC ───────────────────────────────────────────────
+let currentStep = 1;
+const totalSteps = 3;
+
+function updateProgress() {
+  const pct = Math.round((currentStep / totalSteps) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `Step ${currentStep} of ${totalSteps}`;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('step-indicator').textContent = `Step ${currentStep} of ${totalSteps}`;
+  document.getElementById('btn-back').style.visibility = currentStep > 1 ? 'visible' : 'hidden';
+  document.getElementById('btn-next').textContent = currentStep === totalSteps ? 'Calculate My Deadline →' : 'Next →';
+}
+
+function nextStep() {
+  if (currentStep === 1 && !document.getElementById('state-select').value) {
+    alert('Please select your state to continue.'); return;
+  }
+  if (currentStep === 2 && !document.getElementById('case-type').value) {
+    alert('Please select your case type to continue.'); return;
+  }
+  if (currentStep === 3 && !document.getElementById('incident-date').value) {
+    alert('Please enter the date of the incident to continue.'); return;
+  }
+
+  if (currentStep === totalSteps) {
+    showResults(); return;
+  }
+
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  currentStep++;
+  document.getElementById('step-' + currentStep).classList.add('active');
+  updateProgress();
+}
+
+function prevStep() {
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  currentStep--;
+  document.getElementById('step-' + currentStep).classList.add('active');
+  updateProgress();
+}
+
+function showResults() {
+  const state = document.getElementById('state-select').value;
+  const caseTypeEl = document.getElementById('case-type');
+  const caseType = caseTypeEl.value;
+  const caseLabel = caseTypeEl.options[caseTypeEl.selectedIndex].text;
+  const incidentDateStr = document.getElementById('incident-date').value;
+
+  const stateData = solData[state];
+  const years = stateData ? (stateData[caseType] || stateData['personal-injury']) : 2;
+
+  const incidentDate = new Date(incidentDateStr + 'T12:00:00');
+  const deadlineDate = new Date(incidentDate);
+  deadlineDate.setFullYear(deadlineDate.getFullYear() + Math.floor(years));
+  if (years % 1 !== 0) {
+    deadlineDate.setMonth(deadlineDate.getMonth() + Math.round((years % 1) * 12));
+  }
+
+  const today = new Date();
+  today.setHours(12, 0, 0, 0);
+  const daysRemaining = Math.floor((deadlineDate - today) / (1000 * 60 * 60 * 24));
+  const daysElapsed = Math.floor((today - incidentDate) / (1000 * 60 * 60 * 24));
+  const yearsElapsed = (daysElapsed / 365).toFixed(1);
+
+  const deadlineDateStr = deadlineDate.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  document.getElementById('tool-card').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+
+  // Urgency banner
+  let urgencyHTML = '';
+  if (daysRemaining < 0) {
+    urgencyHTML = `<div class="result-urgent"><div class="result-status">⛔ Deadline Expired</div><div class="result-headline">Your filing deadline has passed</div><div class="result-detail">Based on the information provided, the standard statute of limitations for a <strong>${caseLabel}</strong> case in <strong>${state}</strong> has expired. However, exceptions may apply — contact an attorney immediately to discuss your options. Do not assume all hope is lost without speaking to a legal professional.</div></div>`;
+  } else if (daysRemaining <= 90) {
+    urgencyHTML = `<div class="result-urgent"><div class="result-status">🚨 Urgent — Less Than 90 Days Remaining</div><div class="result-headline">You need to act immediately</div><div class="result-detail">You have only <strong>${daysRemaining} days</strong> remaining to file your <strong>${caseLabel}</strong> claim in <strong>${state}</strong>. Contact an attorney today — building a strong case takes time and your window is closing fast.</div></div>`;
+  } else if (daysRemaining <= 365) {
+    urgencyHTML = `<div class="result-warning"><div class="result-status">⚠️ Caution — Less Than 1 Year Remaining</div><div class="result-headline">Don't wait much longer</div><div class="result-detail">You have <strong>${daysRemaining} days</strong> remaining to file your <strong>${caseLabel}</strong> claim in <strong>${state}</strong>. While you have some time, consulting an attorney soon will give you the best chance of a strong outcome.</div></div>`;
+  } else {
+    urgencyHTML = `<div class="result-ok"><div class="result-status">✅ You Have Time — But Don't Wait</div><div class="result-headline">Your deadline is ${Math.floor(daysRemaining / 365)} year${Math.floor(daysRemaining/365) !== 1 ? 's' : ''} away</div><div class="result-detail">You have <strong>${daysRemaining} days</strong> remaining to file your <strong>${caseLabel}</strong> claim in <strong>${state}</strong>. Evidence is best preserved and witnesses remember most clearly soon after an incident — consult an attorney sooner rather than later.</div></div>`;
+  }
+  document.getElementById('urgency-banner').innerHTML = urgencyHTML;
+
+  // Metrics
+  const yearsLabel = years === 1 ? '1 Year' : years % 1 !== 0 ? `${years} Years` : `${years} Years`;
+  document.getElementById('sol-years').textContent = yearsLabel;
+  document.getElementById('sol-years').className = 'deadline-item-val';
+
+  const daysClass = daysRemaining < 0 ? 'urgent' : daysRemaining <= 90 ? 'urgent' : daysRemaining <= 365 ? 'warning' : 'ok';
+  document.getElementById('days-remaining').textContent = daysRemaining < 0 ? 'Expired' : daysRemaining.toLocaleString() + ' days';
+  document.getElementById('days-remaining').className = `deadline-item-val ${daysClass}`;
+
+  document.getElementById('time-elapsed').textContent = yearsElapsed + ' years';
+  document.getElementById('deadline-date').textContent = deadlineDateStr;
+
+  // Notes
+  const notes = caseNotes[caseType] || caseNotes['personal-injury'];
+  document.getElementById('notes-content').innerHTML = notes.map(n =>
+    `<div class="note-item"><span class="note-icon">${n.icon}</span><span>${n.text}</span></div>`
+  ).join('');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetTool() {
+  document.getElementById('tool-card').style.display = 'block';
+  document.getElementById('results').style.display = 'none';
+  currentStep = 1;
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-1').classList.add('active');
+  document.getElementById('state-select').value = '';
+  document.getElementById('case-type').value = '';
+  document.getElementById('incident-date').value = '';
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Set max date to today
+document.getElementById('incident-date').max = new Date().toISOString().split('T')[0];
+updateProgress();
+</script>
+</body>
+</html>
