@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disclaimer — FreeLegalTools.com</title>
+<meta name="description" content="Important information about how to use FreeLegalTools.com including our no legal advice policy, affiliate disclosure, and accuracy disclaimer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B35;
+    --navy-mid: #1A2E50;
+    --gold: #C4973A;
+    --gold-pale: rgba(196,151,58,0.12);
+    --cream: #FAF8F4;
+    --cream-dark: #F0EDE6;
+    --cream-darker: #E8E4DC;
+    --text: #1C2B3A;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --border: #E2DDD4;
+    --white: #FFFFFF;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(13,27,53,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── HEADER ─── */
+  header { background: var(--cream); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-divider { width: 1.5px; height: 32px; background: var(--gold); opacity: 0.6; }
+  .logo-text { font-family: var(--serif); font-size: 20px; font-weight: 600; }
+  .logo-text .free { color: var(--navy); }
+  .logo-text .legal { color: var(--gold); }
+  .logo-text .tools { color: var(--navy); }
+  nav { display: flex; align-items: center; gap: 8px; }
+  .nav-item { position: relative; padding: 8px 14px; font-size: 14px; color: var(--text-mid); cursor: pointer; border-radius: 6px; transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 4px; }
+  .nav-item:hover { background: var(--cream-dark); color: var(--navy); }
+  .nav-arrow { font-size: 10px; transition: transform 0.2s; color: var(--text-light); }
+  .nav-item:hover .nav-arrow { transform: rotate(180deg); }
+  .mega-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 8px; width: 480px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .mega-menu::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
+  .nav-item:hover .mega-menu { opacity: 1; pointer-events: auto; }
+  .mega-menu-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; border-radius: 8px; transition: background 0.12s; }
+  .mega-menu-item:hover { background: var(--cream); }
+  .mega-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+  .mega-item-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 2px; font-family: var(--serif); }
+  .mega-item-desc { font-size: 12px; color: var(--text-light); line-height: 1.4; }
+
+  /* ─── PAGE HERO ─── */
+  .page-hero { background: var(--navy); padding: 52px 32px; text-align: center; }
+  .page-hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-pale); border: 1px solid rgba(196,151,58,0.25); color: var(--gold); font-size: 12px; letter-spacing: 0.06em; padding: 5px 16px; border-radius: 20px; margin-bottom: 16px; }
+  .page-hero h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+  .page-hero p { font-size: 15px; color: rgba(255,255,255,0.55); max-width: 480px; margin: 0 auto; line-height: 1.65; }
+
+  /* ─── MAIN ─── */
+  .main { max-width: 760px; margin: 0 auto; padding: 56px 32px 80px; }
+
+  /* ─── LAST UPDATED ─── */
+  .last-updated { display: inline-flex; align-items: center; gap: 8px; background: var(--cream-dark); border: 1px solid var(--border); border-radius: 6px; padding: 6px 14px; font-size: 13px; color: var(--text-light); margin-bottom: 40px; }
+
+  /* ─── IMPORTANT BOX ─── */
+  .important-box { background: var(--navy); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 40px; }
+  .important-box-title { font-family: var(--serif); font-size: 18px; color: var(--gold); margin-bottom: 10px; }
+  .important-box-text { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.75; }
+
+  /* ─── SECTIONS ─── */
+  .disclaimer-section { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+  .disclaimer-section:last-child { border-bottom: none; }
+  .section-num { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .section-title { font-family: var(--serif); font-size: 20px; color: var(--navy); margin-bottom: 12px; font-weight: 600; }
+  .section-body p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 12px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .section-body a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ─── HIGHLIGHT BOX ─── */
+  .highlight-box { background: var(--cream-dark); border: 1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; padding: 16px 20px; margin: 16px 0; }
+  .highlight-box p { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+
+  /* ─── DISCLAIMER & FOOTER ─── */
+  footer { background: var(--navy); padding: 56px 32px 32px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand-name { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .footer-brand-name .legal { color: var(--gold); }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 12px; font-style: italic; }
+  .footer-disclaimer-note { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6; max-width: 280px; }
+  .footer-col-heading { font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 10px; transition: color 0.12s; }
+  .footer-link:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-bottom-links { display: flex; gap: 20px; }
+  .footer-bottom-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: color 0.12s; }
+  .footer-bottom-link:hover { color: rgba(255,255,255,0.6); }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 28px; }
+    .main { padding: 40px 16px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
+        <polygon points="2,13 18,2 34,13" fill="#0D1B35"/>
+        <rect x="6"  y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="13" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="20" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="27" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="2"  y="29" width="32" height="3.5" fill="#0D1B35" rx="1"/>
+      </svg>
+      <div class="logo-divider"></div>
+      <div class="logo-text"><span class="free">Free</span><span class="legal">Legal</span><span class="tools">Tools</span></div>
+    </a>
+    <nav>
+      <a href="index.html" class="nav-item">Home</a>
+      <div class="nav-item">
+        Tools <span class="nav-arrow">▾</span>
+        <div class="mega-menu">
+          <a href="llc-comparison.html" class="mega-menu-item">
+            <div class="mega-icon">🏛️</div>
+            <div><div class="mega-item-title">LLC State Comparison Tool</div><div class="mega-item-desc">Find the best state to form your LLC based on fees, privacy, and taxes</div></div>
+          </a>
+          <a href="statute-of-limitations.html" class="mega-menu-item">
+            <div class="mega-icon">⏱️</div>
+            <div><div class="mega-item-title">Statute of Limitations Lookup</div><div class="mega-item-desc">Find your exact legal deadline by state and case type</div></div>
+          </a>
+          <a href="non-compete-checker.html" class="mega-menu-item">
+            <div class="mega-icon">📋</div>
+            <div><div class="mega-item-title">Non-Compete Enforceability Checker</div><div class="mega-item-desc">Find out if your non-compete agreement is likely enforceable</div></div>
+          </a>
+          <a href="severance-evaluator.html" class="mega-menu-item">
+            <div class="mega-icon">💼</div>
+            <div><div class="mega-item-title">Severance Package Evaluator</div><div class="mega-item-desc">Find out if your severance offer is fair for your situation</div></div>
+          </a>
+        </div>
+      </div>
+      <a href="about.html" class="nav-item">About</a>
+      <a href="disclaimer.html" class="nav-item active">Disclaimer</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero">
+  <div class="page-hero-eyebrow">Legal Information</div>
+  <h1>Disclaimer</h1>
+  <p>Please read this disclaimer carefully before using any tool or information on FreeLegalTools.com.</p>
+</div>
+
+<!-- ─── MAIN ─── */
+<div class="main">
+
+  <div class="last-updated">📅 Last Updated: May 2026</div>
+
+  <!-- Important Box -->
+  <div class="important-box">
+    <div class="important-box-title">Important Notice</div>
+    <div class="important-box-text">FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this website constitutes legal advice, and nothing on this site should be taken as legal advice for any individual case or situation. Always consult a qualified, licensed attorney in your state for advice specific to your circumstances.</div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="disclaimer-section">
+    <div class="section-num">Section 1</div>
+    <div class="section-title">No Legal Advice</div>
+    <div class="section-body">
+      <p>The information provided on FreeLegalTools.com is for general informational and educational purposes only. Nothing on this website constitutes legal advice, and nothing on this site should be taken as legal advice for any individual case or situation.</p>
+      <p>The tools, calculators, lookups, and other resources available on this site are designed to provide general information about legal topics. They are not a substitute for the advice of a licensed attorney who is familiar with the specific facts and circumstances of your situation.</p>
+      <div class="highlight-box"><p>If you have a specific legal problem or question, you should consult a licensed attorney in your state. Do not act or refrain from acting on the basis of anything you read or find on this site without first seeking professional legal advice.</p></div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="disclaimer-section">
+    <div class="section-num">Section 2</div>
+    <div class="section-title">No Attorney-Client Relationship</div>
+    <div class="section-body">
+      <p>Use of FreeLegalTools.com does not create an attorney-client relationship between you and FreeLegalTools.com or any of its operators, employees, contributors, or affiliates.</p>
+      <p>No attorney-client relationship is formed by your use of any tool, calculator, or informational resource on this site, by your submission of any form, or by any communication through this website. You should not act or refrain from acting based on any information on this site without seeking legal advice from a licensed attorney in your state.</p>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="disclaimer-section">
+    <div class="section-num">Section 3</div>
+    <div class="section-title">Accuracy of Information</div>
+    <div class="section-body">
+      <p>While we make every effort to keep the information on this site current, accurate, and complete, laws change frequently and vary significantly by jurisdiction. FreeLegalTools.com makes no representations, warranties, or guarantees — express or implied — about the accuracy, completeness, reliability, suitability, or currentness of any information on this site.</p>
+      <p>State filing fees, statute of limitations periods, non-compete laws, and other legal information are subject to change by legislation, court decisions, and regulatory action at any time. Information that was accurate at the time it was published may become outdated.</p>
+      <div class="highlight-box"><p>Always verify important legal information through official government sources — such as your state's Secretary of State website, legislature website, or a licensed attorney — before making any legal or financial decisions.</p></div>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="disclaimer-section">
+    <div class="section-num">Section 4</div>
+    <div class="section-title">Third-Party Links</div>
+    <div class="section-body">
+      <p>FreeLegalTools.com may contain links to third-party websites and services, including but not limited to attorney referral services, LLC formation services, and other legal resources. These links are provided for convenience and informational purposes only.</p>
+      <p>We have no control over the content, accuracy, privacy practices, or availability of those external sites and accept no responsibility or liability for them or for any loss or damage that may arise from your use of them. The inclusion of a link does not imply our endorsement of that website or its content.</p>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="disclaimer-section">
+    <div class="section-num">Section 5</div>
+    <div class="section-title">Affiliate Disclosure</div>
+    <div class="section-body">
+      <p>FreeLegalTools.com participates in affiliate marketing programs. This means that when you click certain links on this site and make a purchase or sign up for a service, we may receive a commission or referral fee at no additional cost to you.</p>
+      <p>Affiliate relationships do not influence our tool results, rankings, or recommendations. Our tools generate results based solely on the information you provide and publicly available legal data — not on affiliate partnerships. We only link to services we believe may be genuinely useful to our visitors.</p>
+      <div class="highlight-box"><p>This affiliate disclosure is provided in compliance with the Federal Trade Commission (FTC) guidelines on endorsements and testimonials.</p></div>
+    </div>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="disclaimer-section">
+    <div class="section-num">Section 6</div>
+    <div class="section-title">Advertising Disclosure</div>
+    <div class="section-body">
+      <p>FreeLegalTools.com uses Google AdSense to display advertisements on this site. Google and its partners may use cookies and similar technologies to serve ads based on your prior visits to this site and other websites on the internet.</p>
+      <p>Advertisements displayed on this site are served by Google and are not endorsements of any product or service by FreeLegalTools.com. Advertising revenue helps us maintain this site and keep all tools free for our visitors.</p>
+      <p>You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google's Ads Settings</a> or by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer">AboutAds.info</a>.</p>
+    </div>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="disclaimer-section">
+    <div class="section-num">Section 7</div>
+    <div class="section-title">Limitation of Liability</div>
+    <div class="section-body">
+      <p>To the fullest extent permitted by applicable law, FreeLegalTools.com and its operators, employees, contributors, and affiliates shall not be liable for any direct, indirect, incidental, consequential, special, exemplary, or punitive damages arising from or relating to your use of, or inability to use, this website or any information, tools, or resources contained on it.</p>
+      <p>This includes but is not limited to damages arising from reliance on any information provided on this site, errors or omissions in the content, or any action taken or not taken based on the content of this site.</p>
+    </div>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="disclaimer-section">
+    <div class="section-num">Section 8</div>
+    <div class="section-title">Changes to This Disclaimer</div>
+    <div class="section-body">
+      <p>We reserve the right to update, modify, or replace this disclaimer at any time without prior notice. Changes will be posted on this page with an updated "Last Updated" date at the top. Your continued use of FreeLegalTools.com after any changes constitutes your acceptance of the revised disclaimer.</p>
+      <p>We encourage you to review this disclaimer periodically to stay informed of any updates.</p>
+    </div>
+  </div>
+
+  <!-- Section 9 -->
+  <div class="disclaimer-section">
+    <div class="section-num">Section 9</div>
+    <div class="section-title">Contact Us</div>
+    <div class="section-body">
+      <p>If you have any questions about this disclaimer or about the information provided on this site, please <a href="contact.html">contact us</a>. We are happy to clarify any concerns.</p>
+      <p>Please note that we cannot provide legal advice or answer questions about specific legal situations through our contact form. For legal advice, please consult a licensed attorney.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Free<span class="legal">Legal</span>Tools</div>
+        <p class="footer-tagline">"Free legal tools. No lawyer needed."</p>
+        <p class="footer-disclaimer-note">General legal information only. Not legal advice. Not a law firm. Always consult a licensed attorney for your specific situation.</p>
+      </div>
+      <div>
+        <div class="footer-col-heading">Our Tools</div>
+        <a href="llc-comparison.html" class="footer-link">LLC State Comparison</a>
+        <a href="statute-of-limitations.html" class="footer-link">Statute of Limitations</a>
+        <a href="non-compete-checker.html" class="footer-link">Non-Compete Checker</a>
+        <a href="severance-evaluator.html" class="footer-link">Severance Evaluator</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Site</div>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="disclaimer.html" class="footer-link">Disclaimer</a>
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Legal Notice</div>
+        <p class="footer-disclaimer-note" style="font-size:12px;">FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this site constitutes legal advice or creates an attorney-client relationship.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 FreeLegalTools.com · All Rights Reserved · Not a law firm · Not legal advice</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
+        <a href="disclaimer.html" class="footer-bottom-link">Disclaimer</a>
+        <a href="contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
