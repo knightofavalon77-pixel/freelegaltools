@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Non-Compete Enforceability Checker — Is Your Agreement Valid? Free Tool</title>
+<meta name="description" content="Find out if your non-compete agreement is enforceable in your state. Free plain English verdict based on your specific situation. No lawyer needed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B35;
+    --navy-mid: #1A2E50;
+    --gold: #C4973A;
+    --gold-light: #D4A84A;
+    --gold-pale: rgba(196,151,58,0.12);
+    --cream: #FAF8F4;
+    --cream-dark: #F0EDE6;
+    --cream-darker: #E8E4DC;
+    --text: #1C2B3A;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --border: #E2DDD4;
+    --white: #FFFFFF;
+    --green: #1A6B45;
+    --green-bg: #EBF5F0;
+    --red: #8B1A1A;
+    --red-bg: #FBF0F0;
+    --amber: #92600A;
+    --amber-bg: #FEF3DC;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(13,27,53,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── HEADER ─── */
+  header { background: var(--cream); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-divider { width: 1.5px; height: 32px; background: var(--gold); opacity: 0.6; }
+  .logo-text { font-family: var(--serif); font-size: 20px; font-weight: 600; }
+  .logo-text .free { color: var(--navy); }
+  .logo-text .legal { color: var(--gold); }
+  .logo-text .tools { color: var(--navy); }
+  nav { display: flex; align-items: center; gap: 8px; }
+  .nav-item { position: relative; padding: 8px 14px; font-size: 14px; color: var(--text-mid); cursor: pointer; border-radius: 6px; transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 4px; }
+  .nav-item:hover { background: var(--cream-dark); color: var(--navy); }
+  .nav-arrow { font-size: 10px; transition: transform 0.2s; color: var(--text-light); }
+  .nav-item:hover .nav-arrow { transform: rotate(180deg); }
+  .mega-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 8px; width: 480px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .mega-menu::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
+  .nav-item:hover .mega-menu { opacity: 1; pointer-events: auto; }
+  .mega-menu-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; border-radius: 8px; transition: background 0.12s; }
+  .mega-menu-item:hover { background: var(--cream); }
+  .mega-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+  .mega-item-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 2px; font-family: var(--serif); }
+  .mega-item-desc { font-size: 12px; color: var(--text-light); line-height: 1.4; }
+
+  /* ─── PAGE HERO ─── */
+  .page-hero { background: var(--navy); padding: 52px 32px; text-align: center; }
+  .page-hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-pale); border: 1px solid rgba(196,151,58,0.25); color: var(--gold); font-size: 12px; letter-spacing: 0.06em; padding: 5px 16px; border-radius: 20px; margin-bottom: 16px; }
+  .page-hero h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; color: var(--white); margin-bottom: 12px; line-height: 1.2; }
+  .page-hero h1 span { color: var(--gold); }
+  .page-hero p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+  /* ─── MAIN ─── */
+  .main { max-width: 860px; margin: 0 auto; padding: 48px 32px 72px; }
+
+  /* ─── AD SLOT ─── */
+  .ad-slot { background: var(--cream-darker); border: 1px dashed var(--border); border-radius: 6px; text-align: center; padding: 12px; font-size: 11px; color: var(--text-light); margin: 24px 0; letter-spacing: 0.04em; }
+
+  /* ─── TOOL CARD ─── */
+  .tool-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 32px; box-shadow: var(--shadow); }
+  .tool-header { background: var(--navy); padding: 20px 28px; display: flex; align-items: center; gap: 16px; }
+  .tool-header-icon { font-size: 28px; }
+  .tool-header-title { font-family: var(--serif); font-size: 20px; color: var(--white); font-weight: 600; }
+  .tool-header-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+  /* ─── PROGRESS ─── */
+  .progress-wrap { padding: 20px 28px 0; }
+  .progress-label { font-size: 12px; color: var(--text-light); margin-bottom: 8px; display: flex; justify-content: space-between; }
+  .progress-bar { height: 4px; background: var(--cream-darker); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.4s ease; }
+
+  /* ─── STEPS ─── */
+  .steps-wrap { padding: 28px; }
+  .step { display: none; }
+  .step.active { display: block; }
+  .step-title { font-family: var(--serif); font-size: 20px; color: var(--navy); margin-bottom: 6px; }
+  .step-sub { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.5; }
+
+  /* ─── FORM ELEMENTS ─── */
+  .form-select { width: 100%; padding: 12px 16px; font-family: var(--sans); font-size: 14px; color: var(--text); background: var(--cream); border: 1px solid var(--border); border-radius: 8px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23718096' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; transition: border-color 0.15s; }
+  .form-select:focus { outline: none; border-color: var(--gold); }
+
+  .options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .options-grid.three { grid-template-columns: repeat(3, 1fr); }
+  .option-btn { padding: 12px 16px; background: var(--cream); border: 1.5px solid var(--border); border-radius: 8px; font-family: var(--sans); font-size: 13px; color: var(--text-mid); cursor: pointer; transition: all 0.15s; text-align: left; line-height: 1.4; }
+  .option-btn:hover { border-color: var(--gold); color: var(--navy); background: var(--white); }
+  .option-btn.selected { border-color: var(--gold); background: var(--gold-pale); color: var(--navy); font-weight: 500; }
+
+  /* ─── NAV BUTTONS ─── */
+  .step-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 28px; border-top: 1px solid var(--border); background: var(--cream); }
+  .btn-back { padding: 10px 20px; background: transparent; border: 1px solid var(--border); border-radius: 7px; font-family: var(--sans); font-size: 14px; color: var(--text-mid); cursor: pointer; transition: all 0.15s; }
+  .btn-back:hover { border-color: var(--navy); color: var(--navy); }
+  .btn-next { padding: 11px 28px; background: var(--navy); border: none; border-radius: 7px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--white); cursor: pointer; transition: background 0.15s; }
+  .btn-next:hover { background: var(--navy-mid); }
+  .step-indicator { font-size: 13px; color: var(--text-light); }
+
+  /* ─── RESULTS ─── */
+  #results { display: none; }
+
+  .verdict-card { border-radius: var(--radius); padding: 28px; margin-bottom: 24px; }
+  .verdict-unenforceable { background: var(--green-bg); border: 1px solid rgba(26,107,69,0.2); }
+  .verdict-likely-unenforceable { background: #EBF5F0; border: 1px solid rgba(26,107,69,0.15); }
+  .verdict-uncertain { background: var(--amber-bg); border: 1px solid rgba(146,96,10,0.2); }
+  .verdict-likely-enforceable { background: #FEF3DC; border: 1px solid rgba(146,96,10,0.15); }
+  .verdict-enforceable { background: var(--red-bg); border: 1px solid rgba(139,26,26,0.2); }
+
+  .verdict-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 12px; }
+  .badge-unenforceable { background: rgba(26,107,69,0.15); color: var(--green); }
+  .badge-uncertain { background: rgba(146,96,10,0.15); color: var(--amber); }
+  .badge-enforceable { background: rgba(139,26,26,0.15); color: var(--red); }
+
+  .verdict-title { font-family: var(--serif); font-size: 24px; font-weight: 600; margin-bottom: 10px; }
+  .verdict-unenforceable .verdict-title,
+  .verdict-likely-unenforceable .verdict-title { color: var(--green); }
+  .verdict-uncertain .verdict-title,
+  .verdict-likely-enforceable .verdict-title { color: var(--amber); }
+  .verdict-enforceable .verdict-title { color: var(--red); }
+
+  .verdict-summary { font-size: 14px; line-height: 1.65; }
+  .verdict-unenforceable .verdict-summary,
+  .verdict-likely-unenforceable .verdict-summary { color: #1A4A30; }
+  .verdict-uncertain .verdict-summary,
+  .verdict-likely-enforceable .verdict-summary { color: #6B4A10; }
+  .verdict-enforceable .verdict-summary { color: #5C1A1A; }
+
+  .factors-box { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }
+  .factors-title { font-family: var(--serif); font-size: 17px; color: var(--navy); margin-bottom: 16px; }
+  .factor-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .factor-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .factor-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .factor-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
+  .factor-desc { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+
+  .state-law-box { background: var(--navy); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 24px; }
+  .state-law-title { font-family: var(--serif); font-size: 16px; color: var(--gold); margin-bottom: 10px; }
+  .state-law-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.65; }
+
+  /* ─── ATTORNEY SECTION ─── */
+  .attorney-section { background: var(--cream-dark); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin: 28px 0; }
+  .attorney-title { font-family: var(--serif); font-size: 17px; color: var(--navy); margin-bottom: 6px; }
+  .attorney-sub { font-size: 13px; color: var(--text-light); margin-bottom: 18px; }
+  .attorney-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .attorney-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; transition: border-color 0.15s, box-shadow 0.15s; }
+  .attorney-card:hover { border-color: var(--gold); box-shadow: var(--shadow); }
+  .attorney-name { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .attorney-desc { font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+  .attorney-btn { display: block; background: var(--navy); color: var(--white); font-size: 12px; font-weight: 500; padding: 8px 12px; border-radius: 6px; transition: background 0.15s; }
+  .attorney-btn:hover { background: var(--navy-mid); }
+
+  /* ─── SEO COPY ─── */
+  .seo-section { margin-top: 48px; }
+  .seo-section h2 { font-family: var(--serif); font-size: 26px; color: var(--navy); margin-bottom: 14px; }
+  .seo-section h3 { font-family: var(--serif); font-size: 18px; color: var(--navy); margin: 24px 0 10px; }
+  .seo-section p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
+
+  /* ─── DISCLAIMER & FOOTER ─── */
+  .disclaimer-strip { background: var(--cream-darker); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 32px; text-align: center; }
+  .disclaimer-strip p { font-size: 12px; color: var(--text-light); max-width: 800px; margin: 0 auto; line-height: 1.6; }
+  .disclaimer-strip a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+  footer { background: var(--navy); padding: 56px 32px 32px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand-name { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .footer-brand-name .legal { color: var(--gold); }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 12px; font-style: italic; }
+  .footer-disclaimer-note { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6; max-width: 280px; }
+  .footer-col-heading { font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 10px; transition: color 0.12s; }
+  .footer-link:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-bottom-links { display: flex; gap: 20px; }
+  .footer-bottom-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: color 0.12s; }
+  .footer-bottom-link:hover { color: rgba(255,255,255,0.6); }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 26px; }
+    .main { padding: 32px 16px; }
+    .options-grid { grid-template-columns: 1fr; }
+    .options-grid.three { grid-template-columns: 1fr 1fr; }
+    .attorney-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
+        <polygon points="2,13 18,2 34,13" fill="#0D1B35"/>
+        <rect x="6"  y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="13" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="20" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="27" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="2"  y="29" width="32" height="3.5" fill="#0D1B35" rx="1"/>
+      </svg>
+      <div class="logo-divider"></div>
+      <div class="logo-text"><span class="free">Free</span><span class="legal">Legal</span><span class="tools">Tools</span></div>
+    </a>
+    <nav>
+      <a href="index.html" class="nav-item">Home</a>
+      <div class="nav-item">
+        Tools <span class="nav-arrow">▾</span>
+        <div class="mega-menu">
+          <a href="llc-comparison.html" class="mega-menu-item">
+            <div class="mega-icon">🏛️</div>
+            <div><div class="mega-item-title">LLC State Comparison Tool</div><div class="mega-item-desc">Find the best state to form your LLC based on fees, privacy, and taxes</div></div>
+          </a>
+          <a href="statute-of-limitations.html" class="mega-menu-item">
+            <div class="mega-icon">⏱️</div>
+            <div><div class="mega-item-title">Statute of Limitations Lookup</div><div class="mega-item-desc">Find your exact legal deadline by state and case type</div></div>
+          </a>
+          <a href="non-compete-checker.html" class="mega-menu-item">
+            <div class="mega-icon">📋</div>
+            <div><div class="mega-item-title">Non-Compete Enforceability Checker</div><div class="mega-item-desc">Find out if your non-compete agreement is likely enforceable</div></div>
+          </a>
+          <a href="severance-evaluator.html" class="mega-menu-item">
+            <div class="mega-icon">💼</div>
+            <div><div class="mega-item-title">Severance Package Evaluator</div><div class="mega-item-desc">Find out if your severance offer is fair for your situation</div></div>
+          </a>
+        </div>
+      </div>
+      <a href="about.html" class="nav-item">About</a>
+      <a href="disclaimer.html" class="nav-item">Disclaimer</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero">
+  <div class="page-hero-eyebrow">📋 Free Tool · All 50 States · Plain English Verdict</div>
+  <h1>Non-Compete <span>Enforceability Checker</span></h1>
+  <p>You signed a non-compete agreement — but can your employer actually enforce it? Find out in minutes with a plain English verdict based on your state, your industry, and the specific terms you signed.</p>
+</div>
+
+<!-- ─── MAIN ─── -->
+<div class="main">
+
+  <div class="ad-slot">Advertisement — Google AdSense</div>
+
+  <!-- ─── TOOL ─── -->
+  <div class="tool-card" id="tool-card">
+    <div class="tool-header">
+      <div class="tool-header-icon">📋</div>
+      <div>
+        <div class="tool-header-title">Non-Compete Enforceability Checker</div>
+        <div class="tool-header-sub">Free · No sign up · Plain English verdict in under 3 minutes</div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="progress-text">Step 1 of 8</span>
+        <span id="progress-pct">13%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:13%"></div></div>
+    </div>
+
+    <div class="steps-wrap">
+
+      <!-- Step 1: Situation -->
+      <div class="step active" id="step-1">
+        <div class="step-title">What is your current situation?</div>
+        <div class="step-sub">This helps us understand the context of your non-compete and tailor our analysis to your specific circumstances.</div>
+        <div class="options-grid" id="situation-options">
+          <button class="option-btn" onclick="selectOption('situation','leaving',this)">🚪 I want to leave my job and work for a competitor</button>
+          <button class="option-btn" onclick="selectOption('situation','laid-off',this)">📦 I was laid off and have a non-compete</button>
+          <button class="option-btn" onclick="selectOption('situation','fired',this)">⚠️ I was fired and have a non-compete</button>
+          <button class="option-btn" onclick="selectOption('situation','new-offer',this)">📝 I just received a job offer with a non-compete</button>
+          <button class="option-btn" onclick="selectOption('situation','threatened',this)">⚖️ My former employer is threatening to sue me</button>
+          <button class="option-btn" onclick="selectOption('situation','own-business',this)">🏢 I want to start my own business in the same industry</button>
+          <button class="option-btn" onclick="selectOption('situation','unsure',this)">🤷 I'm not sure / General question</button>
+        </div>
+      </div>
+
+      <!-- Step 2: State -->
+      <div class="step" id="step-2">
+        <div class="step-title">What state did you sign the agreement in?</div>
+        <div class="step-sub">Non-compete laws vary dramatically by state. California, Minnesota, and North Dakota ban them almost entirely — while other states broadly enforce them.</div>
+        <select class="form-select" id="state-select">
+          <option value="">— Select your state —</option>
+          <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+          <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+          <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+          <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+          <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+          <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+          <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+          <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+          <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+          <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+          <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+          <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+          <option>Wisconsin</option><option>Wyoming</option>
+        </select>
+      </div>
+
+      <!-- Step 3: Duration -->
+      <div class="step" id="step-3">
+        <div class="step-title">How long does the non-compete last?</div>
+        <div class="step-sub">Duration is one of the most important factors courts consider. Agreements longer than 1-2 years are often viewed as unreasonable.</div>
+        <div class="options-grid" id="duration-options">
+          <button class="option-btn" onclick="selectOption('duration','under6',this)">⏱️ Less than 6 months</button>
+          <button class="option-btn" onclick="selectOption('duration','6to12',this)">⏱️ 6 months to 1 year</button>
+          <button class="option-btn" onclick="selectOption('duration','1to2',this)">⏱️ 1 to 2 years</button>
+          <button class="option-btn" onclick="selectOption('duration','2to3',this)">⏱️ 2 to 3 years</button>
+          <button class="option-btn" onclick="selectOption('duration','over3',this)">⏱️ More than 3 years</button>
+          <button class="option-btn" onclick="selectOption('duration','unsure',this)">🤷 I'm not sure</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Geographic Scope -->
+      <div class="step" id="step-4">
+        <div class="step-title">What is the geographic restriction?</div>
+        <div class="step-sub">Courts are much more likely to enforce a local restriction than a nationwide one. A broad geographic scope is one of the most common reasons courts throw out non-competes.</div>
+        <div class="options-grid" id="geo-options">
+          <button class="option-btn" onclick="selectOption('geo','city',this)">📍 My city or county only</button>
+          <button class="option-btn" onclick="selectOption('geo','state',this)">🗺️ Statewide</button>
+          <button class="option-btn" onclick="selectOption('geo','regional',this)">🌎 Regional (multiple states)</button>
+          <button class="option-btn" onclick="selectOption('geo','national',this)">🇺🇸 Nationwide</button>
+          <button class="option-btn" onclick="selectOption('geo','none',this)">❌ No geographic limit specified</button>
+          <button class="option-btn" onclick="selectOption('geo','unsure',this)">🤷 I'm not sure</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Industry -->
+      <div class="step" id="step-5">
+        <div class="step-title">What industry are you in?</div>
+        <div class="step-sub">Some industries — like technology, finance, and healthcare — have stronger traditions of enforcing non-competes. Others rarely see enforcement.</div>
+        <div class="options-grid" id="industry-options">
+          <button class="option-btn" onclick="selectOption('industry','tech',this)">💻 Technology / Software</button>
+          <button class="option-btn" onclick="selectOption('industry','healthcare',this)">🏥 Healthcare / Medical</button>
+          <button class="option-btn" onclick="selectOption('industry','finance',this)">💰 Financial Services</button>
+          <button class="option-btn" onclick="selectOption('industry','sales',this)">📊 Sales / Marketing</button>
+          <button class="option-btn" onclick="selectOption('industry','legal',this)">⚖️ Legal / Law</button>
+          <button class="option-btn" onclick="selectOption('industry','manufacturing',this)">🏭 Manufacturing</button>
+          <button class="option-btn" onclick="selectOption('industry','retail',this)">🛍️ Retail / Food Service</button>
+          <button class="option-btn" onclick="selectOption('industry','construction',this)">🔨 Construction / Trades</button>
+          <button class="option-btn" onclick="selectOption('industry','education',this)">🎓 Education</button>
+          <button class="option-btn" onclick="selectOption('industry','media',this)">🎬 Media / Entertainment</button>
+          <button class="option-btn" onclick="selectOption('industry','realestate',this)">🏠 Real Estate</button>
+          <button class="option-btn" onclick="selectOption('industry','other',this)">🤷 Other</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Job Level -->
+      <div class="step" id="step-6">
+        <div class="step-title">What is your job level?</div>
+        <div class="step-sub">Courts are more willing to enforce non-competes for senior executives with access to trade secrets than for entry-level employees with limited knowledge of confidential information.</div>
+        <div class="options-grid" id="level-options">
+          <button class="option-btn" onclick="selectOption('level','entry',this)">👤 Entry level / Hourly worker</button>
+          <button class="option-btn" onclick="selectOption('level','mid',this)">👤 Mid level / Salaried employee</button>
+          <button class="option-btn" onclick="selectOption('level','manager',this)">👤 Manager / Supervisor</button>
+          <button class="option-btn" onclick="selectOption('level','director',this)">👤 Director / VP</button>
+          <button class="option-btn" onclick="selectOption('level','executive',this)">👤 C-Suite / Executive</button>
+          <button class="option-btn" onclick="selectOption('level','contractor',this)">👤 Independent Contractor / 1099</button>
+        </div>
+      </div>
+
+      <!-- Step 7: Consideration -->
+      <div class="step" id="step-7">
+        <div class="step-title">Were you given anything in exchange for signing?</div>
+        <div class="step-sub">Courts often require that an employee receive something of value ("consideration") in exchange for signing a non-compete. This is one of the most powerful factors in determining enforceability.</div>
+        <div class="options-grid" id="consideration-options">
+          <button class="option-btn" onclick="selectOption('consideration','job',this)">✅ Yes — it was required to get the job (signed before starting)</button>
+          <button class="option-btn" onclick="selectOption('consideration','raise',this)">✅ Yes — I received a raise or bonus for signing</button>
+          <button class="option-btn" onclick="selectOption('consideration','promotion',this)">✅ Yes — I received a promotion for signing</button>
+          <button class="option-btn" onclick="selectOption('consideration','nothing',this)">❌ No — I was asked to sign after already working there with nothing offered</button>
+          <button class="option-btn" onclick="selectOption('consideration','unsure',this)">🤷 I'm not sure</button>
+        </div>
+      </div>
+
+      <!-- Step 8: Scope -->
+      <div class="step" id="step-8">
+        <div class="step-title">What does the non-compete restrict you from doing?</div>
+        <div class="step-sub">A non-compete that bans you from your entire industry is much harder to enforce than one that only restricts specific competitors or clients.</div>
+        <div class="options-grid" id="scope-options">
+          <button class="option-btn" onclick="selectOption('scope','entire-industry',this)">🚫 Entire industry — I can't work in my field at all</button>
+          <button class="option-btn" onclick="selectOption('scope','competitors',this)">🚫 Specific named competitors only</button>
+          <button class="option-btn" onclick="selectOption('scope','clients',this)">🚫 Specific clients or customers only</button>
+          <button class="option-btn" onclick="selectOption('scope','role',this)">🚫 Specific job role or function only</button>
+          <button class="option-btn" onclick="selectOption('scope','unsure',this)">🤷 I'm not sure exactly</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" id="btn-back" onclick="prevStep()" style="visibility:hidden">← Back</button>
+      <span class="step-indicator" id="step-indicator">Step 1 of 8</span>
+      <button class="btn-next" id="btn-next" onclick="nextStep()">Next →</button>
+    </div>
+  </div>
+
+  <!-- ─── RESULTS ─── -->
+  <div id="results">
+    <div id="verdict-card"></div>
+
+    <div class="factors-box">
+      <div class="factors-title">Factors Affecting Your Enforceability</div>
+      <div id="factors-list"></div>
+    </div>
+
+    <div class="state-law-box" id="state-law-box"></div>
+
+    <div class="ad-slot">Advertisement — Google AdSense</div>
+
+    <div class="attorney-section">
+      <div class="attorney-title">Get a Real Opinion From an Employment Attorney</div>
+      <div class="attorney-sub">Our tool gives you a general assessment — but every situation is unique. An employment attorney can review your specific agreement and give you a definitive answer. Many offer free initial consultations.</div>
+      <div class="attorney-grid">
+        <div class="attorney-card">
+          <div class="attorney-name">Avvo</div>
+          <div class="attorney-desc">Free attorney profiles and Q&A</div>
+          <a href="https://www.avvo.com" target="_blank" rel="noopener noreferrer" class="attorney-btn">Find an Attorney →</a>
+        </div>
+        <div class="attorney-card">
+          <div class="attorney-name">FindLaw</div>
+          <div class="attorney-desc">Search employment attorneys by state</div>
+          <a href="https://lawyers.findlaw.com" target="_blank" rel="noopener noreferrer" class="attorney-btn">Find an Attorney →</a>
+        </div>
+        <div class="attorney-card">
+          <div class="attorney-name">LegalMatch</div>
+          <div class="attorney-desc">Get matched with local employment lawyers</div>
+          <a href="https://www.legalmatch.com" target="_blank" rel="noopener noreferrer" class="attorney-btn">Get Matched →</a>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="resetTool()" style="background:var(--cream-dark); border:1px solid var(--border); border-radius:7px; padding:10px 20px; font-family:var(--sans); font-size:14px; color:var(--text-mid); cursor:pointer; margin-bottom:32px;">← Check Another Agreement</button>
+  </div>
+
+  <!-- ─── SEO COPY ─── -->
+  <div class="seo-section">
+    <h2>Are Non-Compete Agreements Enforceable?</h2>
+    <p>You signed a non-compete agreement — maybe without fully reading it, maybe because you had no choice. Now you want to move on and you're wondering if that piece of paper can actually stop you.</p>
+    <p>The truth is non-compete agreements are not automatically enforceable just because you signed them. In fact several states including California, Minnesota, and North Dakota ban them almost entirely. Even in states where they are enforceable, courts regularly throw them out for being too broad, too long, or simply unfair.</p>
+    <p>Our free Non-Compete Enforceability Checker analyzes your specific situation — your state, your industry, your agreement terms, and the circumstances under which you signed — and gives you a plain English verdict on whether your agreement is likely to hold up in court.</p>
+
+    <h3>States Where Non-Competes Are Banned or Severely Restricted</h3>
+    <p>California is the most well-known state where non-compete agreements are essentially unenforceable — the state legislature has repeatedly reinforced this position. Minnesota banned non-competes for most employees in 2023. North Dakota has long prohibited them. Oklahoma and Colorado have also enacted strong restrictions in recent years.</p>
+
+    <h3>What Makes a Non-Compete Unenforceable?</h3>
+    <p>Even in states that allow non-competes, courts regularly strike them down when they are unreasonable. Common reasons a court will refuse to enforce a non-compete include: the duration is too long (courts typically look favorably on 6-12 months and skeptically at anything over 2 years); the geographic scope is too broad (nationwide restrictions are frequently struck down); the employee received nothing in exchange for signing; the restriction covers an entire industry rather than specific competitors; or the employee is an entry-level worker with no access to genuine trade secrets.</p>
+
+    <h3>What is "Consideration" and Why Does It Matter?</h3>
+    <p>For a contract to be enforceable, both parties must give something of value — this is called "consideration." When an employer asks an existing employee to sign a non-compete without offering anything in return (no raise, no bonus, no promotion), many courts find that there was no valid consideration and therefore no enforceable contract. If you were asked to sign a non-compete after you were already employed and received nothing for signing, this is a powerful argument against enforcement.</p>
+
+    <h3>Can My Employer Get an Injunction to Stop Me?</h3>
+    <p>In theory, yes — employers can seek a court injunction to immediately stop you from working for a competitor while the case proceeds. In practice, courts weigh the harm to both sides and often decline to issue injunctions against lower-level employees or in situations where the non-compete appears overreaching. An employment attorney can advise you on the real likelihood of this in your specific situation.</p>
+
+    <h3>Frequently Asked Questions</h3>
+
+    <h3>Should I just ignore my non-compete?</h3>
+    <p>Ignoring a non-compete entirely is risky, even if you believe it's unenforceable. Your former employer could still sue you, forcing you to defend yourself in court — which is expensive and stressful even if you ultimately win. Understanding your specific risk level with an attorney's guidance is the smartest approach.</p>
+
+    <h3>Does my new employer take on any risk?</h3>
+    <p>Yes. In some cases, employers who knowingly hire someone in violation of a non-compete can also be sued for "tortious interference." Be upfront with your new employer about your non-compete so they can make an informed decision and potentially provide legal support if needed.</p>
+
+    <h3>What if I was laid off — does my non-compete still apply?</h3>
+    <p>In many states, courts are far less sympathetic to employers who enforce non-competes against employees they laid off. Some states — including Massachusetts and Washington — have passed laws that void non-competes when the employer terminates the employee without cause. Consult an attorney to understand your specific state's rules.</p>
+  </div>
+
+</div>
+
+<!-- ─── DISCLAIMER ─── -->
+<div class="disclaimer-strip">
+  <p><strong>Important:</strong> FreeLegalTools.com provides general legal information for educational purposes only. Non-compete law is complex, fact-specific, and constantly evolving. This tool provides a general assessment only — always consult a licensed employment attorney before making decisions about your non-compete agreement. <a href="disclaimer.html">Read full disclaimer →</a></p>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Free<span class="legal">Legal</span>Tools</div>
+        <p class="footer-tagline">"Free legal tools. No lawyer needed."</p>
+        <p class="footer-disclaimer-note">General legal information only. Not legal advice. Not a law firm. Always consult a licensed attorney for your specific situation.</p>
+      </div>
+      <div>
+        <div class="footer-col-heading">Our Tools</div>
+        <a href="llc-comparison.html" class="footer-link">LLC State Comparison</a>
+        <a href="statute-of-limitations.html" class="footer-link">Statute of Limitations</a>
+        <a href="non-compete-checker.html" class="footer-link">Non-Compete Checker</a>
+        <a href="severance-evaluator.html" class="footer-link">Severance Evaluator</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Site</div>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="disclaimer.html" class="footer-link">Disclaimer</a>
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Legal Notice</div>
+        <p class="footer-disclaimer-note" style="font-size:12px;">FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this site constitutes legal advice or creates an attorney-client relationship.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 FreeLegalTools.com · All Rights Reserved · Not a law firm · Not legal advice</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
+        <a href="disclaimer.html" class="footer-bottom-link">Disclaimer</a>
+        <a href="contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── STATE ENFORCEABILITY DATA ────────────────────────────────
+const stateEnforceability = {
+  "California":    { level: "banned", label: "Banned", text: "California broadly prohibits non-compete agreements under Business & Professions Code Section 16600. With very limited exceptions, non-competes are void and unenforceable in California regardless of where you signed them if you live and work in California. Recent legislation (SB 699, AB 1076) has further strengthened this protection." },
+  "Minnesota":     { level: "banned", label: "Banned", text: "Minnesota banned non-compete agreements for employees effective January 1, 2023 (Minn. Stat. § 181.988). Non-competes signed after this date are void and unenforceable. Pre-2023 agreements may still be subject to challenge." },
+  "North Dakota":  { level: "banned", label: "Banned", text: "North Dakota has long prohibited non-compete agreements (N.D. Cent. Code § 9-08-06). They are generally void and unenforceable in the state with very limited exceptions for the sale of a business." },
+  "Oklahoma":      { level: "banned", label: "Banned", text: "Oklahoma broadly voids non-compete agreements (15 Okla. Stat. § 219A). Non-competes are generally unenforceable in Oklahoma with very limited exceptions." },
+  "Colorado":      { level: "restricted", label: "Heavily Restricted", text: "Colorado significantly restricted non-competes in 2022. They are now only enforceable for workers earning above a salary threshold (~$123,750/year) in certain roles involving trade secrets or specialized knowledge. Lower-wage workers are broadly protected." },
+  "Illinois":      { level: "restricted", label: "Heavily Restricted", text: "Illinois prohibits non-competes for workers earning less than $75,000/year (Illinois Freedom to Work Act, 2022). For higher earners, courts apply a 'reasonableness' standard examining duration, geography, and legitimate business interest." },
+  "Washington":    { level: "restricted", label: "Heavily Restricted", text: "Washington restricts non-competes to employees earning over $116,593/year (2024 threshold, adjusted annually). Non-competes with workers below this threshold are void. They are also void when an employer lays off an employee without cause." },
+  "Massachusetts": { level: "restricted", label: "Restricted", text: "Massachusetts passed the Noncompetition Agreement Act in 2018. Non-competes must be reasonable in duration (max 1 year), geographic scope, and scope of restricted activities. They cannot be enforced against non-exempt employees or workers laid off without cause." },
+  "Oregon":        { level: "restricted", label: "Restricted", text: "Oregon limits non-competes to 12 months in duration and requires employers to provide advance written notice. They are only enforceable for workers in administrative, executive, or professional roles earning above a threshold." },
+  "Maine":         { level: "restricted", label: "Restricted", text: "Maine requires advance notice of non-competes and limits enforcement for lower-wage workers. Courts scrutinize duration and geographic scope closely." },
+  "Maryland":      { level: "restricted", label: "Restricted", text: "Maryland prohibits non-competes for workers earning less than $15/hour or $31,200/year. For higher earners, agreements must be reasonable in scope, duration, and geography." },
+  "Virginia":      { level: "restricted", label: "Restricted", text: "Virginia prohibited non-competes for 'low-wage employees' earning at or below the average weekly wage. For other workers, courts apply a reasonableness standard." },
+  "Florida":       { level: "enforced", label: "Broadly Enforced", text: "Florida has some of the most employer-friendly non-compete laws in the country (Fla. Stat. § 542.335). Courts are required to enforce non-competes if they are reasonable in time, area, and line of business. Courts cannot consider the hardship to the employee and must enforce 'blue pencil' modifications." },
+  "Texas":         { level: "enforced", label: "Conditionally Enforced", text: "Texas enforces non-competes if they are ancillary to an otherwise enforceable agreement and contain reasonable limitations on time, geography, and scope of activity. Courts may modify (blue pencil) overly broad agreements rather than voiding them entirely." },
+  "Georgia":       { level: "enforced", label: "Broadly Enforced", text: "Georgia enforces non-competes for certain employees under the Restrictive Covenants Act. Courts may modify unreasonable provisions rather than voiding the entire agreement. Agreements must be reasonable in duration, geography, and scope." },
+  "New York":      { level: "moderate", label: "Moderately Enforced", text: "New York courts apply a strict 'reasonableness' test and are generally skeptical of overly broad non-competes. Agreements must be no greater than necessary to protect legitimate business interests. Courts will not blue pencil agreements — if any part is unreasonable, the entire agreement may be void." },
+  "Pennsylvania":  { level: "moderate", label: "Moderately Enforced", text: "Pennsylvania applies the 'reasonableness' standard but is generally considered employer-friendly. Courts look at whether the employee had access to trade secrets or specialized training, and whether the restrictions are reasonable in time and territory." },
+  "Ohio":          { level: "moderate", label: "Moderately Enforced", text: "Ohio courts enforce non-competes under a reasonableness standard, considering whether the restriction is necessary to protect legitimate business interests, whether it creates undue hardship, and whether it is injurious to the public." },
+  "default":       { level: "moderate", label: "Varies by Circumstances", text: "In this state, non-compete enforceability depends heavily on the specific circumstances — duration, geographic scope, job level, and what you received in exchange for signing. Courts typically apply a 'reasonableness' standard." }
+};
+
+// ─── TOOL LOGIC ───────────────────────────────────────────────
+let currentStep = 1;
+const totalSteps = 8;
+const answers = {};
+
+function updateProgress() {
+  const pct = Math.round((currentStep / totalSteps) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `Step ${currentStep} of ${totalSteps}`;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('step-indicator').textContent = `Step ${currentStep} of ${totalSteps}`;
+  document.getElementById('btn-back').style.visibility = currentStep > 1 ? 'visible' : 'hidden';
+  document.getElementById('btn-next').textContent = currentStep === totalSteps ? 'Get My Verdict →' : 'Next →';
+}
+
+function selectOption(key, value, btn) {
+  answers[key] = value;
+  const parent = btn.parentElement;
+  parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function nextStep() {
+  if (currentStep === 1 && !answers['situation']) { alert('Please select your situation.'); return; }
+  if (currentStep === 2 && !document.getElementById('state-select').value) { alert('Please select your state.'); return; }
+  if (currentStep === 3 && !answers['duration']) { alert('Please select the duration.'); return; }
+  if (currentStep === 4 && !answers['geo']) { alert('Please select the geographic restriction.'); return; }
+  if (currentStep === 5 && !answers['industry']) { alert('Please select your industry.'); return; }
+  if (currentStep === 6 && !answers['level']) { alert('Please select your job level.'); return; }
+  if (currentStep === 7 && !answers['consideration']) { alert('Please make a selection.'); return; }
+  if (currentStep === 8 && !answers['scope']) { alert('Please select the scope of restriction.'); return; }
+
+  if (currentStep === totalSteps) {
+    answers['state'] = document.getElementById('state-select').value;
+    showResults(); return;
+  }
+
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  currentStep++;
+  document.getElementById('step-' + currentStep).classList.add('active');
+  updateProgress();
+}
+
+function prevStep() {
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  currentStep--;
+  document.getElementById('step-' + currentStep).classList.add('active');
+  updateProgress();
+}
+
+function calculateVerdict() {
+  let score = 0; // Higher = more likely enforceable
+  const factors = [];
+  const state = answers['state'];
+  const stateInfo = stateEnforceability[state] || stateEnforceability['default'];
+
+  // State law (most important factor)
+  if (stateInfo.level === 'banned') {
+    score -= 5;
+    factors.push({ icon: '✅', title: `${state} bans non-compete agreements`, desc: `This is your strongest protection. ${state} broadly prohibits non-competes, making yours very likely unenforceable regardless of other factors.`, weight: 'strong-good' });
+  } else if (stateInfo.level === 'restricted') {
+    score -= 2;
+    factors.push({ icon: '✅', title: `${state} heavily restricts non-competes`, desc: `${state} has significant limitations on non-compete enforcement. Depending on your salary and role, yours may already be void under state law.`, weight: 'good' });
+  } else if (stateInfo.level === 'enforced') {
+    score += 2;
+    factors.push({ icon: '⚠️', title: `${state} broadly enforces non-competes`, desc: `${state} has employer-friendly non-compete laws. However, the agreement still must be reasonable in scope and duration.`, weight: 'bad' });
+  } else {
+    factors.push({ icon: '⚖️', title: `${state} applies a reasonableness standard`, desc: `Courts in ${state} evaluate non-competes based on whether they are reasonable in duration, geography, and scope.`, weight: 'neutral' });
+  }
+
+  // Duration
+  if (answers['duration'] === 'under6') { score -= 2; factors.push({ icon: '✅', title: 'Short duration (under 6 months)', desc: 'Courts generally view short-duration non-competes as reasonable. This works in your employer\'s favor if other factors are reasonable too.', weight: 'neutral' }); }
+  else if (answers['duration'] === '6to12') { score -= 1; factors.push({ icon: '✅', title: 'Reasonable duration (6-12 months)', desc: 'A 6-12 month restriction is considered reasonable in most states. Duration alone is unlikely to be grounds for invalidation.', weight: 'neutral' }); }
+  else if (answers['duration'] === '1to2') { score += 1; factors.push({ icon: '⚠️', title: 'Moderate duration (1-2 years)', desc: 'Courts in many states will enforce 1-2 year restrictions but scrutinize them carefully alongside other factors.', weight: 'neutral' }); }
+  else if (answers['duration'] === '2to3') { score += 2; factors.push({ icon: '⚠️', title: 'Long duration (2-3 years)', desc: 'A 2-3 year restriction is considered long by most courts. This is a factor that may weigh against enforcement, especially for lower-level employees.', weight: 'bad' }); }
+  else if (answers['duration'] === 'over3') { score += 3; factors.push({ icon: '❌', title: 'Very long duration (over 3 years)', desc: 'Courts are highly skeptical of non-competes lasting over 3 years. This significantly increases the chance the agreement will be found unreasonable.', weight: 'strong-bad' }); }
+
+  // Geographic scope
+  if (answers['geo'] === 'city') { score -= 1; factors.push({ icon: '✅', title: 'Limited geographic scope (city/county)', desc: 'A local geographic restriction is considered very reasonable by courts and is unlikely to be struck down on scope grounds.', weight: 'good' }); }
+  else if (answers['geo'] === 'state') { score += 0; factors.push({ icon: '⚖️', title: 'Statewide restriction', desc: 'A statewide restriction is generally acceptable depending on the nature of the business and the employee\'s role.', weight: 'neutral' }); }
+  else if (answers['geo'] === 'regional') { score += 2; factors.push({ icon: '⚠️', title: 'Regional restriction (multiple states)', desc: 'Multi-state restrictions are scrutinized carefully. Courts ask whether the employee\'s actual work territory justifies the broad scope.', weight: 'bad' }); }
+  else if (answers['geo'] === 'national') { score += 3; factors.push({ icon: '❌', title: 'Nationwide restriction', desc: 'Nationwide non-competes are frequently struck down as unreasonable unless the employee held a very senior position with truly national responsibilities.', weight: 'strong-bad' }); }
+  else if (answers['geo'] === 'none') { score += 3; factors.push({ icon: '❌', title: 'No geographic limit specified', desc: 'A non-compete with no geographic limit is often treated as an unlimited nationwide restriction, which courts frequently void as overbroad.', weight: 'strong-bad' }); }
+
+  // Consideration
+  if (answers['consideration'] === 'job') { score += 2; factors.push({ icon: '⚠️', title: 'Signed as condition of employment', desc: 'Signing before starting a job is typically considered valid consideration — you received employment in exchange. This strengthens enforceability.', weight: 'bad' }); }
+  else if (answers['consideration'] === 'raise' || answers['consideration'] === 'promotion') { score += 2; factors.push({ icon: '⚠️', title: 'Received compensation for signing', desc: 'Receiving a raise, bonus, or promotion in exchange is considered valid consideration and strengthens the agreement\'s enforceability.', weight: 'bad' }); }
+  else if (answers['consideration'] === 'nothing') { score -= 3; factors.push({ icon: '✅', title: 'No consideration provided', desc: 'You were asked to sign after already being employed and received nothing in return. In many states this is a powerful argument against enforceability — courts often require something of value be given.', weight: 'strong-good' }); }
+
+  // Job level
+  if (answers['level'] === 'entry') { score -= 2; factors.push({ icon: '✅', title: 'Entry-level position', desc: 'Courts are much less likely to enforce non-competes against entry-level workers who typically have limited access to sensitive trade secrets or confidential information.', weight: 'good' }); }
+  else if (answers['level'] === 'contractor') { score -= 1; factors.push({ icon: '✅', title: 'Independent contractor status', desc: 'Non-competes for independent contractors face additional scrutiny in many states. Courts often require a closer look at whether the restriction is truly necessary.', weight: 'good' }); }
+  else if (answers['level'] === 'executive') { score += 2; factors.push({ icon: '⚠️', title: 'Executive/C-Suite level', desc: 'Senior executives are more likely to face enforcement of non-competes due to their access to confidential business strategies and high-value client relationships.', weight: 'bad' }); }
+  else { factors.push({ icon: '⚖️', title: `${answers['level'] === 'mid' ? 'Mid-level' : answers['level'] === 'manager' ? 'Manager/Supervisor' : 'Director/VP'} position`, desc: 'Courts consider whether your role involved access to trade secrets, confidential strategies, or key customer relationships when deciding enforcement.', weight: 'neutral' }); }
+
+  // Scope
+  if (answers['scope'] === 'entire-industry') { score += 2; factors.push({ icon: '❌', title: 'Restricts entire industry', desc: 'A non-compete that prevents you from working in your entire industry is considered very broad and is frequently struck down. Courts ask whether this is truly necessary to protect the employer\'s interests.', weight: 'strong-bad' }); }
+  else if (answers['scope'] === 'competitors') { score += 0; factors.push({ icon: '⚖️', title: 'Restricts specific competitors only', desc: 'Limiting restriction to named competitors is considered more reasonable than industry-wide bans. Courts are more sympathetic to narrowly tailored non-competes.', weight: 'neutral' }); }
+  else if (answers['scope'] === 'clients') { score -= 1; factors.push({ icon: '✅', title: 'Restricts specific clients only', desc: 'Client-specific restrictions (non-solicitation clauses) are generally viewed as more reasonable and are more commonly enforced than broad industry bans.', weight: 'good' }); }
+
+  // Situation-specific factors
+  if (answers['situation'] === 'laid-off') { score -= 2; factors.push({ icon: '✅', title: 'You were laid off', desc: 'Many courts and states are far less sympathetic to employers who enforce non-competes against employees they chose to let go. Some states (MA, WA) explicitly void non-competes on layoff without cause.', weight: 'good' }); }
+  if (answers['situation'] === 'fired') { score -= 1; factors.push({ icon: '✅', title: 'You were terminated', desc: 'Being fired may provide additional arguments against enforcement, particularly if the termination was without cause. Courts often weigh the equities of the situation.', weight: 'good' }); }
+
+  return { score, factors, stateInfo, state };
+}
+
+function showResults() {
+  document.getElementById('tool-card').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+
+  const { score, factors, stateInfo, state } = calculateVerdict();
+
+  // Determine verdict
+  let verdictClass, verdictBadgeClass, badgeText, verdictTitle, verdictSummary;
+
+  if (stateInfo.level === 'banned') {
+    verdictClass = 'verdict-unenforceable';
+    verdictBadgeClass = 'badge-unenforceable';
+    badgeText = '✅ Likely Unenforceable';
+    verdictTitle = 'Your non-compete is very likely unenforceable';
+    verdictSummary = `Based on your answers, your non-compete is very likely unenforceable. The most significant factor: ${state} broadly bans non-compete agreements. Even if other factors might support enforcement, state law provides strong protection for workers like you. That said, every situation is unique — we strongly recommend confirming with an employment attorney before taking action.`;
+  } else if (score <= -3) {
+    verdictClass = 'verdict-likely-unenforceable';
+    verdictBadgeClass = 'badge-unenforceable';
+    badgeText = '✅ Likely Unenforceable';
+    verdictTitle = 'Your non-compete has significant enforceability weaknesses';
+    verdictSummary = `Based on your answers, your non-compete has several factors that courts commonly use to strike down these agreements. Multiple weaknesses in your specific agreement suggest it would face serious challenges if your former employer attempted to enforce it. However, this is a general assessment — consult an employment attorney to understand your specific risk.`;
+  } else if (score <= 0) {
+    verdictClass = 'verdict-uncertain';
+    verdictBadgeClass = 'badge-uncertain';
+    badgeText = '⚖️ Uncertain';
+    verdictTitle = 'Enforceability is uncertain — it could go either way';
+    verdictSummary = `Based on your answers, your non-compete has a mix of factors that could support or undermine enforcement. The outcome would likely depend on how a court weighs these competing factors and the specific language in your agreement. This is exactly the situation where consulting an employment attorney is most valuable.`;
+  } else if (score <= 3) {
+    verdictClass = 'verdict-likely-enforceable';
+    verdictBadgeClass = 'badge-uncertain';
+    badgeText = '⚠️ May Be Enforceable';
+    verdictTitle = 'Your non-compete may be enforceable';
+    verdictSummary = `Based on your answers, several factors suggest your non-compete could be enforceable. This doesn't mean you have no options — many non-competes that appear enforceable are never actually litigated, and employers often negotiate rather than sue. Consult an employment attorney to explore your full range of options.`;
+  } else {
+    verdictClass = 'verdict-enforceable';
+    verdictBadgeClass = 'badge-enforceable';
+    badgeText = '⚠️ Likely Enforceable';
+    verdictTitle = 'Your non-compete appears likely to be enforceable';
+    verdictSummary = `Based on your answers, your non-compete has multiple factors suggesting it could be enforced. However this does not mean you have no options. You should consult an employment attorney who can review the actual agreement language, advise you on negotiation strategies, and help you understand the practical likelihood your employer would actually pursue enforcement.`;
+  }
+
+  document.getElementById('verdict-card').innerHTML = `
+    <div class="verdict-card ${verdictClass}">
+      <div class="verdict-badge ${verdictBadgeClass}">${badgeText}</div>
+      <div class="verdict-title">${verdictTitle}</div>
+      <div class="verdict-summary">${verdictSummary}</div>
+    </div>
+  `;
+
+  // Factors
+  const iconMap = { 'strong-good': '✅', 'good': '✅', 'neutral': '⚖️', 'bad': '⚠️', 'strong-bad': '❌' };
+  document.getElementById('factors-list').innerHTML = factors.map(f => `
+    <div class="factor-item">
+      <div class="factor-icon">${f.icon}</div>
+      <div>
+        <div class="factor-title">${f.title}</div>
+        <div class="factor-desc">${f.desc}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // State law box
+  document.getElementById('state-law-box').innerHTML = `
+    <div class="state-law-title">🏛️ ${state} Non-Compete Law</div>
+    <div class="state-law-text">${stateInfo.text}</div>
+  `;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetTool() {
+  document.getElementById('tool-card').style.display = 'block';
+  document.getElementById('results').style.display = 'none';
+  currentStep = 1;
+  Object.keys(answers).forEach(k => delete answers[k]);
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-1').classList.add('active');
+  document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('state-select').value = '';
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+updateProgress();
+</script>
+</body>
+</html>
