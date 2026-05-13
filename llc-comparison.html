@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLC State Comparison Tool — Find the Best State to Form Your LLC Free</title>
+<meta name="description" content="Not sure which state to form your LLC in? Our free tool compares all 50 states by fees, privacy, and tax advantages. Get a personalized recommendation instantly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B35;
+    --navy-mid: #1A2E50;
+    --gold: #C4973A;
+    --gold-light: #D4A84A;
+    --gold-pale: rgba(196,151,58,0.12);
+    --cream: #FAF8F4;
+    --cream-dark: #F0EDE6;
+    --cream-darker: #E8E4DC;
+    --text: #1C2B3A;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --border: #E2DDD4;
+    --white: #FFFFFF;
+    --green: #1A6B45;
+    --green-bg: #EBF5F0;
+    --red: #8B1A1A;
+    --red-bg: #FBF0F0;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(13,27,53,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── HEADER ─── */
+  header { background: var(--cream); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-divider { width: 1.5px; height: 32px; background: var(--gold); opacity: 0.6; }
+  .logo-text { font-family: var(--serif); font-size: 20px; font-weight: 600; }
+  .logo-text .free { color: var(--navy); }
+  .logo-text .legal { color: var(--gold); }
+  .logo-text .tools { color: var(--navy); }
+  nav { display: flex; align-items: center; gap: 8px; }
+  .nav-item { position: relative; padding: 8px 14px; font-size: 14px; color: var(--text-mid); cursor: pointer; border-radius: 6px; transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 4px; }
+  .nav-item:hover { background: var(--cream-dark); color: var(--navy); }
+  .nav-arrow { font-size: 10px; transition: transform 0.2s; color: var(--text-light); }
+  .nav-item:hover .nav-arrow { transform: rotate(180deg); }
+  .mega-menu { position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(-6px); background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 8px; width: 480px; opacity: 0; pointer-events: none; transition: opacity 0.15s, transform 0.15s; }
+  .nav-item:hover .mega-menu { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  .mega-menu-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; border-radius: 8px; transition: background 0.12s; cursor: pointer; }
+  .mega-menu-item:hover { background: var(--cream); }
+  .mega-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+  .mega-item-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 2px; font-family: var(--serif); }
+  .mega-item-desc { font-size: 12px; color: var(--text-light); line-height: 1.4; }
+
+  /* ─── PAGE HERO ─── */
+  .page-hero { background: var(--navy); padding: 52px 32px; text-align: center; }
+  .page-hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-pale); border: 1px solid rgba(196,151,58,0.25); color: var(--gold); font-size: 12px; letter-spacing: 0.06em; padding: 5px 16px; border-radius: 20px; margin-bottom: 16px; }
+  .page-hero h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; color: var(--white); margin-bottom: 12px; line-height: 1.2; }
+  .page-hero h1 span { color: var(--gold); }
+  .page-hero p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+  /* ─── MAIN LAYOUT ─── */
+  .main { max-width: 860px; margin: 0 auto; padding: 48px 32px 72px; }
+
+  /* ─── AD SLOT ─── */
+  .ad-slot { background: var(--cream-darker); border: 1px dashed var(--border); border-radius: 6px; text-align: center; padding: 12px; font-size: 11px; color: var(--text-light); margin: 24px 0; letter-spacing: 0.04em; }
+
+  /* ─── TOOL CARD ─── */
+  .tool-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 32px; box-shadow: var(--shadow); }
+
+  .tool-header { background: var(--navy); padding: 20px 28px; display: flex; align-items: center; gap: 16px; }
+  .tool-header-icon { font-size: 28px; }
+  .tool-header-title { font-family: var(--serif); font-size: 20px; color: var(--white); font-weight: 600; }
+  .tool-header-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+  /* ─── PROGRESS BAR ─── */
+  .progress-wrap { padding: 20px 28px 0; }
+  .progress-label { font-size: 12px; color: var(--text-light); margin-bottom: 8px; display: flex; justify-content: space-between; }
+  .progress-bar { height: 4px; background: var(--cream-darker); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.4s ease; }
+
+  /* ─── STEPS ─── */
+  .steps-wrap { padding: 28px; }
+
+  .step { display: none; }
+  .step.active { display: block; }
+
+  .step-title { font-family: var(--serif); font-size: 20px; color: var(--navy); margin-bottom: 6px; }
+  .step-sub { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.5; }
+
+  /* ─── FORM ELEMENTS ─── */
+  .form-select {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--text);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23718096' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .form-select:focus { outline: none; border-color: var(--gold); }
+
+  .options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .options-grid.three { grid-template-columns: repeat(3, 1fr); }
+
+  .option-btn {
+    padding: 12px 16px;
+    background: var(--cream);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    line-height: 1.4;
+  }
+  .option-btn:hover { border-color: var(--gold); color: var(--navy); background: var(--white); }
+  .option-btn.selected { border-color: var(--gold); background: var(--gold-pale); color: var(--navy); font-weight: 500; }
+
+  .select-wrap { position: relative; }
+
+  /* ─── NAVIGATION BUTTONS ─── */
+  .step-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 28px; border-top: 1px solid var(--border); background: var(--cream); }
+  .btn-back { padding: 10px 20px; background: transparent; border: 1px solid var(--border); border-radius: 7px; font-family: var(--sans); font-size: 14px; color: var(--text-mid); cursor: pointer; transition: all 0.15s; }
+  .btn-back:hover { border-color: var(--navy); color: var(--navy); }
+  .btn-next { padding: 11px 28px; background: var(--navy); border: none; border-radius: 7px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--white); cursor: pointer; transition: background 0.15s; }
+  .btn-next:hover { background: var(--navy-mid); }
+  .btn-next:disabled { background: var(--border); color: var(--text-light); cursor: not-allowed; }
+  .step-indicator { font-size: 13px; color: var(--text-light); }
+
+  /* ─── RESULTS ─── */
+  #results { display: none; }
+
+  .results-header { background: var(--green-bg); border: 1px solid rgba(26,107,69,0.2); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 28px; display: flex; align-items: flex-start; gap: 16px; }
+  .results-header-icon { font-size: 28px; flex-shrink: 0; }
+  .results-header-title { font-family: var(--serif); font-size: 18px; color: var(--green); margin-bottom: 4px; }
+  .results-header-sub { font-size: 13px; color: #2D6B4A; line-height: 1.5; }
+
+  .rec-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+
+  .state-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; margin-bottom: 14px; transition: box-shadow 0.2s; }
+  .state-card:hover { box-shadow: var(--shadow); }
+  .state-card.top { border-left: 4px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; }
+
+  .state-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+  .state-rank { font-family: var(--serif); font-size: 13px; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .state-name { font-family: var(--serif); font-size: 20px; color: var(--navy); font-weight: 600; }
+  .state-badge { background: var(--gold-pale); color: #7A5C1A; font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 12px; white-space: nowrap; }
+
+  .state-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px; }
+  .state-metric { background: var(--cream); border-radius: 7px; padding: 10px 12px; }
+  .state-metric-label { font-size: 10px; color: var(--text-light); letter-spacing: 0.04em; margin-bottom: 4px; text-transform: uppercase; }
+  .state-metric-val { font-size: 15px; font-weight: 500; color: var(--navy); }
+  .state-metric-val.good { color: var(--green); }
+  .state-metric-val.bad { color: var(--red); }
+
+  .state-reasons { background: var(--cream); border-radius: 7px; padding: 12px 14px; }
+  .state-reasons-title { font-size: 12px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .state-reason { font-size: 13px; color: var(--text-mid); display: flex; align-items: flex-start; gap: 8px; margin-bottom: 5px; line-height: 1.4; }
+  .state-reason-check { color: var(--green); flex-shrink: 0; font-size: 14px; }
+
+  /* ─── COMPARISON TABLE ─── */
+  .comparison-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 13px; }
+  .comparison-table th { background: var(--navy); color: var(--white); padding: 12px 14px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.04em; }
+  .comparison-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text-mid); }
+  .comparison-table tr:nth-child(even) td { background: var(--cream); }
+  .comparison-table tr:hover td { background: var(--cream-dark); }
+  .good-val { color: var(--green); font-weight: 500; }
+  .bad-val { color: var(--red); }
+
+  /* ─── AFFILIATE SECTION ─── */
+  .affiliate-section { background: var(--cream-dark); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin: 28px 0; }
+  .affiliate-title { font-family: var(--serif); font-size: 17px; color: var(--navy); margin-bottom: 6px; }
+  .affiliate-sub { font-size: 13px; color: var(--text-light); margin-bottom: 18px; }
+  .affiliate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .affiliate-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; transition: border-color 0.15s, box-shadow 0.15s; cursor: pointer; }
+  .affiliate-card:hover { border-color: var(--gold); box-shadow: var(--shadow); }
+  .affiliate-name { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .affiliate-price { font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+  .affiliate-btn { display: block; background: var(--navy); color: var(--white); font-size: 12px; font-weight: 500; padding: 8px 12px; border-radius: 6px; transition: background 0.15s; }
+  .affiliate-btn:hover { background: var(--navy-mid); }
+
+  /* ─── SEO COPY ─── */
+  .seo-section { margin-top: 48px; }
+  .seo-section h2 { font-family: var(--serif); font-size: 26px; color: var(--navy); margin-bottom: 14px; }
+  .seo-section h3 { font-family: var(--serif); font-size: 18px; color: var(--navy); margin: 24px 0 10px; }
+  .seo-section p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
+  .seo-section ul { margin: 0 0 14px 20px; }
+  .seo-section li { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 6px; }
+
+  /* ─── DISCLAIMER ─── */
+  .disclaimer-strip { background: var(--cream-darker); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 32px; text-align: center; }
+  .disclaimer-strip p { font-size: 12px; color: var(--text-light); max-width: 800px; margin: 0 auto; line-height: 1.6; }
+  .disclaimer-strip a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--navy); padding: 56px 32px 32px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand-name { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .footer-brand-name .legal { color: var(--gold); }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 12px; font-style: italic; }
+  .footer-disclaimer-note { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6; max-width: 280px; }
+  .footer-col-heading { font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 10px; transition: color 0.12s; }
+  .footer-link:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-bottom-links { display: flex; gap: 20px; }
+  .footer-bottom-link { font-size: 12px; color: rgba(255,255,255,0.3); cursor: pointer; transition: color 0.12s; }
+  .footer-bottom-link:hover { color: rgba(255,255,255,0.6); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 26px; }
+    .main { padding: 32px 16px; }
+    .options-grid { grid-template-columns: 1fr; }
+    .options-grid.three { grid-template-columns: 1fr 1fr; }
+    .state-metrics { grid-template-columns: repeat(2, 1fr); }
+    .affiliate-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
+        <polygon points="2,13 18,2 34,13" fill="#0D1B35"/>
+        <rect x="6"  y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="13" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="20" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="27" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="2"  y="29" width="32" height="3.5" fill="#0D1B35" rx="1"/>
+      </svg>
+      <div class="logo-divider"></div>
+      <div class="logo-text"><span class="free">Free</span><span class="legal">Legal</span><span class="tools">Tools</span></div>
+    </a>
+    <nav>
+      <a href="index.html" class="nav-item">Home</a>
+      <div class="nav-item">
+        Tools <span class="nav-arrow">▾</span>
+        <div class="mega-menu">
+          <a href="llc-comparison.html" class="mega-menu-item">
+            <div class="mega-icon">🏛️</div>
+            <div><div class="mega-item-title">LLC State Comparison Tool</div><div class="mega-item-desc">Find the best state to form your LLC based on fees, privacy, and taxes</div></div>
+          </a>
+          <a href="statute-of-limitations.html" class="mega-menu-item">
+            <div class="mega-icon">⏱️</div>
+            <div><div class="mega-item-title">Statute of Limitations Lookup</div><div class="mega-item-desc">Find your exact legal deadline by state and case type</div></div>
+          </a>
+          <a href="non-compete-checker.html" class="mega-menu-item">
+            <div class="mega-icon">📋</div>
+            <div><div class="mega-item-title">Non-Compete Enforceability Checker</div><div class="mega-item-desc">Find out if your non-compete agreement is likely enforceable</div></div>
+          </a>
+          <a href="severance-evaluator.html" class="mega-menu-item">
+            <div class="mega-icon">💼</div>
+            <div><div class="mega-item-title">Severance Package Evaluator</div><div class="mega-item-desc">Find out if your severance offer is fair for your situation</div></div>
+          </a>
+        </div>
+      </div>
+      <a href="about.html" class="nav-item">About</a>
+      <a href="disclaimer.html" class="nav-item">Disclaimer</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero">
+  <div class="page-hero-eyebrow">🏛️ Free Tool · All 50 States · No Sign Up</div>
+  <h1>LLC State <span>Comparison Tool</span></h1>
+  <p>Answer 7 quick questions and get a personalized recommendation on the best state to form your LLC — based on your business type, budget, and priorities.</p>
+</div>
+
+<!-- ─── MAIN ─── -->
+<div class="main">
+
+  <div class="ad-slot">Advertisement — Google AdSense</div>
+
+  <!-- ─── TOOL ─── -->
+  <div class="tool-card">
+    <div class="tool-header">
+      <div class="tool-header-icon">🏛️</div>
+      <div>
+        <div class="tool-header-title">LLC State Comparison Tool</div>
+        <div class="tool-header-sub">Free · No sign up · Results in under 2 minutes</div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="progress-text">Step 1 of 7</span>
+        <span id="progress-pct">14%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:14%"></div></div>
+    </div>
+
+    <div class="steps-wrap">
+
+      <!-- Step 1: Home State -->
+      <div class="step active" id="step-1">
+        <div class="step-title">Where do you live?</div>
+        <div class="step-sub">Your home state matters because forming in another state may require a registered agent and additional fees.</div>
+        <div class="select-wrap">
+          <select class="form-select" id="home-state">
+            <option value="">— Select your state —</option>
+            <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+            <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+            <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+            <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+            <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+            <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+            <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+            <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+            <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+            <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+            <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+            <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+            <option>Wisconsin</option><option>Wyoming</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Step 2: Business Type -->
+      <div class="step" id="step-2">
+        <div class="step-title">What type of business are you starting?</div>
+        <div class="step-sub">Different business types have different LLC needs — this helps us tailor your recommendation.</div>
+        <div class="select-wrap">
+          <select class="form-select" id="business-type">
+            <option value="">— Select your business type —</option>
+            <optgroup label="Services">
+              <option>Freelancer / Independent Contractor</option>
+              <option>Consultant / Coach</option>
+              <option>Marketing / Advertising Agency</option>
+              <option>Accounting / Bookkeeping</option>
+              <option>Legal Services</option>
+              <option>Financial Services</option>
+              <option>Insurance Agency</option>
+              <option>Staffing / Recruiting</option>
+              <option>Cleaning Services</option>
+              <option>Landscaping / Lawn Care</option>
+              <option>Pest Control</option>
+              <option>Security Services</option>
+              <option>Event Planning</option>
+              <option>Travel Agency</option>
+            </optgroup>
+            <optgroup label="Creative & Media">
+              <option>Graphic Design / Creative Services</option>
+              <option>Photography / Videography</option>
+              <option>Music / Entertainment</option>
+              <option>Writing / Content Creation</option>
+              <option>Podcasting / Media</option>
+              <option>Software / App Development</option>
+              <option>Web Design / Development</option>
+              <option>Gaming / Streaming</option>
+            </optgroup>
+            <optgroup label="Health & Wellness">
+              <option>Healthcare / Medical Practice</option>
+              <option>Dental Practice</option>
+              <option>Mental Health Services</option>
+              <option>Fitness / Personal Training</option>
+              <option>Yoga / Pilates Studio</option>
+              <option>Spa / Massage Therapy</option>
+              <option>Child Care / Daycare</option>
+              <option>Elder Care / Home Health</option>
+            </optgroup>
+            <optgroup label="Retail & Food">
+              <option>Retail Store</option>
+              <option>E-commerce / Online Store</option>
+              <option>Restaurant / Food Service</option>
+              <option>Food Truck</option>
+              <option>Catering</option>
+              <option>Bakery</option>
+              <option>Bar / Nightclub</option>
+              <option>Grocery / Specialty Foods</option>
+            </optgroup>
+            <optgroup label="Trades & Construction">
+              <option>General Contractor</option>
+              <option>Electrical</option>
+              <option>Plumbing</option>
+              <option>HVAC</option>
+              <option>Roofing</option>
+              <option>Painting</option>
+              <option>Carpentry / Woodworking</option>
+              <option>Auto Repair / Mechanic</option>
+            </optgroup>
+            <optgroup label="Real Estate & Finance">
+              <option>Real Estate Investment</option>
+              <option>Property Management</option>
+              <option>Real Estate Agent / Broker</option>
+              <option>Mortgage / Lending</option>
+              <option>Import / Export</option>
+              <option>Trucking / Transportation</option>
+              <option>Delivery Services</option>
+              <option>Warehouse / Logistics</option>
+            </optgroup>
+            <optgroup label="Agriculture & Other">
+              <option>Agriculture / Farming</option>
+              <option>Winery / Brewery</option>
+              <option>Pet Services / Grooming</option>
+              <option>Non-Profit Organization</option>
+              <option>Holding Company</option>
+              <option>Religious Organization</option>
+              <option>Education / Tutoring</option>
+              <option>I'm not sure yet</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+
+      <!-- Step 3: Priority -->
+      <div class="step" id="step-3">
+        <div class="step-title">What matters most to you?</div>
+        <div class="step-sub">Pick your top priority — this is the most important factor in your recommendation.</div>
+        <div class="options-grid" id="priority-options">
+          <button class="option-btn" onclick="selectOption('priority','lowest-cost',this)">💰 Lowest cost to form</button>
+          <button class="option-btn" onclick="selectOption('priority','lowest-annual',this)">📅 Lowest annual fees</button>
+          <button class="option-btn" onclick="selectOption('priority','privacy',this)">🔒 Maximum privacy</button>
+          <button class="option-btn" onclick="selectOption('priority','tax',this)">📊 Best tax advantages</button>
+          <button class="option-btn" onclick="selectOption('priority','liability',this)">🛡️ Strongest liability protection</button>
+          <button class="option-btn" onclick="selectOption('priority','investors',this)">📈 Attracting investors</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Multiple States -->
+      <div class="step" id="step-4">
+        <div class="step-title">Do you plan to do business in multiple states?</div>
+        <div class="step-sub">If you operate in multiple states you may need to register as a foreign LLC in each one — this affects which home state makes sense.</div>
+        <div class="options-grid three" id="multi-state-options">
+          <button class="option-btn" onclick="selectOption('multi-state','yes',this)">✅ Yes, multiple states</button>
+          <button class="option-btn" onclick="selectOption('multi-state','no',this)">🏠 No, just one state</button>
+          <button class="option-btn" onclick="selectOption('multi-state','unsure',this)">🤷 Not sure yet</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Ownership -->
+      <div class="step" id="step-5">
+        <div class="step-title">Are you the only owner?</div>
+        <div class="step-sub">Multi-member LLCs have different tax filing requirements and some states treat them differently.</div>
+        <div class="options-grid three" id="ownership-options">
+          <button class="option-btn" onclick="selectOption('ownership','solo',this)">👤 Yes, just me</button>
+          <button class="option-btn" onclick="selectOption('ownership','partners',this)">👥 I have business partners</button>
+          <button class="option-btn" onclick="selectOption('ownership','unsure',this)">🤷 Not sure yet</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Budget -->
+      <div class="step" id="step-6">
+        <div class="step-title">What is your budget for formation?</div>
+        <div class="step-sub">This covers the state filing fee only — not registered agent fees or any service fees.</div>
+        <div class="options-grid" id="budget-options">
+          <button class="option-btn" onclick="selectOption('budget','under50',this)">💵 Under $50</button>
+          <button class="option-btn" onclick="selectOption('budget','50-100',this)">💵 $50 – $100</button>
+          <button class="option-btn" onclick="selectOption('budget','100-200',this)">💵 $100 – $200</button>
+          <button class="option-btn" onclick="selectOption('budget','200-500',this)">💵 $200 – $500</button>
+          <button class="option-btn" onclick="selectOption('budget','no-limit',this)">💰 Budget is not a concern</button>
+          <button class="option-btn" onclick="selectOption('budget','unsure',this)">🤷 Not sure</button>
+        </div>
+      </div>
+
+      <!-- Step 7: Privacy -->
+      <div class="step" id="step-7">
+        <div class="step-title">How important is privacy to you?</div>
+        <div class="step-sub">Some states like Wyoming and New Mexico allow anonymous LLC ownership — your name never appears in public records.</div>
+        <div class="options-grid three" id="privacy-options">
+          <button class="option-btn" onclick="selectOption('privacy-pref','very',this)">🔒 Very important — I don't want my name public</button>
+          <button class="option-btn" onclick="selectOption('privacy-pref','somewhat',this)">🔓 Somewhat important</button>
+          <button class="option-btn" onclick="selectOption('privacy-pref','not',this)">👁️ Not important at all</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" id="btn-back" onclick="prevStep()" style="visibility:hidden">← Back</button>
+      <span class="step-indicator" id="step-indicator">Step 1 of 7</span>
+      <button class="btn-next" id="btn-next" onclick="nextStep()">Next →</button>
+    </div>
+  </div>
+
+  <!-- ─── RESULTS ─── -->
+  <div id="results">
+    <div class="ad-slot">Advertisement — Google AdSense</div>
+
+    <div class="results-header">
+      <div class="results-header-icon">✅</div>
+      <div>
+        <div class="results-header-title">Your Personalized LLC Recommendation</div>
+        <div class="results-header-sub" id="results-summary">Based on your answers, here are the top 3 states to form your LLC — ranked specifically for your situation.</div>
+      </div>
+    </div>
+
+    <div class="rec-label">Top 3 Recommended States</div>
+    <div id="state-cards"></div>
+
+    <div class="ad-slot">Advertisement — Google AdSense</div>
+
+    <h3 style="font-family:var(--serif); font-size:20px; color:var(--navy); margin:28px 0 16px;">Full State Comparison</h3>
+    <div style="overflow-x:auto;">
+      <table class="comparison-table" id="comparison-table">
+        <thead>
+          <tr>
+            <th>State</th>
+            <th>Filing Fee</th>
+            <th>Annual Fee</th>
+            <th>Privacy</th>
+            <th>State Income Tax</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody id="comparison-body"></tbody>
+      </table>
+    </div>
+
+    <!-- Affiliate Section -->
+    <div class="affiliate-section">
+      <div class="affiliate-title">Ready to Form Your LLC?</div>
+      <div class="affiliate-sub">These trusted services can handle the paperwork for you — quickly, affordably, and correctly.</div>
+      <div class="affiliate-grid">
+        <div class="affiliate-card">
+          <div class="affiliate-name">ZenBusiness</div>
+          <div class="affiliate-price">From $0 + state fee</div>
+          <a href="https://www.zenbusiness.com" target="_blank" rel="noopener noreferrer" class="affiliate-btn">Form My LLC →</a>
+        </div>
+        <div class="affiliate-card">
+          <div class="affiliate-name">Northwest Registered Agent</div>
+          <div class="affiliate-price">From $39 + state fee</div>
+          <a href="https://www.northwestregisteredagent.com" target="_blank" rel="noopener noreferrer" class="affiliate-btn">Form My LLC →</a>
+        </div>
+        <div class="affiliate-card">
+          <div class="affiliate-name">LegalZoom</div>
+          <div class="affiliate-price">From $0 + state fee</div>
+          <a href="https://www.legalzoom.com" target="_blank" rel="noopener noreferrer" class="affiliate-btn">Form My LLC →</a>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="resetTool()" style="background:var(--cream-dark); border:1px solid var(--border); border-radius:7px; padding:10px 20px; font-family:var(--sans); font-size:14px; color:var(--text-mid); cursor:pointer; margin-bottom:32px;">← Start Over</button>
+  </div>
+
+  <!-- ─── SEO COPY ─── -->
+  <div class="seo-section">
+    <h2>Which State Should You Form Your LLC In?</h2>
+    <p>Choosing the right state to form your LLC is one of the most important decisions a new business owner makes — and it's not always the state you live in. Delaware, Wyoming, and Nevada are popular choices for good reason: lower fees, stronger privacy protections, and business-friendly tax laws.</p>
+    <p>Use our free LLC State Comparison Tool to compare filing fees, annual fees, privacy laws, and tax advantages across all 50 states. No legal jargon, no hidden costs, no account required. Just clear information to help you make a confident decision.</p>
+
+    <h3>The Most Popular LLC Formation States Explained</h3>
+
+    <h3>Wyoming LLC</h3>
+    <p>Wyoming is widely considered the best state for LLC formation for most small business owners. It has some of the lowest annual fees ($60), strong privacy protections, no state income tax, and excellent asset protection laws. Wyoming allows anonymous LLC ownership, meaning your name never appears in public records.</p>
+
+    <h3>Delaware LLC</h3>
+    <p>Delaware is the gold standard for startups seeking venture capital or planning to go public. Its Court of Chancery has centuries of corporate law precedent, making it the preferred choice for investors. However, Delaware charges a $300 annual franchise tax and requires a registered agent, making it less ideal for small solo businesses.</p>
+
+    <h3>New Mexico LLC</h3>
+    <p>New Mexico is the hidden gem of LLC formation. It has a low filing fee ($50), no annual report requirement, and strong privacy protections. It's one of the few states that allows anonymous LLC ownership without additional complexity — making it excellent for privacy-focused entrepreneurs on a budget.</p>
+
+    <h3>Nevada LLC</h3>
+    <p>Nevada offers strong privacy protections, no state corporate income tax, and excellent liability protection. However its annual fees ($350+) are significantly higher than Wyoming, making Wyoming a better choice for most small businesses seeking similar benefits at lower cost.</p>
+
+    <h3>Should You Form in Your Home State?</h3>
+    <p>For most small businesses that operate locally — restaurants, contractors, retail stores, local service businesses — forming in your home state is usually the simplest and most cost-effective choice. Forming out of state adds complexity including registered agent fees and potential foreign LLC registration requirements.</p>
+
+    <h3>Frequently Asked Questions</h3>
+
+    <h3>Do I have to form my LLC in the state where I live?</h3>
+    <p>No. You can form an LLC in any state regardless of where you live or operate. However if you operate primarily in your home state you will likely need to register as a foreign LLC there anyway, which adds cost and complexity. For most small businesses, forming in your home state is the simplest approach.</p>
+
+    <h3>What is a registered agent and do I need one?</h3>
+    <p>A registered agent is a person or company designated to receive official legal documents on behalf of your LLC. Every state requires one. If you form in a state where you don't live you must hire a registered agent service, typically costing $50–$150 per year.</p>
+
+    <h3>How often do I need to update my LLC information?</h3>
+    <p>Most states require an annual report and fee to keep your LLC in good standing. Wyoming's annual fee is just $60. Some states like New Mexico have no annual requirement at all. Always check your state's specific requirements to avoid your LLC being dissolved for non-compliance.</p>
+  </div>
+
+</div>
+
+<!-- ─── DISCLAIMER ─── -->
+<div class="disclaimer-strip">
+  <p><strong>Important:</strong> FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this site constitutes legal advice or creates an attorney-client relationship. State laws and fees change frequently — always verify current information with your state's Secretary of State website before making decisions. <a href="disclaimer.html">Read full disclaimer →</a></p>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Free<span class="legal">Legal</span>Tools</div>
+        <p class="footer-tagline">"Free legal tools. No lawyer needed."</p>
+        <p class="footer-disclaimer-note">General legal information only. Not legal advice. Not a law firm. Always consult a licensed attorney for your specific situation.</p>
+      </div>
+      <div>
+        <div class="footer-col-heading">Our Tools</div>
+        <a href="llc-comparison.html" class="footer-link">LLC State Comparison</a>
+        <a href="statute-of-limitations.html" class="footer-link">Statute of Limitations</a>
+        <a href="non-compete-checker.html" class="footer-link">Non-Compete Checker</a>
+        <a href="severance-evaluator.html" class="footer-link">Severance Evaluator</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Site</div>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="disclaimer.html" class="footer-link">Disclaimer</a>
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Legal Notice</div>
+        <p class="footer-disclaimer-note" style="font-size:12px;">FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this site constitutes legal advice or creates an attorney-client relationship.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 FreeLegalTools.com · All Rights Reserved · Not a law firm · Not legal advice</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
+        <a href="disclaimer.html" class="footer-bottom-link">Disclaimer</a>
+        <a href="contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── STATE DATA ───────────────────────────────────────────────
+  const stateData = {
+    "Wyoming":       { filing: "$100", annual: "$60",  privacy: "⭐⭐⭐⭐⭐", tax: "None", best: "Privacy, Low Cost, Tax", score: { privacy:5, tax:5, cost:4, annual:5 } },
+    "New Mexico":    { filing: "$50",  annual: "$0",   privacy: "⭐⭐⭐⭐⭐", tax: "5.9%", best: "Privacy, Zero Annual Fee", score: { privacy:5, tax:2, cost:5, annual:5 } },
+    "Delaware":      { filing: "$90",  annual: "$300", privacy: "⭐⭐⭐",     tax: "8.7%", best: "Investors, Legal Precedent", score: { privacy:3, tax:1, cost:4, annual:1 } },
+    "Nevada":        { filing: "$75",  annual: "$350", privacy: "⭐⭐⭐⭐",   tax: "None", best: "Privacy, No Income Tax", score: { privacy:4, tax:5, cost:4, annual:1 } },
+    "Florida":       { filing: "$125", annual: "$139", privacy: "⭐⭐",       tax: "None", best: "No Income Tax, Business Friendly", score: { privacy:2, tax:5, cost:3, annual:3 } },
+    "Texas":         { filing: "$300", annual: "$0",   privacy: "⭐⭐",       tax: "None", best: "No Income Tax, Large Economy", score: { privacy:2, tax:5, cost:2, annual:5 } },
+    "Ohio":          { filing: "$99",  annual: "$0",   privacy: "⭐⭐⭐",     tax: "3.99%", best: "Low Cost, No Annual Fee", score: { privacy:3, tax:3, cost:4, annual:5 } },
+    "Montana":       { filing: "$70",  annual: "$20",  privacy: "⭐⭐⭐",     tax: "6.75%", best: "Low Fees", score: { privacy:3, tax:2, cost:5, annual:5 } },
+    "Colorado":      { filing: "$50",  annual: "$10",  privacy: "⭐⭐",       tax: "4.4%", best: "Low Cost, Growing Economy", score: { privacy:2, tax:3, cost:5, annual:5 } },
+    "South Dakota":  { filing: "$150", annual: "$50",  privacy: "⭐⭐⭐⭐",   tax: "None", best: "No Income Tax, Privacy", score: { privacy:4, tax:5, cost:3, annual:4 } },
+    "Alaska":        { filing: "$250", annual: "$100", privacy: "⭐⭐⭐",     tax: "None", best: "No Income Tax", score: { privacy:3, tax:5, cost:2, annual:3 } },
+    "Washington":    { filing: "$200", annual: "$60",  privacy: "⭐⭐",       tax: "None", best: "No Income Tax", score: { privacy:2, tax:5, cost:2, annual:4 } },
+    "California":    { filing: "$70",  annual: "$800+", privacy: "⭐",        tax: "13.3%", best: "Large Market Access", score: { privacy:1, tax:1, cost:4, annual:1 } },
+    "New York":      { filing: "$200", annual: "$25",  privacy: "⭐",         tax: "10.9%", best: "Large Market Access", score: { privacy:1, tax:1, cost:2, annual:5 } },
+    "North Dakota":  { filing: "$135", annual: "$50",  privacy: "⭐⭐⭐",     tax: "2.5%", best: "Low Tax", score: { privacy:3, tax:4, cost:3, annual:4 } },
+  };
+
+  const allStates = [
+    { name: "Wyoming",      filing: "$100", annual: "$60",   privacy: "Very High", tax: "None",   best: "Privacy, Low Cost" },
+    { name: "New Mexico",   filing: "$50",  annual: "$0",    privacy: "Very High", tax: "5.9%",   best: "Zero Annual Fee, Privacy" },
+    { name: "Delaware",     filing: "$90",  annual: "$300",  privacy: "Medium",    tax: "8.7%",   best: "Investors, Startups" },
+    { name: "Nevada",       filing: "$75",  annual: "$350",  privacy: "High",      tax: "None",   best: "Privacy, No Income Tax" },
+    { name: "Florida",      filing: "$125", annual: "$139",  privacy: "Low",       tax: "None",   best: "No Income Tax" },
+    { name: "Texas",        filing: "$300", annual: "$0",    privacy: "Low",       tax: "None",   best: "No Income Tax" },
+    { name: "Colorado",     filing: "$50",  annual: "$10",   privacy: "Low",       tax: "4.4%",   best: "Low Fees" },
+    { name: "Montana",      filing: "$70",  annual: "$20",   privacy: "Medium",    tax: "6.75%",  best: "Low Annual Fee" },
+    { name: "Ohio",         filing: "$99",  annual: "$0",    privacy: "Medium",    tax: "3.99%",  best: "No Annual Fee" },
+    { name: "South Dakota", filing: "$150", annual: "$50",   privacy: "High",      tax: "None",   best: "No Income Tax" },
+    { name: "Washington",   filing: "$200", annual: "$60",   privacy: "Low",       tax: "None",   best: "No Income Tax" },
+    { name: "Alaska",       filing: "$250", annual: "$100",  privacy: "Medium",    tax: "None",   best: "No Income Tax" },
+    { name: "North Dakota", filing: "$135", annual: "$50",   privacy: "Medium",    tax: "2.5%",   best: "Low Tax Rate" },
+    { name: "California",   filing: "$70",  annual: "$800+", privacy: "Low",       tax: "13.3%",  best: "California Market" },
+    { name: "New York",     filing: "$200", annual: "$25",   privacy: "Low",       tax: "10.9%",  best: "New York Market" },
+  ];
+
+  // ─── TOOL LOGIC ───────────────────────────────────────────────
+  let currentStep = 1;
+  const totalSteps = 7;
+  const answers = {};
+
+  function updateProgress() {
+    const pct = Math.round((currentStep / totalSteps) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('progress-text').textContent = `Step ${currentStep} of ${totalSteps}`;
+    document.getElementById('progress-pct').textContent = pct + '%';
+    document.getElementById('step-indicator').textContent = `Step ${currentStep} of ${totalSteps}`;
+    document.getElementById('btn-back').style.visibility = currentStep > 1 ? 'visible' : 'hidden';
+    document.getElementById('btn-next').textContent = currentStep === totalSteps ? 'Get My Results →' : 'Next →';
+  }
+
+  function selectOption(key, value, btn) {
+    answers[key] = value;
+    const parent = btn.parentElement;
+    parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+
+  function nextStep() {
+    if (currentStep === 1 && !document.getElementById('home-state').value) {
+      alert('Please select your home state to continue.'); return;
+    }
+    if (currentStep === 2 && !document.getElementById('business-type').value) {
+      alert('Please select your business type to continue.'); return;
+    }
+    if (currentStep === 3 && !answers['priority']) {
+      alert('Please select what matters most to you.'); return;
+    }
+    if (currentStep === 4 && !answers['multi-state']) {
+      alert('Please make a selection to continue.'); return;
+    }
+    if (currentStep === 5 && !answers['ownership']) {
+      alert('Please make a selection to continue.'); return;
+    }
+    if (currentStep === 6 && !answers['budget']) {
+      alert('Please select your budget to continue.'); return;
+    }
+    if (currentStep === 7 && !answers['privacy-pref']) {
+      alert('Please make a selection to continue.'); return;
+    }
+
+    if (currentStep === totalSteps) {
+      answers['home-state'] = document.getElementById('home-state').value;
+      answers['business-type'] = document.getElementById('business-type').value;
+      showResults();
+      return;
+    }
+
+    document.getElementById('step-' + currentStep).classList.remove('active');
+    currentStep++;
+    document.getElementById('step-' + currentStep).classList.add('active');
+    updateProgress();
+  }
+
+  function prevStep() {
+    document.getElementById('step-' + currentStep).classList.remove('active');
+    currentStep--;
+    document.getElementById('step-' + currentStep).classList.add('active');
+    updateProgress();
+  }
+
+  function getRecommendations() {
+    const priority = answers['priority'];
+    const privacyPref = answers['privacy-pref'];
+    const budget = answers['budget'];
+    const homeState = answers['home-state'];
+    const multiState = answers['multi-state'];
+    const businessType = answers['business-type'];
+
+    const isInvestorBusiness = businessType && (businessType.includes('Software') || businessType.includes('Tech') || businessType.includes('Holding'));
+    const isLocalBusiness = businessType && (businessType.includes('Restaurant') || businessType.includes('Contractor') || businessType.includes('Cleaning') || businessType.includes('Landscaping') || businessType.includes('Plumbing') || businessType.includes('HVAC') || businessType.includes('Roofing') || businessType.includes('Daycare') || businessType.includes('Food Truck'));
+    const budgetTight = budget === 'under50' || budget === '50-100';
+
+    let recs = [];
+
+    if (isLocalBusiness || multiState === 'no') {
+      recs.push({
+        name: homeState,
+        rank: 1,
+        badge: "Best for Local Business",
+        reasons: [
+          "No registered agent fees since you live and operate here",
+          "Simplest and most cost-effective for local businesses",
+          "Avoid foreign LLC registration complexity",
+          "Local legal counsel easily accessible"
+        ]
+      });
+    }
+
+    if (priority === 'privacy' || privacyPref === 'very') {
+      recs.push({ name: "Wyoming", rank: recs.length + 1, badge: "Best for Privacy", reasons: ["Anonymous LLC ownership — name never in public records", "No state income tax saves money long term", "Low $60 annual fee", "Strongest privacy laws in the US"] });
+      if (budgetTight) {
+        recs.push({ name: "New Mexico", rank: recs.length + 1, badge: "Best Budget + Privacy", reasons: ["Lowest filing fee at $50", "Zero annual report or fee required", "Anonymous ownership allowed", "Ideal for privacy on a budget"] });
+      } else {
+        recs.push({ name: "Nevada", rank: recs.length + 1, badge: "Strong Privacy Alternative", reasons: ["Strong privacy protections", "No state income tax", "Well-established business laws", "Strong liability protection"] });
+      }
+    } else if (priority === 'tax' || priority === 'lowest-annual') {
+      recs.push({ name: "Wyoming", rank: recs.length + 1, badge: "Best Tax Advantages", reasons: ["No state income tax on LLC profits", "Low $60 annual fee", "Strong asset protection", "No franchise tax"] });
+      recs.push({ name: "New Mexico", rank: recs.length + 1, badge: "Zero Annual Fee", reasons: ["No annual report required — ever", "Low $50 filing fee", "Simple maintenance", "No franchise tax"] });
+    } else if (priority === 'investors' || isInvestorBusiness) {
+      recs.push({ name: "Delaware", rank: recs.length + 1, badge: "Best for Investors", reasons: ["Preferred by VCs and investors nationwide", "Court of Chancery — most sophisticated business court", "Flexible operating agreement rules", "Fastest filing times"] });
+      recs.push({ name: "Wyoming", rank: recs.length + 1, badge: "Strong Alternative", reasons: ["Low cost with strong protections", "No state income tax", "Growing reputation for business-friendly laws", "Low annual fees"] });
+    } else if (priority === 'lowest-cost' || budgetTight) {
+      recs.push({ name: "New Mexico", rank: recs.length + 1, badge: "Lowest Overall Cost", reasons: ["Lowest filing fee at $50", "Zero annual report or fee", "Strong privacy as a bonus", "Simple to maintain"] });
+      recs.push({ name: "Wyoming", rank: recs.length + 1, badge: "Best Value", reasons: ["Low $100 filing fee", "Only $60 per year to maintain", "No state income tax", "Top privacy protections included"] });
+    } else {
+      recs.push({ name: "Wyoming", rank: recs.length + 1, badge: "Best Overall", reasons: ["Best combination of low cost, privacy, and tax advantages", "No state income tax", "Only $60 per year", "Anonymous ownership available"] });
+      recs.push({ name: "New Mexico", rank: recs.length + 1, badge: "Budget Friendly", reasons: ["$50 filing fee — one of the lowest", "No annual fee ever", "Strong privacy protections", "Simple to maintain long term"] });
+    }
+
+    while (recs.length < 3) {
+      const fallbacks = ["Wyoming", "New Mexico", "Delaware", "Nevada"];
+      for (const f of fallbacks) {
+        if (!recs.find(r => r.name === f)) {
+          recs.push({ name: f, rank: recs.length + 1, badge: "Recommended Alternative", reasons: ["Strong business laws", "Reasonable fees", "Good liability protection", "Well-established LLC statutes"] });
+          break;
+        }
+      }
+    }
+
+    return recs.slice(0, 3).map((r, i) => ({ ...r, rank: i + 1 }));
+  }
+
+  function showResults() {
+    document.querySelector('.tool-card').style.display = 'none';
+    document.getElementById('results').style.display = 'block';
+
+    const recs = getRecommendations();
+    const homeState = answers['home-state'];
+
+    document.getElementById('results-summary').textContent =
+      `Based on your answers — ${homeState} resident, ${answers['business-type'] || 'general business'}, priority: ${answers['priority'] || 'balanced'} — here are your top 3 recommended states.`;
+
+    const cardsEl = document.getElementById('state-cards');
+    cardsEl.innerHTML = recs.map((r, i) => {
+      const data = stateData[r.name] || { filing: 'Varies', annual: 'Varies', privacy: '⭐⭐⭐', tax: 'Varies', best: 'General use' };
+      return `
+        <div class="state-card ${i === 0 ? 'top' : ''}">
+          <div class="state-card-top">
+            <div>
+              <div class="state-rank">${i === 0 ? '🥇' : i === 1 ? '🥈' : '🥉'} #${r.rank} Recommendation</div>
+              <div class="state-name">${r.name}</div>
+            </div>
+            <div class="state-badge">${r.badge}</div>
+          </div>
+          <div class="state-metrics">
+            <div class="state-metric"><div class="state-metric-label">Filing Fee</div><div class="state-metric-val">${data.filing}</div></div>
+            <div class="state-metric"><div class="state-metric-label">Annual Fee</div><div class="state-metric-val ${data.annual === '$0' || data.annual === '$60' ? 'good' : ''}">${data.annual}</div></div>
+            <div class="state-metric"><div class="state-metric-label">Privacy</div><div class="state-metric-val">${data.privacy}</div></div>
+            <div class="state-metric"><div class="state-metric-label">Income Tax</div><div class="state-metric-val ${data.tax === 'None' ? 'good' : ''}">${data.tax}</div></div>
+          </div>
+          <div class="state-reasons">
+            <div class="state-reasons-title">Why ${r.name} for your situation:</div>
+            ${r.reasons.map(reason => `<div class="state-reason"><span class="state-reason-check">✓</span>${reason}</div>`).join('')}
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const tbody = document.getElementById('comparison-body');
+    tbody.innerHTML = allStates.map(s => `
+      <tr>
+        <td><strong>${s.name}</strong></td>
+        <td>${s.filing}</td>
+        <td class="${s.annual === '$0' ? 'good-val' : s.annual.includes('800') ? 'bad-val' : ''}">${s.annual}</td>
+        <td>${s.privacy}</td>
+        <td class="${s.tax === 'None' ? 'good-val' : s.tax.includes('13') || s.tax.includes('10') ? 'bad-val' : ''}">${s.tax}</td>
+        <td>${s.best}</td>
+      </tr>
+    `).join('');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function resetTool() {
+    document.querySelector('.tool-card').style.display = 'block';
+    document.getElementById('results').style.display = 'none';
+    currentStep = 1;
+    Object.keys(answers).forEach(k => delete answers[k]);
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById('step-1').classList.add('active');
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    document.getElementById('home-state').value = '';
+    document.getElementById('business-type').value = '';
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  updateProgress();
+</script>
+</body>
+</html>
