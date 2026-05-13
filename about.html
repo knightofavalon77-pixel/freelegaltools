@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About FreeLegalTools.com — Free Legal Tools for Everyday People</title>
+<meta name="description" content="FreeLegalTools.com was built for regular people who need clear legal answers without expensive lawyers or confusing jargon. Learn about our mission.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B35;
+    --navy-mid: #1A2E50;
+    --gold: #C4973A;
+    --gold-pale: rgba(196,151,58,0.12);
+    --cream: #FAF8F4;
+    --cream-dark: #F0EDE6;
+    --cream-darker: #E8E4DC;
+    --text: #1C2B3A;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --border: #E2DDD4;
+    --white: #FFFFFF;
+    --green: #1A6B45;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(13,27,53,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── HEADER ─── */
+  header { background: var(--cream); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-divider { width: 1.5px; height: 32px; background: var(--gold); opacity: 0.6; }
+  .logo-text { font-family: var(--serif); font-size: 20px; font-weight: 600; }
+  .logo-text .free { color: var(--navy); }
+  .logo-text .legal { color: var(--gold); }
+  .logo-text .tools { color: var(--navy); }
+  nav { display: flex; align-items: center; gap: 8px; }
+  .nav-item { position: relative; padding: 8px 14px; font-size: 14px; color: var(--text-mid); cursor: pointer; border-radius: 6px; transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 4px; }
+  .nav-item:hover { background: var(--cream-dark); color: var(--navy); }
+  .nav-arrow { font-size: 10px; transition: transform 0.2s; color: var(--text-light); }
+  .nav-item:hover .nav-arrow { transform: rotate(180deg); }
+  .mega-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 8px; width: 480px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .mega-menu::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
+  .nav-item:hover .mega-menu { opacity: 1; pointer-events: auto; }
+  .mega-menu-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; border-radius: 8px; transition: background 0.12s; }
+  .mega-menu-item:hover { background: var(--cream); }
+  .mega-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+  .mega-item-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 2px; font-family: var(--serif); }
+  .mega-item-desc { font-size: 12px; color: var(--text-light); line-height: 1.4; }
+
+  /* ─── PAGE HERO ─── */
+  .page-hero { background: var(--navy); padding: 52px 32px; text-align: center; }
+  .page-hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-pale); border: 1px solid rgba(196,151,58,0.25); color: var(--gold); font-size: 12px; letter-spacing: 0.06em; padding: 5px 16px; border-radius: 20px; margin-bottom: 16px; }
+  .page-hero h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+  .page-hero h1 span { color: var(--gold); }
+  .page-hero p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto; line-height: 1.65; }
+
+  /* ─── MAIN ─── */
+  .main { max-width: 760px; margin: 0 auto; padding: 64px 32px 80px; }
+
+  /* ─── STORY SECTION ─── */
+  .story-intro { font-family: var(--serif); font-size: 22px; font-weight: 400; font-style: italic; color: var(--navy); line-height: 1.6; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+
+  .story-body p { font-size: 16px; color: var(--text-mid); line-height: 1.85; margin-bottom: 20px; }
+
+  /* ─── MISSION BOX ─── */
+  .mission-box { background: var(--navy); border-radius: var(--radius); padding: 36px 40px; margin: 48px 0; text-align: center; }
+  .mission-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(196,151,58,0.7); margin-bottom: 12px; }
+  .mission-title { font-family: var(--serif); font-size: 26px; color: var(--white); margin-bottom: 16px; line-height: 1.3; }
+  .mission-title span { color: var(--gold); }
+  .mission-text { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.75; max-width: 520px; margin: 0 auto; }
+
+  /* ─── VALUES GRID ─── */
+  .values-section { margin: 48px 0; }
+  .values-title { font-family: var(--serif); font-size: 24px; color: var(--navy); margin-bottom: 24px; }
+  .values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .value-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 24px; }
+  .value-icon { font-size: 24px; margin-bottom: 10px; }
+  .value-title { font-family: var(--serif); font-size: 16px; color: var(--navy); margin-bottom: 6px; font-weight: 600; }
+  .value-desc { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+  /* ─── TOOLS SECTION ─── */
+  .tools-section { background: var(--cream-dark); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin: 48px 0; }
+  .tools-section-title { font-family: var(--serif); font-size: 22px; color: var(--navy); margin-bottom: 6px; }
+  .tools-section-sub { font-size: 14px; color: var(--text-light); margin-bottom: 20px; }
+  .tool-list-item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .tool-list-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .tool-list-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .tool-list-title { font-size: 15px; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
+  .tool-list-desc { font-size: 13px; color: var(--text-light); line-height: 1.4; }
+  .tool-list-link { font-size: 13px; color: var(--gold); font-weight: 500; margin-top: 4px; display: inline-block; }
+
+  /* ─── STATS ─── */
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 48px 0; }
+  .stat-item { text-align: center; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 16px; }
+  .stat-num { font-family: var(--serif); font-size: 32px; font-weight: 600; color: var(--gold); display: block; line-height: 1; margin-bottom: 6px; }
+  .stat-label { font-size: 12px; color: var(--text-light); line-height: 1.4; }
+
+  /* ─── CTA ─── */
+  .cta-section { text-align: center; padding: 48px 0 0; }
+  .cta-title { font-family: var(--serif); font-size: 26px; color: var(--navy); margin-bottom: 12px; }
+  .cta-sub { font-size: 15px; color: var(--text-mid); margin-bottom: 24px; line-height: 1.6; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--white); font-size: 15px; font-weight: 500; padding: 14px 32px; border-radius: 8px; transition: background 0.15s; }
+  .cta-btn:hover { background: var(--navy-mid); }
+
+  /* ─── DISCLAIMER & FOOTER ─── */
+  .disclaimer-strip { background: var(--cream-darker); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 32px; text-align: center; }
+  .disclaimer-strip p { font-size: 12px; color: var(--text-light); max-width: 800px; margin: 0 auto; line-height: 1.6; }
+  .disclaimer-strip a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+  footer { background: var(--navy); padding: 56px 32px 32px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand-name { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .footer-brand-name .legal { color: var(--gold); }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 12px; font-style: italic; }
+  .footer-disclaimer-note { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6; max-width: 280px; }
+  .footer-col-heading { font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 10px; transition: color 0.12s; }
+  .footer-link:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-bottom-links { display: flex; gap: 20px; }
+  .footer-bottom-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: color 0.12s; }
+  .footer-bottom-link:hover { color: rgba(255,255,255,0.6); }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 28px; }
+    .main { padding: 40px 16px; }
+    .values-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .mission-box { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
+        <polygon points="2,13 18,2 34,13" fill="#0D1B35"/>
+        <rect x="6"  y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="13" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="20" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="27" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="2"  y="29" width="32" height="3.5" fill="#0D1B35" rx="1"/>
+      </svg>
+      <div class="logo-divider"></div>
+      <div class="logo-text"><span class="free">Free</span><span class="legal">Legal</span><span class="tools">Tools</span></div>
+    </a>
+    <nav>
+      <a href="index.html" class="nav-item">Home</a>
+      <div class="nav-item">
+        Tools <span class="nav-arrow">▾</span>
+        <div class="mega-menu">
+          <a href="llc-comparison.html" class="mega-menu-item">
+            <div class="mega-icon">🏛️</div>
+            <div><div class="mega-item-title">LLC State Comparison Tool</div><div class="mega-item-desc">Find the best state to form your LLC based on fees, privacy, and taxes</div></div>
+          </a>
+          <a href="statute-of-limitations.html" class="mega-menu-item">
+            <div class="mega-icon">⏱️</div>
+            <div><div class="mega-item-title">Statute of Limitations Lookup</div><div class="mega-item-desc">Find your exact legal deadline by state and case type</div></div>
+          </a>
+          <a href="non-compete-checker.html" class="mega-menu-item">
+            <div class="mega-icon">📋</div>
+            <div><div class="mega-item-title">Non-Compete Enforceability Checker</div><div class="mega-item-desc">Find out if your non-compete agreement is likely enforceable</div></div>
+          </a>
+          <a href="severance-evaluator.html" class="mega-menu-item">
+            <div class="mega-icon">💼</div>
+            <div><div class="mega-item-title">Severance Package Evaluator</div><div class="mega-item-desc">Find out if your severance offer is fair for your situation</div></div>
+          </a>
+        </div>
+      </div>
+      <a href="about.html" class="nav-item active">About</a>
+      <a href="disclaimer.html" class="nav-item">Disclaimer</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero">
+  <div class="page-hero-eyebrow">Our Story</div>
+  <h1>About <span>FreeLegalTools</span></h1>
+  <p>We're not lawyers. We're everyday people who got tired of legal questions having no clear answers — and decided to build the tools we wished existed.</p>
+</div>
+
+<!-- ─── MAIN ─── -->
+<div class="main">
+
+  <p class="story-intro">"FreeLegalTools.com was born out of pure frustration."</p>
+
+  <div class="story-body">
+    <p>Like most people, we've faced legal questions at the worst possible times — after a job loss, before signing a contract, or when starting a new business venture. And like most people, we turned to Google for answers.</p>
+
+    <p>What we found was overwhelming. Expensive lawyers. Confusing legal jargon. Websites that buried simple answers behind paywalls and account signups. Plenty of information for legal professionals — almost nothing for regular people who just needed a straight answer.</p>
+
+    <p>So we built the tools we wished existed.</p>
+
+    <p>FreeLegalTools.com is not run by lawyers. We're everyday people who believe that basic legal information should be free, simple, and accessible to everyone — not just those who can afford an attorney.</p>
+
+    <p>Every tool on this site is designed with one person in mind — someone who needs a clear answer right now, in plain English, at no cost. That's it. That's our whole mission.</p>
+  </div>
+
+  <!-- Mission Box -->
+  <div class="mission-box">
+    <div class="mission-eyebrow">Our Mission</div>
+    <div class="mission-title">"Free legal tools for everyday people.<br><span>No lawyer needed."</span></div>
+    <div class="mission-text">We believe that understanding your legal rights shouldn't require a law degree or a retainer fee. Every tool on this site gives you the information you need to make confident decisions — in plain English, for free, with no account required.</div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-num">4</span>
+      <span class="stat-label">Free legal tools</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">50</span>
+      <span class="stat-label">States covered</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">$0</span>
+      <span class="stat-label">Always free</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">0</span>
+      <span class="stat-label">Accounts needed</span>
+    </div>
+  </div>
+
+  <!-- Values -->
+  <div class="values-section">
+    <div class="values-title">What We Stand For</div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🆓</div>
+        <div class="value-title">Always Free</div>
+        <div class="value-desc">Every tool on this site is and will always be completely free. No subscriptions, no paywalls, no hidden fees. Our site is supported by advertising — not by charging you.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🚫</div>
+        <div class="value-title">No Sign Up Required</div>
+        <div class="value-desc">We hate being forced to create accounts just to get an answer. You will never need to register, provide your email, or create a profile to use any tool on this site.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">📖</div>
+        <div class="value-title">Plain English Only</div>
+        <div class="value-desc">Legal jargon is a barrier, not a feature. Every result from every tool is written in plain language that anyone can understand — no law degree required.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔄</div>
+        <div class="value-title">Regularly Updated</div>
+        <div class="value-desc">Laws and fees change. We review our data regularly and update our tools to ensure the information you receive reflects current state laws and industry standards.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tools List -->
+  <div class="tools-section">
+    <div class="tools-section-title">Our Free Legal Tools</div>
+    <div class="tools-section-sub">Currently available — with more tools coming soon.</div>
+
+    <div class="tool-list-item">
+      <div class="tool-list-icon">🏛️</div>
+      <div>
+        <div class="tool-list-title">LLC State Comparison Tool</div>
+        <div class="tool-list-desc">Compare all 50 states by filing fees, annual fees, privacy protections, and tax advantages to find the best state to form your LLC.</div>
+        <a href="llc-comparison.html" class="tool-list-link">Use this tool →</a>
+      </div>
+    </div>
+
+    <div class="tool-list-item">
+      <div class="tool-list-icon">⏱️</div>
+      <div>
+        <div class="tool-list-title">Statute of Limitations Lookup</div>
+        <div class="tool-list-desc">Find your exact legal filing deadline by state and case type — with a precise date calculation so you know exactly how much time you have left.</div>
+        <a href="statute-of-limitations.html" class="tool-list-link">Use this tool →</a>
+      </div>
+    </div>
+
+    <div class="tool-list-item">
+      <div class="tool-list-icon">📋</div>
+      <div>
+        <div class="tool-list-title">Non-Compete Enforceability Checker</div>
+        <div class="tool-list-desc">Find out if your non-compete agreement is likely to hold up in court — based on your state, your industry, and the specific terms you signed.</div>
+        <a href="non-compete-checker.html" class="tool-list-link">Use this tool →</a>
+      </div>
+    </div>
+
+    <div class="tool-list-item">
+      <div class="tool-list-icon">💼</div>
+      <div>
+        <div class="tool-list-title">Severance Package Evaluator</div>
+        <div class="tool-list-desc">Find out if your severance offer is fair, below average, or worth negotiating — based on your industry, tenure, job level, and company size.</div>
+        <a href="severance-evaluator.html" class="tool-list-link">Use this tool →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Important Note -->
+  <div style="background:var(--cream-dark); border:1px solid var(--border); border-left: 4px solid var(--gold); border-radius: 0 var(--radius) var(--radius) 0; padding:20px 24px; margin-bottom:48px;">
+    <p style="font-size:14px; color:var(--text-mid); line-height:1.7;"><strong style="color:var(--navy);">Important:</strong> FreeLegalTools.com provides general legal information for educational purposes only. We are not a law firm and nothing on this site constitutes legal advice. Our tools are designed to help you understand your situation — not to replace the advice of a licensed attorney. For any specific legal matter, please consult a qualified attorney in your state. <a href="disclaimer.html" style="color:var(--gold);">Read our full disclaimer →</a></p>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-title">Ready to get your answers?</div>
+    <div class="cta-sub">All of our tools are free, take less than 3 minutes, and require no sign up. Pick the tool that matches your situation and get a clear answer right now.</div>
+    <a href="index.html#tools" class="cta-btn">Explore Our Tools →</a>
+  </div>
+
+</div>
+
+<!-- ─── DISCLAIMER ─── -->
+<div class="disclaimer-strip">
+  <p><strong>Important:</strong> FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this site constitutes legal advice or creates an attorney-client relationship. Always consult a qualified attorney for advice specific to your situation. <a href="disclaimer.html">Read full disclaimer →</a></p>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Free<span class="legal">Legal</span>Tools</div>
+        <p class="footer-tagline">"Free legal tools. No lawyer needed."</p>
+        <p class="footer-disclaimer-note">General legal information only. Not legal advice. Not a law firm. Always consult a licensed attorney for your specific situation.</p>
+      </div>
+      <div>
+        <div class="footer-col-heading">Our Tools</div>
+        <a href="llc-comparison.html" class="footer-link">LLC State Comparison</a>
+        <a href="statute-of-limitations.html" class="footer-link">Statute of Limitations</a>
+        <a href="non-compete-checker.html" class="footer-link">Non-Compete Checker</a>
+        <a href="severance-evaluator.html" class="footer-link">Severance Evaluator</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Site</div>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="disclaimer.html" class="footer-link">Disclaimer</a>
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Legal Notice</div>
+        <p class="footer-disclaimer-note" style="font-size:12px;">FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this site constitutes legal advice or creates an attorney-client relationship.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 FreeLegalTools.com · All Rights Reserved · Not a law firm · Not legal advice</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
+        <a href="disclaimer.html" class="footer-bottom-link">Disclaimer</a>
+        <a href="contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
