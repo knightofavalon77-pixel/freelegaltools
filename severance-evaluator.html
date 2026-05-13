@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Severance Package Evaluator — Is Your Offer Fair? Free Tool</title>
+<meta name="description" content="Find out if your severance package is above or below average for your industry and tenure. Free personalized evaluation. No sign up required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B35;
+    --navy-mid: #1A2E50;
+    --gold: #C4973A;
+    --gold-light: #D4A84A;
+    --gold-pale: rgba(196,151,58,0.12);
+    --cream: #FAF8F4;
+    --cream-dark: #F0EDE6;
+    --cream-darker: #E8E4DC;
+    --text: #1C2B3A;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --border: #E2DDD4;
+    --white: #FFFFFF;
+    --green: #1A6B45;
+    --green-bg: #EBF5F0;
+    --red: #8B1A1A;
+    --red-bg: #FBF0F0;
+    --amber: #92600A;
+    --amber-bg: #FEF3DC;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(13,27,53,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── HEADER ─── */
+  header { background: var(--cream); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-divider { width: 1.5px; height: 32px; background: var(--gold); opacity: 0.6; }
+  .logo-text { font-family: var(--serif); font-size: 20px; font-weight: 600; }
+  .logo-text .free { color: var(--navy); }
+  .logo-text .legal { color: var(--gold); }
+  .logo-text .tools { color: var(--navy); }
+  nav { display: flex; align-items: center; gap: 8px; }
+  .nav-item { position: relative; padding: 8px 14px; font-size: 14px; color: var(--text-mid); cursor: pointer; border-radius: 6px; transition: background 0.15s, color 0.15s; display: flex; align-items: center; gap: 4px; }
+  .nav-item:hover { background: var(--cream-dark); color: var(--navy); }
+  .nav-arrow { font-size: 10px; transition: transform 0.2s; color: var(--text-light); }
+  .nav-item:hover .nav-arrow { transform: rotate(180deg); }
+  .mega-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 8px; width: 480px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+  .mega-menu::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
+  .nav-item:hover .mega-menu { opacity: 1; pointer-events: auto; }
+  .mega-menu-item { display: flex; align-items: flex-start; gap: 14px; padding: 12px 14px; border-radius: 8px; transition: background 0.12s; }
+  .mega-menu-item:hover { background: var(--cream); }
+  .mega-icon { width: 38px; height: 38px; background: var(--navy); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+  .mega-item-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 2px; font-family: var(--serif); }
+  .mega-item-desc { font-size: 12px; color: var(--text-light); line-height: 1.4; }
+
+  /* ─── PAGE HERO ─── */
+  .page-hero { background: var(--navy); padding: 52px 32px; text-align: center; }
+  .page-hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-pale); border: 1px solid rgba(196,151,58,0.25); color: var(--gold); font-size: 12px; letter-spacing: 0.06em; padding: 5px 16px; border-radius: 20px; margin-bottom: 16px; }
+  .page-hero h1 { font-family: var(--serif); font-size: 38px; font-weight: 600; color: var(--white); margin-bottom: 12px; line-height: 1.2; }
+  .page-hero h1 span { color: var(--gold); }
+  .page-hero p { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 560px; margin: 0 auto; line-height: 1.65; }
+
+  /* ─── MAIN ─── */
+  .main { max-width: 860px; margin: 0 auto; padding: 48px 32px 72px; }
+
+  /* ─── AD SLOT ─── */
+  .ad-slot { background: var(--cream-darker); border: 1px dashed var(--border); border-radius: 6px; text-align: center; padding: 12px; font-size: 11px; color: var(--text-light); margin: 24px 0; letter-spacing: 0.04em; }
+
+  /* ─── TOOL CARD ─── */
+  .tool-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 32px; box-shadow: var(--shadow); }
+  .tool-header { background: var(--navy); padding: 20px 28px; display: flex; align-items: center; gap: 16px; }
+  .tool-header-icon { font-size: 28px; }
+  .tool-header-title { font-family: var(--serif); font-size: 20px; color: var(--white); font-weight: 600; }
+  .tool-header-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+  /* ─── PROGRESS ─── */
+  .progress-wrap { padding: 20px 28px 0; }
+  .progress-label { font-size: 12px; color: var(--text-light); margin-bottom: 8px; display: flex; justify-content: space-between; }
+  .progress-bar { height: 4px; background: var(--cream-darker); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.4s ease; }
+
+  /* ─── STEPS ─── */
+  .steps-wrap { padding: 28px; }
+  .step { display: none; }
+  .step.active { display: block; }
+  .step-title { font-family: var(--serif); font-size: 20px; color: var(--navy); margin-bottom: 6px; }
+  .step-sub { font-size: 14px; color: var(--text-light); margin-bottom: 20px; line-height: 1.5; }
+
+  /* ─── FORM ELEMENTS ─── */
+  .form-select { width: 100%; padding: 12px 16px; font-family: var(--sans); font-size: 14px; color: var(--text); background: var(--cream); border: 1px solid var(--border); border-radius: 8px; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23718096' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; transition: border-color 0.15s; }
+  .form-select:focus { outline: none; border-color: var(--gold); }
+  .form-input { width: 100%; padding: 12px 16px; font-family: var(--sans); font-size: 14px; color: var(--text); background: var(--cream); border: 1px solid var(--border); border-radius: 8px; transition: border-color 0.15s; }
+  .form-input:focus { outline: none; border-color: var(--gold); }
+  .options-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .options-grid.three { grid-template-columns: repeat(3, 1fr); }
+  .option-btn { padding: 12px 16px; background: var(--cream); border: 1.5px solid var(--border); border-radius: 8px; font-family: var(--sans); font-size: 13px; color: var(--text-mid); cursor: pointer; transition: all 0.15s; text-align: left; line-height: 1.4; }
+  .option-btn:hover { border-color: var(--gold); color: var(--navy); background: var(--white); }
+  .option-btn.selected { border-color: var(--gold); background: var(--gold-pale); color: var(--navy); font-weight: 500; }
+  .checkbox-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .checkbox-btn { padding: 12px 16px; background: var(--cream); border: 1.5px solid var(--border); border-radius: 8px; font-family: var(--sans); font-size: 13px; color: var(--text-mid); cursor: pointer; transition: all 0.15s; text-align: left; line-height: 1.4; display: flex; align-items: center; gap: 10px; }
+  .checkbox-btn:hover { border-color: var(--gold); color: var(--navy); background: var(--white); }
+  .checkbox-btn.selected { border-color: var(--gold); background: var(--gold-pale); color: var(--navy); }
+  .checkbox-mark { width: 18px; height: 18px; border: 1.5px solid var(--border); border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+  .checkbox-btn.selected .checkbox-mark { background: var(--gold); border-color: var(--gold); color: white; }
+
+  /* ─── WEEKS INPUT ─── */
+  .weeks-input-wrap { display: flex; align-items: center; gap: 12px; }
+  .weeks-input { width: 120px; padding: 12px 16px; font-family: var(--sans); font-size: 18px; font-weight: 500; color: var(--navy); background: var(--cream); border: 1px solid var(--border); border-radius: 8px; text-align: center; transition: border-color 0.15s; }
+  .weeks-input:focus { outline: none; border-color: var(--gold); }
+  .weeks-label { font-size: 16px; color: var(--text-mid); }
+
+  /* ─── NAV BUTTONS ─── */
+  .step-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 28px; border-top: 1px solid var(--border); background: var(--cream); }
+  .btn-back { padding: 10px 20px; background: transparent; border: 1px solid var(--border); border-radius: 7px; font-family: var(--sans); font-size: 14px; color: var(--text-mid); cursor: pointer; transition: all 0.15s; }
+  .btn-back:hover { border-color: var(--navy); color: var(--navy); }
+  .btn-next { padding: 11px 28px; background: var(--navy); border: none; border-radius: 7px; font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--white); cursor: pointer; transition: background 0.15s; }
+  .btn-next:hover { background: var(--navy-mid); }
+  .step-indicator { font-size: 13px; color: var(--text-light); }
+
+  /* ─── RESULTS ─── */
+  #results { display: none; }
+
+  .verdict-above { background: var(--green-bg); border: 1px solid rgba(26,107,69,0.2); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; }
+  .verdict-average { background: var(--amber-bg); border: 1px solid rgba(146,96,10,0.2); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; }
+  .verdict-below { background: var(--red-bg); border: 1px solid rgba(139,26,26,0.2); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; }
+  .verdict-unknown { background: var(--cream-dark); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; margin-bottom: 24px; }
+
+  .verdict-status { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+  .verdict-above .verdict-status { color: var(--green); }
+  .verdict-average .verdict-status { color: var(--amber); }
+  .verdict-below .verdict-status { color: var(--red); }
+  .verdict-title { font-family: var(--serif); font-size: 24px; font-weight: 600; margin-bottom: 10px; }
+  .verdict-above .verdict-title { color: var(--green); }
+  .verdict-average .verdict-title { color: var(--amber); }
+  .verdict-below .verdict-title { color: var(--red); }
+  .verdict-unknown .verdict-title { color: var(--navy); }
+  .verdict-detail { font-size: 14px; line-height: 1.65; }
+  .verdict-above .verdict-detail { color: #1A4A30; }
+  .verdict-average .verdict-detail { color: #6B4A10; }
+  .verdict-below .verdict-detail { color: #5C1A1A; }
+
+  /* ─── BENCHMARK BOX ─── */
+  .benchmark-box { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }
+  .benchmark-title { font-family: var(--serif); font-size: 17px; color: var(--navy); margin-bottom: 20px; }
+  .benchmark-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+  .benchmark-item { background: var(--cream); border-radius: 8px; padding: 14px 16px; text-align: center; }
+  .benchmark-item-label { font-size: 10px; color: var(--text-light); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+  .benchmark-item-val { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--navy); }
+  .benchmark-item-val.good { color: var(--green); }
+  .benchmark-item-val.bad { color: var(--red); }
+  .benchmark-item-val.neutral { color: var(--amber); }
+
+  /* ─── BAR CHART ─── */
+  .bar-chart { margin: 20px 0; }
+  .bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .bar-label { font-size: 12px; color: var(--text-mid); width: 100px; flex-shrink: 0; text-align: right; }
+  .bar-wrap { flex: 1; background: var(--cream-darker); border-radius: 4px; height: 28px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 500; color: white; transition: width 0.8s ease; }
+  .bar-fill.yours { background: var(--navy); }
+  .bar-fill.industry { background: var(--gold); }
+  .bar-fill.above { background: var(--green); }
+
+  /* ─── CONSIDERATIONS ─── */
+  .considerations-box { background: var(--cream-dark); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }
+  .considerations-title { font-family: var(--serif); font-size: 17px; color: var(--navy); margin-bottom: 16px; }
+  .consideration-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .consideration-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .consideration-icon { font-size: 18px; flex-shrink: 0; }
+  .consideration-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
+  .consideration-desc { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+
+  /* ─── NEGOTIATE BOX ─── */
+  .negotiate-box { background: var(--navy); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }
+  .negotiate-title { font-family: var(--serif); font-size: 17px; color: var(--gold); margin-bottom: 10px; }
+  .negotiate-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.7; }
+  .negotiate-tips { margin-top: 14px; }
+  .negotiate-tip { font-size: 13px; color: rgba(255,255,255,0.65); display: flex; gap: 8px; margin-bottom: 8px; line-height: 1.4; }
+  .negotiate-tip-icon { flex-shrink: 0; }
+
+  /* ─── ATTORNEY SECTION ─── */
+  .attorney-section { background: var(--cream-dark); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin: 28px 0; }
+  .attorney-title { font-family: var(--serif); font-size: 17px; color: var(--navy); margin-bottom: 6px; }
+  .attorney-sub { font-size: 13px; color: var(--text-light); margin-bottom: 18px; }
+  .attorney-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .attorney-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 14px; text-align: center; transition: border-color 0.15s; }
+  .attorney-card:hover { border-color: var(--gold); box-shadow: var(--shadow); }
+  .attorney-name { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .attorney-desc { font-size: 12px; color: var(--text-light); margin-bottom: 10px; }
+  .attorney-btn { display: block; background: var(--navy); color: var(--white); font-size: 12px; font-weight: 500; padding: 8px 12px; border-radius: 6px; transition: background 0.15s; }
+  .attorney-btn:hover { background: var(--navy-mid); }
+
+  /* ─── SEO ─── */
+  .seo-section { margin-top: 48px; }
+  .seo-section h2 { font-family: var(--serif); font-size: 26px; color: var(--navy); margin-bottom: 14px; }
+  .seo-section h3 { font-family: var(--serif); font-size: 18px; color: var(--navy); margin: 24px 0 10px; }
+  .seo-section p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
+
+  /* ─── DISCLAIMER & FOOTER ─── */
+  .disclaimer-strip { background: var(--cream-darker); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 16px 32px; text-align: center; }
+  .disclaimer-strip p { font-size: 12px; color: var(--text-light); max-width: 800px; margin: 0 auto; line-height: 1.6; }
+  .disclaimer-strip a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; }
+  footer { background: var(--navy); padding: 56px 32px 32px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand-name { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .footer-brand-name .legal { color: var(--gold); }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 12px; font-style: italic; }
+  .footer-disclaimer-note { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6; max-width: 280px; }
+  .footer-col-heading { font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 10px; transition: color 0.12s; }
+  .footer-link:hover { color: var(--white); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+  .footer-bottom-links { display: flex; gap: 20px; }
+  .footer-bottom-link { font-size: 12px; color: rgba(255,255,255,0.3); transition: color 0.12s; }
+  .footer-bottom-link:hover { color: rgba(255,255,255,0.6); }
+
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 26px; }
+    .main { padding: 32px 16px; }
+    .options-grid, .checkbox-grid { grid-template-columns: 1fr; }
+    .options-grid.three { grid-template-columns: 1fr 1fr; }
+    .benchmark-grid { grid-template-columns: 1fr; }
+    .attorney-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
+        <polygon points="2,13 18,2 34,13" fill="#0D1B35"/>
+        <rect x="6"  y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="13" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="20" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="27" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+        <rect x="2"  y="29" width="32" height="3.5" fill="#0D1B35" rx="1"/>
+      </svg>
+      <div class="logo-divider"></div>
+      <div class="logo-text"><span class="free">Free</span><span class="legal">Legal</span><span class="tools">Tools</span></div>
+    </a>
+    <nav>
+      <a href="index.html" class="nav-item">Home</a>
+      <div class="nav-item">
+        Tools <span class="nav-arrow">▾</span>
+        <div class="mega-menu">
+          <a href="llc-comparison.html" class="mega-menu-item">
+            <div class="mega-icon">🏛️</div>
+            <div><div class="mega-item-title">LLC State Comparison Tool</div><div class="mega-item-desc">Find the best state to form your LLC based on fees, privacy, and taxes</div></div>
+          </a>
+          <a href="statute-of-limitations.html" class="mega-menu-item">
+            <div class="mega-icon">⏱️</div>
+            <div><div class="mega-item-title">Statute of Limitations Lookup</div><div class="mega-item-desc">Find your exact legal deadline by state and case type</div></div>
+          </a>
+          <a href="non-compete-checker.html" class="mega-menu-item">
+            <div class="mega-icon">📋</div>
+            <div><div class="mega-item-title">Non-Compete Enforceability Checker</div><div class="mega-item-desc">Find out if your non-compete agreement is likely enforceable</div></div>
+          </a>
+          <a href="severance-evaluator.html" class="mega-menu-item">
+            <div class="mega-icon">💼</div>
+            <div><div class="mega-item-title">Severance Package Evaluator</div><div class="mega-item-desc">Find out if your severance offer is fair for your situation</div></div>
+          </a>
+        </div>
+      </div>
+      <a href="about.html" class="nav-item">About</a>
+      <a href="disclaimer.html" class="nav-item">Disclaimer</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero">
+  <div class="page-hero-eyebrow">💼 Free Tool · Industry Benchmarks · No Sign Up</div>
+  <h1>Severance Package <span>Evaluator</span></h1>
+  <p>Getting laid off is stressful enough without wondering if you're being shortchanged. Find out if your severance offer is fair, below average, or worth negotiating — based on your industry, tenure, and job level.</p>
+</div>
+
+<!-- ─── MAIN ─── -->
+<div class="main">
+
+  <div class="ad-slot">Advertisement — Google AdSense</div>
+
+  <!-- ─── TOOL ─── -->
+  <div class="tool-card" id="tool-card">
+    <div class="tool-header">
+      <div class="tool-header-icon">💼</div>
+      <div>
+        <div class="tool-header-title">Severance Package Evaluator</div>
+        <div class="tool-header-sub">Free · No sign up · Personalized evaluation in under 3 minutes</div>
+      </div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="progress-text">Step 1 of 10</span>
+        <span id="progress-pct">10%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:10%"></div></div>
+    </div>
+
+    <div class="steps-wrap">
+
+      <!-- Step 1: Situation -->
+      <div class="step active" id="step-1">
+        <div class="step-title">What is your situation?</div>
+        <div class="step-sub">Understanding the circumstances of your departure helps us give you the most relevant evaluation.</div>
+        <div class="options-grid" id="situation-options">
+          <button class="option-btn" onclick="selectOption('situation','laid-off-offer',this)">📦 I was laid off and received a severance offer</button>
+          <button class="option-btn" onclick="selectOption('situation','laid-off-no-offer',this)">📦 I was laid off and have not received an offer yet</button>
+          <button class="option-btn" onclick="selectOption('situation','fired-offer',this)">⚠️ I was fired and received a severance offer</button>
+          <button class="option-btn" onclick="selectOption('situation','resigned-offer',this)">🚪 I resigned and received a severance offer</button>
+          <button class="option-btn" onclick="selectOption('situation','negotiating',this)">🤝 I'm negotiating my exit package</button>
+          <button class="option-btn" onclick="selectOption('situation','position-eliminated',this)">❌ My position was eliminated</button>
+          <button class="option-btn" onclick="selectOption('situation','buyout',this)">💰 I took a voluntary buyout offer</button>
+          <button class="option-btn" onclick="selectOption('situation','unsure',this)">🤷 I'm not sure</button>
+        </div>
+      </div>
+
+      <!-- Step 2: State -->
+      <div class="step" id="step-2">
+        <div class="step-title">What state do you work in?</div>
+        <div class="step-sub">Some states have specific laws about final paychecks, PTO payout, and severance obligations that affect your rights.</div>
+        <select class="form-select" id="state-select">
+          <option value="">— Select your state —</option>
+          <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+          <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+          <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+          <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+          <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+          <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+          <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+          <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+          <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+          <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+          <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+          <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+          <option>Wisconsin</option><option>Wyoming</option>
+        </select>
+      </div>
+
+      <!-- Step 3: Job Level -->
+      <div class="step" id="step-3">
+        <div class="step-title">What is your job level?</div>
+        <div class="step-sub">Severance benchmarks vary significantly by seniority. Senior executives typically receive more generous packages than entry-level employees.</div>
+        <div class="options-grid" id="level-options">
+          <button class="option-btn" onclick="selectOption('level','hourly',this)">👤 Entry level / Hourly worker</button>
+          <button class="option-btn" onclick="selectOption('level','mid',this)">👤 Mid level / Salaried employee</button>
+          <button class="option-btn" onclick="selectOption('level','manager',this)">👤 Manager / Supervisor</button>
+          <button class="option-btn" onclick="selectOption('level','director',this)">👤 Director / VP</button>
+          <button class="option-btn" onclick="selectOption('level','executive',this)">👤 C-Suite / Executive</button>
+          <button class="option-btn" onclick="selectOption('level','contractor',this)">👤 Independent Contractor / 1099</button>
+          <button class="option-btn" onclick="selectOption('level','union',this)">👤 Union Member</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Industry -->
+      <div class="step" id="step-4">
+        <div class="step-title">What industry do you work in?</div>
+        <div class="step-sub">Severance norms differ widely by industry. Tech and finance companies typically offer more generous packages than retail or food service.</div>
+        <div class="options-grid" id="industry-options">
+          <button class="option-btn" onclick="selectOption('industry','tech',this)">💻 Technology / Software</button>
+          <button class="option-btn" onclick="selectOption('industry','finance',this)">💰 Financial Services</button>
+          <button class="option-btn" onclick="selectOption('industry','healthcare',this)">🏥 Healthcare / Medical</button>
+          <button class="option-btn" onclick="selectOption('industry','legal',this)">⚖️ Legal / Law</button>
+          <button class="option-btn" onclick="selectOption('industry','manufacturing',this)">🏭 Manufacturing</button>
+          <button class="option-btn" onclick="selectOption('industry','retail',this)">🛍️ Retail / Customer Service</button>
+          <button class="option-btn" onclick="selectOption('industry','food',this)">🍽️ Food Service / Hospitality</button>
+          <button class="option-btn" onclick="selectOption('industry','construction',this)">🔨 Construction / Trades</button>
+          <button class="option-btn" onclick="selectOption('industry','education',this)">🎓 Education</button>
+          <button class="option-btn" onclick="selectOption('industry','government',this)">🏛️ Government / Public Sector</button>
+          <button class="option-btn" onclick="selectOption('industry','nonprofit',this)">❤️ Non-Profit</button>
+          <button class="option-btn" onclick="selectOption('industry','media',this)">🎬 Media / Entertainment</button>
+          <button class="option-btn" onclick="selectOption('industry','realestate',this)">🏠 Real Estate</button>
+          <button class="option-btn" onclick="selectOption('industry','sales',this)">📊 Sales / Marketing</button>
+          <button class="option-btn" onclick="selectOption('industry','transportation',this)">🚛 Transportation / Logistics</button>
+          <button class="option-btn" onclick="selectOption('industry','other',this)">🤷 Other</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Tenure -->
+      <div class="step" id="step-5">
+        <div class="step-title">How long were you employed there?</div>
+        <div class="step-sub">Length of service is the most common factor in calculating severance. The standard formula is 1-2 weeks of pay per year of service.</div>
+        <div class="options-grid" id="tenure-options">
+          <button class="option-btn" onclick="selectOption('tenure','under6m',this)">📅 Less than 6 months</button>
+          <button class="option-btn" onclick="selectOption('tenure','6to12m',this)">📅 6 months to 1 year</button>
+          <button class="option-btn" onclick="selectOption('tenure','1to2y',this)">📅 1 to 2 years</button>
+          <button class="option-btn" onclick="selectOption('tenure','2to5y',this)">📅 2 to 5 years</button>
+          <button class="option-btn" onclick="selectOption('tenure','5to10y',this)">📅 5 to 10 years</button>
+          <button class="option-btn" onclick="selectOption('tenure','10to15y',this)">📅 10 to 15 years</button>
+          <button class="option-btn" onclick="selectOption('tenure','15to20y',this)">📅 15 to 20 years</button>
+          <button class="option-btn" onclick="selectOption('tenure','over20y',this)">📅 More than 20 years</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Salary -->
+      <div class="step" id="step-6">
+        <div class="step-title">What was your annual salary?</div>
+        <div class="step-sub">This helps us calculate the dollar value of your severance and put it in context. All information stays anonymous.</div>
+        <div class="options-grid" id="salary-options">
+          <button class="option-btn" onclick="selectOption('salary','under30',this)">💵 Under $30,000</button>
+          <button class="option-btn" onclick="selectOption('salary','30to50',this)">💵 $30,000 – $50,000</button>
+          <button class="option-btn" onclick="selectOption('salary','50to75',this)">💵 $50,000 – $75,000</button>
+          <button class="option-btn" onclick="selectOption('salary','75to100',this)">💵 $75,000 – $100,000</button>
+          <button class="option-btn" onclick="selectOption('salary','100to150',this)">💵 $100,000 – $150,000</button>
+          <button class="option-btn" onclick="selectOption('salary','150to200',this)">💵 $150,000 – $200,000</button>
+          <button class="option-btn" onclick="selectOption('salary','over200',this)">💵 Over $200,000</button>
+          <button class="option-btn" onclick="selectOption('salary','prefer-not',this)">🔒 Prefer not to say</button>
+        </div>
+      </div>
+
+      <!-- Step 7: Company Size -->
+      <div class="step" id="step-7">
+        <div class="step-title">How large is your employer?</div>
+        <div class="step-sub">Larger companies typically offer more structured and more generous severance packages than small businesses.</div>
+        <div class="options-grid" id="size-options">
+          <button class="option-btn" onclick="selectOption('size','small',this)">🏢 Small business (under 50 employees)</button>
+          <button class="option-btn" onclick="selectOption('size','medium',this)">🏢 Medium business (50–500 employees)</button>
+          <button class="option-btn" onclick="selectOption('size','large',this)">🏢 Large business (500–5,000 employees)</button>
+          <button class="option-btn" onclick="selectOption('size','enterprise',this)">🏢 Enterprise (over 5,000 employees)</button>
+          <button class="option-btn" onclick="selectOption('size','unsure',this)">🤷 I'm not sure</button>
+        </div>
+      </div>
+
+      <!-- Step 8: Weeks Offered -->
+      <div class="step" id="step-8">
+        <div class="step-title">How many weeks of pay were you offered?</div>
+        <div class="step-sub">Enter the number of weeks of base pay included in your severance offer. If you haven't received an offer yet, enter 0.</div>
+        <div style="margin-bottom:16px;">
+          <div class="weeks-input-wrap">
+            <input type="number" class="weeks-input" id="weeks-offered" min="0" max="200" placeholder="0">
+            <span class="weeks-label">weeks of pay</span>
+          </div>
+        </div>
+        <div style="background:var(--cream-dark); border-radius:8px; padding:12px 14px; margin-top:8px;">
+          <p style="font-size:13px; color:var(--text-light); line-height:1.5;">💡 <strong>Tip:</strong> If your offer is expressed in months, multiply by 4.3 to convert to weeks. For example, 3 months = approximately 13 weeks.</p>
+        </div>
+      </div>
+
+      <!-- Step 9: Offer Includes -->
+      <div class="step" id="step-9">
+        <div class="step-title">What does your offer include? (select all that apply)</div>
+        <div class="step-sub">Beyond base pay, severance packages often include additional benefits. Each one adds value to your total package.</div>
+        <div class="checkbox-grid" id="benefits-options">
+          <button class="checkbox-btn" onclick="toggleBenefit('health',this)"><span class="checkbox-mark">✓</span>Continuation of health insurance (COBRA paid)</button>
+          <button class="checkbox-btn" onclick="toggleBenefit('pto',this)"><span class="checkbox-mark">✓</span>Payment of unused vacation / PTO</button>
+          <button class="checkbox-btn" onclick="toggleBenefit('life',this)"><span class="checkbox-mark">✓</span>Continuation of life insurance</button>
+          <button class="checkbox-btn" onclick="toggleBenefit('outplacement',this)"><span class="checkbox-mark">✓</span>Outplacement / career services</button>
+          <button class="checkbox-btn" onclick="toggleBenefit('stock',this)"><span class="checkbox-mark">✓</span>Stock vesting acceleration</button>
+          <button class="checkbox-btn" onclick="toggleBenefit('bonus',this)"><span class="checkbox-mark">✓</span>Bonus payment</button>
+          <button class="checkbox-btn" onclick="toggleBenefit('none',this)"><span class="checkbox-mark">✓</span>None of the above</button>
+          <button class="checkbox-btn" onclick="toggleBenefit('unsure',this)"><span class="checkbox-mark">✓</span>I'm not sure what's included</button>
+        </div>
+      </div>
+
+      <!-- Step 10: Release of Claims -->
+      <div class="step" id="step-10">
+        <div class="step-title">Are you being asked to sign a release of claims?</div>
+        <div class="step-sub">A release of claims means you give up your right to sue your employer for anything related to your employment. This is a significant legal right — and signing it is worth more than people realize.</div>
+        <div class="options-grid three" id="release-options">
+          <button class="option-btn" onclick="selectOption('release','yes',this)">⚠️ Yes, I must sign a release</button>
+          <button class="option-btn" onclick="selectOption('release','no',this)">✅ No release required</button>
+          <button class="option-btn" onclick="selectOption('release','unsure',this)">🤷 I'm not sure</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="step-nav">
+      <button class="btn-back" id="btn-back" onclick="prevStep()" style="visibility:hidden">← Back</button>
+      <span class="step-indicator" id="step-indicator">Step 1 of 10</span>
+      <button class="btn-next" id="btn-next" onclick="nextStep()">Next →</button>
+    </div>
+  </div>
+
+  <!-- ─── RESULTS ─── -->
+  <div id="results">
+    <div id="verdict-card"></div>
+
+    <div class="benchmark-box">
+      <div class="benchmark-title">Your Package vs. Industry Benchmarks</div>
+      <div class="benchmark-grid" id="benchmark-grid"></div>
+      <div class="bar-chart" id="bar-chart"></div>
+    </div>
+
+    <div class="considerations-box">
+      <div class="considerations-title">Important Considerations for Your Situation</div>
+      <div id="considerations-list"></div>
+    </div>
+
+    <div class="negotiate-box" id="negotiate-box"></div>
+
+    <div class="ad-slot">Advertisement — Google AdSense</div>
+
+    <div class="attorney-section">
+      <div class="attorney-title">Before You Sign — Talk to an Employment Attorney</div>
+      <div class="attorney-sub">A severance agreement with a release of claims is a legally binding contract. Many employment attorneys offer free or low-cost consultations and can review your agreement, identify issues, and help you negotiate better terms.</div>
+      <div class="attorney-grid">
+        <div class="attorney-card">
+          <div class="attorney-name">Avvo</div>
+          <div class="attorney-desc">Free attorney profiles and Q&A</div>
+          <a href="https://www.avvo.com" target="_blank" rel="noopener noreferrer" class="attorney-btn">Find an Attorney →</a>
+        </div>
+        <div class="attorney-card">
+          <div class="attorney-name">FindLaw</div>
+          <div class="attorney-desc">Search employment attorneys by state</div>
+          <a href="https://lawyers.findlaw.com" target="_blank" rel="noopener noreferrer" class="attorney-btn">Find an Attorney →</a>
+        </div>
+        <div class="attorney-card">
+          <div class="attorney-name">LegalMatch</div>
+          <div class="attorney-desc">Get matched with local employment lawyers</div>
+          <a href="https://www.legalmatch.com" target="_blank" rel="noopener noreferrer" class="attorney-btn">Get Matched →</a>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="resetTool()" style="background:var(--cream-dark); border:1px solid var(--border); border-radius:7px; padding:10px 20px; font-family:var(--sans); font-size:14px; color:var(--text-mid); cursor:pointer; margin-bottom:32px;">← Evaluate Another Package</button>
+  </div>
+
+  <!-- ─── SEO COPY ─── -->
+  <div class="seo-section">
+    <h2>Is Your Severance Package Fair?</h2>
+    <p>Getting laid off is stressful enough without having to wonder if you're being shortchanged on your way out the door. Most people sign their severance agreement without question — not because they're satisfied, but because they simply don't know if the offer is fair.</p>
+    <p>The truth is severance packages vary enormously by industry, job level, company size, and years of service. What's standard for a Director at a Fortune 500 technology company looks very different from what's typical for a mid-level employee at a small retail business. Without context you have no way of knowing where your offer stands.</p>
+
+    <h3>What is the Standard Severance Formula?</h3>
+    <p>The most commonly cited benchmark for severance is 1-2 weeks of pay per year of service. So an employee with 5 years of service might expect 5-10 weeks of severance pay. However this is just a baseline — actual packages vary significantly based on seniority, industry, company size, and negotiation. Senior executives often negotiate 3-6 months per year of service and sometimes much more.</p>
+
+    <h3>Are Employers Required to Pay Severance?</h3>
+    <p>In most cases, no. Federal law does not require employers to pay severance. However if your employer has a written severance policy or your employment contract includes severance provisions, they may be contractually obligated to pay. Some states have additional protections — consult an employment attorney if you believe you are owed severance that wasn't offered.</p>
+
+    <h3>What is a Release of Claims?</h3>
+    <p>A release of claims is a legal agreement where you waive your right to sue your employer for claims related to your employment. This is extremely valuable to employers — and that value should be reflected in your severance. If you're being asked to sign a release, you have leverage to negotiate a better package. Under the ADEA (for workers over 40), you must be given at least 21 days to consider a release agreement and 7 days to revoke it after signing.</p>
+
+    <h3>Should I Sign My Severance Agreement Right Away?</h3>
+    <p>No. Don't sign anything until you understand what you're agreeing to and whether the terms are fair. Take the full time allowed to review the agreement. Consider having an employment attorney review it — many offer free consultations. Once signed, a release is very difficult to undo.</p>
+
+    <h3>What Can I Negotiate in a Severance Agreement?</h3>
+    <p>More than most people realize. Beyond the number of weeks of pay, you can often negotiate: continuation of health insurance, payment of unused PTO, extended stock vesting, outplacement services, the wording of the release (to exclude certain claims), and the reference letter language. Even if your employer says the offer is "standard" and "non-negotiable," it almost always is negotiable — they simply don't lead with that.</p>
+
+    <h3>Frequently Asked Questions</h3>
+
+    <h3>Can my employer take back a severance offer?</h3>
+    <p>Generally yes — until you sign, an employer can withdraw or modify a severance offer. This is why it's important not to delay unnecessarily in responding, while still taking time to review carefully and consult an attorney if needed.</p>
+
+    <h3>Does accepting severance affect my unemployment benefits?</h3>
+    <p>It depends on your state. Some states offset unemployment benefits by severance payments during the period covered. Others do not. Check with your state's unemployment agency before making decisions about timing.</p>
+
+    <h3>What if I was over 40 when I was laid off?</h3>
+    <p>Workers over 40 have additional protections under the Age Discrimination in Employment Act (ADEA). Your employer must give you at least 21 days to review a severance agreement and 7 days to revoke it after signing. In group layoffs, they must give you 45 days. An employment attorney can advise you on whether age discrimination may have been a factor in your layoff.</p>
+  </div>
+
+</div>
+
+<!-- ─── DISCLAIMER ─── -->
+<div class="disclaimer-strip">
+  <p><strong>Important:</strong> FreeLegalTools.com provides general legal information for educational purposes only. Severance benchmarks are estimates based on general industry data and may not reflect your specific situation. Always consult a licensed employment attorney before signing any severance agreement. <a href="disclaimer.html">Read full disclaimer →</a></p>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Free<span class="legal">Legal</span>Tools</div>
+        <p class="footer-tagline">"Free legal tools. No lawyer needed."</p>
+        <p class="footer-disclaimer-note">General legal information only. Not legal advice. Not a law firm. Always consult a licensed attorney for your specific situation.</p>
+      </div>
+      <div>
+        <div class="footer-col-heading">Our Tools</div>
+        <a href="llc-comparison.html" class="footer-link">LLC State Comparison</a>
+        <a href="statute-of-limitations.html" class="footer-link">Statute of Limitations</a>
+        <a href="non-compete-checker.html" class="footer-link">Non-Compete Checker</a>
+        <a href="severance-evaluator.html" class="footer-link">Severance Evaluator</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Site</div>
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="disclaimer.html" class="footer-link">Disclaimer</a>
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+      <div>
+        <div class="footer-col-heading">Legal Notice</div>
+        <p class="footer-disclaimer-note" style="font-size:12px;">FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this site constitutes legal advice or creates an attorney-client relationship.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 FreeLegalTools.com · All Rights Reserved · Not a law firm · Not legal advice</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
+        <a href="disclaimer.html" class="footer-bottom-link">Disclaimer</a>
+        <a href="contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── BENCHMARK DATA ────────────────────────────────────────────
+// Typical weeks per year of service by level and industry
+const benchmarks = {
+  levels: {
+    hourly:    { min: 0.5, typical: 1,   max: 2   },
+    mid:       { min: 1,   typical: 1.5, max: 3   },
+    manager:   { min: 1,   typical: 2,   max: 4   },
+    director:  { min: 2,   typical: 3,   max: 6   },
+    executive: { min: 3,   typical: 4,   max: 8   },
+    contractor:{ min: 0,   typical: 1,   max: 2   },
+    union:     { min: 1,   typical: 2,   max: 4   }
+  },
+  industryMultiplier: {
+    tech:          1.4,
+    finance:       1.3,
+    healthcare:    1.1,
+    legal:         1.2,
+    manufacturing: 1.0,
+    retail:        0.7,
+    food:          0.6,
+    construction:  0.8,
+    education:     0.9,
+    government:    1.1,
+    nonprofit:     0.8,
+    media:         1.0,
+    realestate:    0.9,
+    sales:         1.0,
+    transportation:0.8,
+    other:         1.0
+  },
+  tenureYears: {
+    under6m: 0.5, '6to12m': 1, '1to2y': 1.5, '2to5y': 3.5,
+    '5to10y': 7, '10to15y': 12, '15to20y': 17, over20y: 22
+  },
+  sizeMultiplier: {
+    small: 0.7, medium: 0.9, large: 1.1, enterprise: 1.3, unsure: 1.0
+  },
+  salaryMidpoint: {
+    under30: 25000, '30to50': 40000, '50to75': 62500,
+    '75to100': 87500, '100to150': 125000, '150to200': 175000,
+    'over200': 225000, 'prefer-not': null
+  }
+};
+
+const selectedBenefits = new Set();
+
+function toggleBenefit(key, btn) {
+  if (selectedBenefits.has(key)) {
+    selectedBenefits.delete(key);
+    btn.classList.remove('selected');
+  } else {
+    selectedBenefits.add(key);
+    btn.classList.add('selected');
+  }
+}
+
+// ─── TOOL LOGIC ───────────────────────────────────────────────
+let currentStep = 1;
+const totalSteps = 10;
+const answers = {};
+
+function updateProgress() {
+  const pct = Math.round((currentStep / totalSteps) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-text').textContent = `Step ${currentStep} of ${totalSteps}`;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('step-indicator').textContent = `Step ${currentStep} of ${totalSteps}`;
+  document.getElementById('btn-back').style.visibility = currentStep > 1 ? 'visible' : 'hidden';
+  document.getElementById('btn-next').textContent = currentStep === totalSteps ? 'Evaluate My Package →' : 'Next →';
+}
+
+function selectOption(key, value, btn) {
+  answers[key] = value;
+  const parent = btn.parentElement;
+  parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function nextStep() {
+  const validations = {
+    1: () => answers['situation'],
+    2: () => document.getElementById('state-select').value,
+    3: () => answers['level'],
+    4: () => answers['industry'],
+    5: () => answers['tenure'],
+    6: () => answers['salary'],
+    7: () => answers['size'],
+    8: () => document.getElementById('weeks-offered').value !== '',
+    9: () => true, // optional
+    10: () => answers['release']
+  };
+
+  const messages = {
+    1: 'Please select your situation.',
+    2: 'Please select your state.',
+    3: 'Please select your job level.',
+    4: 'Please select your industry.',
+    5: 'Please select your tenure.',
+    6: 'Please select your salary range.',
+    7: 'Please select your company size.',
+    8: 'Please enter the number of weeks offered (enter 0 if no offer received).',
+    10: 'Please make a selection.'
+  };
+
+  if (!validations[currentStep]()) {
+    alert(messages[currentStep] || 'Please make a selection.');
+    return;
+  }
+
+  if (currentStep === totalSteps) {
+    answers['state'] = document.getElementById('state-select').value;
+    answers['weeks'] = parseFloat(document.getElementById('weeks-offered').value) || 0;
+    answers['benefits'] = Array.from(selectedBenefits);
+    showResults();
+    return;
+  }
+
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  currentStep++;
+  document.getElementById('step-' + currentStep).classList.add('active');
+  updateProgress();
+}
+
+function prevStep() {
+  document.getElementById('step-' + currentStep).classList.remove('active');
+  currentStep--;
+  document.getElementById('step-' + currentStep).classList.add('active');
+  updateProgress();
+}
+
+function showResults() {
+  document.getElementById('tool-card').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+
+  const level = answers['level'] || 'mid';
+  const industry = answers['industry'] || 'other';
+  const tenure = answers['tenure'] || '2to5y';
+  const salary = answers['salary'] || 'prefer-not';
+  const size = answers['size'] || 'unsure';
+  const weeksOffered = answers['weeks'];
+  const situation = answers['situation'];
+  const release = answers['release'];
+  const benefits = answers['benefits'] || [];
+
+  const levelData = benchmarks.levels[level] || benchmarks.levels['mid'];
+  const industryMult = benchmarks.industryMultiplier[industry] || 1.0;
+  const sizeMult = benchmarks.sizeMultiplier[size] || 1.0;
+  const tenureYears = benchmarks.tenureYears[tenure] || 3;
+  const salaryMidpoint = benchmarks.salaryMidpoint[salary];
+
+  const typicalWeeksPerYear = levelData.typical * industryMult * sizeMult;
+  const minWeeks = Math.round(levelData.min * tenureYears * industryMult * sizeMult);
+  const typicalWeeks = Math.round(typicalWeeksPerYear * tenureYears);
+  const maxWeeks = Math.round(levelData.max * tenureYears * industryMult * sizeMult);
+
+  const hasOffer = situation !== 'laid-off-no-offer' && weeksOffered >= 0;
+  const offerVsTypical = hasOffer ? weeksOffered - typicalWeeks : null;
+
+  // Verdict
+  let verdictClass, verdictStatus, verdictTitle, verdictDetail;
+
+  if (!hasOffer || weeksOffered === 0) {
+    verdictClass = 'verdict-unknown';
+    verdictStatus = '📊 Benchmark Analysis';
+    verdictTitle = `Typical package for your profile: ${typicalWeeks}–${maxWeeks} weeks`;
+    verdictDetail = `Based on your job level (${level.replace('-',' ')}), ${industry} industry, ${size} company, and ${tenureYears} years of tenure, a typical severance package would be <strong>${minWeeks}–${typicalWeeks} weeks</strong> of pay with a generous package reaching <strong>${maxWeeks} weeks</strong>. Use this as your baseline when negotiating.`;
+  } else if (weeksOffered >= maxWeeks) {
+    verdictClass = 'verdict-above';
+    verdictStatus = '✅ Above Average';
+    verdictTitle = `Your offer is above the typical range`;
+    verdictDetail = `You were offered <strong>${weeksOffered} weeks</strong>. The typical range for someone with your profile is ${minWeeks}–${typicalWeeks} weeks. Your offer of ${weeksOffered} weeks exceeds the benchmark — this is a solid package. Review all terms carefully before signing, particularly any release of claims.`;
+  } else if (weeksOffered >= typicalWeeks) {
+    verdictClass = 'verdict-above';
+    verdictStatus = '✅ At or Above Average';
+    verdictTitle = `Your offer is at or above the typical benchmark`;
+    verdictDetail = `You were offered <strong>${weeksOffered} weeks</strong>. The typical benchmark for your profile is approximately ${typicalWeeks} weeks. Your offer meets or exceeds this standard. You may still be able to negotiate additional benefits like health insurance continuation or outplacement services.`;
+  } else if (weeksOffered >= minWeeks) {
+    verdictClass = 'verdict-average';
+    verdictStatus = '⚠️ Below Average';
+    verdictTitle = `Your offer is below the typical benchmark`;
+    verdictDetail = `You were offered <strong>${weeksOffered} weeks</strong>. The typical benchmark for your profile is approximately ${typicalWeeks} weeks, with a range of ${minWeeks}–${maxWeeks} weeks. Your offer is below average for your situation — <strong>you likely have room to negotiate</strong>. Consider asking for ${typicalWeeks}–${maxWeeks} weeks or additional benefits.`;
+  } else {
+    verdictClass = 'verdict-below';
+    verdictStatus = '⚠️ Significantly Below Average';
+    verdictTitle = `Your offer is significantly below the typical benchmark`;
+    verdictDetail = `You were offered <strong>${weeksOffered} weeks</strong>. The typical benchmark for your profile is ${typicalWeeks} weeks — your offer is significantly below this standard. <strong>Don't sign yet.</strong> You have meaningful room to negotiate, and consulting an employment attorney before responding could pay dividends.`;
+  }
+
+  document.getElementById('verdict-card').innerHTML = `
+    <div class="${verdictClass}" style="border-radius:var(--radius); padding:28px; margin-bottom:24px;">
+      <div class="verdict-status">${verdictStatus}</div>
+      <div class="verdict-title">${verdictTitle}</div>
+      <div class="verdict-detail">${verdictDetail}</div>
+    </div>
+  `;
+
+  // Benchmark grid
+  const salaryText = salaryMidpoint
+    ? `$${Math.round(salaryMidpoint * typicalWeeks / 52).toLocaleString()} – $${Math.round(salaryMidpoint * maxWeeks / 52).toLocaleString()}`
+    : 'N/A';
+
+  document.getElementById('benchmark-grid').innerHTML = `
+    <div class="benchmark-item">
+      <div class="benchmark-item-label">Your Offer</div>
+      <div class="benchmark-item-val ${hasOffer && weeksOffered > 0 ? (weeksOffered >= typicalWeeks ? 'good' : 'bad') : ''}">${hasOffer && weeksOffered > 0 ? weeksOffered + ' weeks' : 'Not yet'}</div>
+    </div>
+    <div class="benchmark-item">
+      <div class="benchmark-item-label">Typical Benchmark</div>
+      <div class="benchmark-item-val neutral">${typicalWeeks} weeks</div>
+    </div>
+    <div class="benchmark-item">
+      <div class="benchmark-item-label">Generous Range</div>
+      <div class="benchmark-item-val">${typicalWeeks}–${maxWeeks} weeks</div>
+    </div>
+  `;
+
+  // Bar chart
+  const maxBar = Math.max(weeksOffered, maxWeeks, 1);
+  const yourPct = Math.round((weeksOffered / maxBar) * 100);
+  const typicalPct = Math.round((typicalWeeks / maxBar) * 100);
+  const maxPct = Math.round((maxWeeks / maxBar) * 100);
+
+  document.getElementById('bar-chart').innerHTML = `
+    ${hasOffer && weeksOffered > 0 ? `
+    <div class="bar-row">
+      <div class="bar-label">Your offer</div>
+      <div class="bar-wrap"><div class="bar-fill yours" style="width:${yourPct}%">${weeksOffered}w</div></div>
+    </div>` : ''}
+    <div class="bar-row">
+      <div class="bar-label">Typical</div>
+      <div class="bar-wrap"><div class="bar-fill industry" style="width:${typicalPct}%">${typicalWeeks}w</div></div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Generous</div>
+      <div class="bar-wrap"><div class="bar-fill above" style="width:${maxPct}%">${maxWeeks}w</div></div>
+    </div>
+    <div style="font-size:11px; color:var(--text-light); margin-top:8px;">Based on your job level, ${industry} industry, ${size} company, and ${tenureYears} years of tenure.</div>
+  `;
+
+  // Considerations
+  const considerations = [];
+
+  if (release === 'yes') considerations.push({ icon: '⚖️', title: 'You are being asked to sign a release of claims', desc: 'This is significant legal leverage — you are giving up your right to sue. Under the ADEA (if you are over 40), you have at least 21 days to review the agreement and 7 days to revoke after signing. Have an attorney review it before signing.' });
+  if (situation === 'laid-off' || situation === 'position-eliminated') considerations.push({ icon: '📋', title: 'Layoff / Position Elimination', desc: 'When a position is eliminated, employers are generally more willing to negotiate because the termination was not performance-based. This typically gives you more leverage.' });
+  if (situation === 'fired-offer') considerations.push({ icon: '⚠️', title: 'Terminated for cause', desc: 'Termination for cause typically results in lower severance offers. However if you believe the stated reason was pretextual or discriminatory, consult an employment attorney before signing anything.' });
+  if (benefits.includes('health')) considerations.push({ icon: '🏥', title: 'Health insurance continuation included', desc: 'Employer-paid COBRA coverage can be worth $500-1,500+ per month depending on your plan. This is a significant benefit — factor it into your total package value.' });
+  if (!benefits.includes('health') && !benefits.includes('unsure') && !benefits.includes('none')) considerations.push({ icon: '🏥', title: 'Health insurance continuation not included', desc: 'Negotiating for employer-paid COBRA coverage for 3-6 months is one of the most valuable additions you can request. Out-of-pocket COBRA can exceed $700-2,000/month for families.' });
+  if (benefits.includes('pto')) considerations.push({ icon: '📅', title: 'Unused PTO payment included', desc: 'Most states require payout of accrued vacation on termination regardless of any policy. Make sure the amount reflects all accrued time.' });
+  considerations.push({ icon: '⏰', title: 'Don\'t sign under pressure', desc: 'Employers sometimes create urgency to prevent employees from consulting an attorney. You are entitled to take reasonable time to review any severance agreement. Federal law gives workers over 40 a minimum of 21 days.' });
+
+  document.getElementById('considerations-list').innerHTML = considerations.map(c => `
+    <div class="consideration-item">
+      <div class="consideration-icon">${c.icon}</div>
+      <div>
+        <div class="consideration-title">${c.title}</div>
+        <div class="consideration-desc">${c.desc}</div>
+      </div>
+    </div>
+  `).join('');
+
+  // Negotiate box
+  const negotiateTarget = weeksOffered < typicalWeeks ? typicalWeeks : maxWeeks;
+  document.getElementById('negotiate-box').innerHTML = `
+    <div class="negotiate-title">💡 Negotiation Tips for Your Situation</div>
+    <div class="negotiate-text">Even if your employer says the offer is "standard" and "non-negotiable" — it almost always is. Here's how to approach it:</div>
+    <div class="negotiate-tips">
+      <div class="negotiate-tip"><span class="negotiate-tip-icon">1️⃣</span><span>Start by simply asking: <em>"Is there any flexibility on the number of weeks?"</em> You'd be surprised how often the answer is yes.</span></div>
+      <div class="negotiate-tip"><span class="negotiate-tip-icon">2️⃣</span><span>Reference your tenure and contributions: <em>"Given my ${tenureYears} years here and the projects I led, I was hoping we could get to ${negotiateTarget} weeks."</em></span></div>
+      <div class="negotiate-tip"><span class="negotiate-tip-icon">3️⃣</span><span>If they won't budge on weeks, negotiate benefits: COBRA continuation, outplacement services, extended stock vesting, or a positive reference letter.</span></div>
+      <div class="negotiate-tip"><span class="negotiate-tip-icon">4️⃣</span><span>If you have a potential discrimination or wrongful termination claim, let an employment attorney review your situation before signing — this can significantly increase your leverage.</span></div>
+      <div class="negotiate-tip"><span class="negotiate-tip-icon">5️⃣</span><span>Get everything in writing. Verbal promises about references or rehire eligibility mean nothing unless they are in the signed agreement.</span></div>
+    </div>
+  `;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetTool() {
+  document.getElementById('tool-card').style.display = 'block';
+  document.getElementById('results').style.display = 'none';
+  currentStep = 1;
+  Object.keys(answers).forEach(k => delete answers[k]);
+  selectedBenefits.clear();
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-1').classList.add('active');
+  document.querySelectorAll('.option-btn, .checkbox-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('state-select').value = '';
+  document.getElementById('weeks-offered').value = '';
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+updateProgress();
+</script>
+</body>
+</html>
