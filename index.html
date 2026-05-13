@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FreeLegalTools.com — Free Legal Tools. No Lawyer Needed.</title>
+<meta name="description" content="Free legal tools for everyday people. Compare LLC states, check statute of limitations, verify non-compete agreements and evaluate severance packages. No sign up required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B35;
+    --navy-mid: #1A2E50;
+    --navy-light: #243A60;
+    --gold: #C4973A;
+    --gold-light: #D4A84A;
+    --gold-pale: rgba(196,151,58,0.12);
+    --cream: #FAF8F4;
+    --cream-dark: #F0EDE6;
+    --cream-darker: #E8E4DC;
+    --text: #1C2B3A;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --border: #E2DDD4;
+    --white: #FFFFFF;
+    --green: #1A6B45;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(13,27,53,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { text-decoration: none; color: inherit; }
+
+  /* ─── HEADER ─────────────────────────────────────────────── */
+  header {
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-icon svg { display: block; }
+
+  .logo-divider {
+    width: 1.5px;
+    height: 32px;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .logo-text {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  .logo-text .free { color: var(--navy); }
+  .logo-text .legal { color: var(--gold); }
+  .logo-text .tools { color: var(--navy); }
+
+  /* Nav */
+  nav { display: flex; align-items: center; gap: 8px; }
+
+  .nav-item {
+    position: relative;
+    padding: 8px 14px;
+    font-size: 14px;
+    color: var(--text-mid);
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  .nav-item:hover { background: var(--cream-dark); color: var(--navy); }
+  .nav-item.active { color: var(--navy); font-weight: 500; }
+
+  .nav-arrow {
+    font-size: 10px;
+    transition: transform 0.2s;
+    color: var(--text-light);
+  }
+
+  .nav-item:hover .nav-arrow { transform: rotate(180deg); }
+
+  /* Mega Menu */
+  .mega-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 8px;
+    width: 480px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s, transform 0.15s;
+    transform: translateX(-50%) translateY(-6px);
+  }
+
+  .nav-item:hover .mega-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .mega-menu-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    transition: background 0.12s;
+    cursor: pointer;
+  }
+
+  .mega-menu-item:hover { background: var(--cream); }
+
+  .mega-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--navy);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .mega-item-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    margin-bottom: 2px;
+    font-family: var(--serif);
+  }
+
+  .mega-item-desc {
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+
+  /* ─── HERO ────────────────────────────────────────────────── */
+  .hero {
+    background: var(--navy);
+    padding: 80px 32px 88px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 200px;
+    background: radial-gradient(ellipse at center bottom, rgba(196,151,58,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(196,151,58,0.12);
+    border: 1px solid rgba(196,151,58,0.25);
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  .hero-eyebrow-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title .gold { color: var(--gold); }
+
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.6);
+    max-width: 540px;
+    margin: 0 auto 36px;
+    line-height: 1.65;
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 32px;
+    border-radius: 8px;
+    transition: background 0.15s, transform 0.1s;
+    cursor: pointer;
+  }
+
+  .hero-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ─── TRUST BAR ───────────────────────────────────────────── */
+  .trust-bar {
+    background: var(--cream-dark);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 32px;
+  }
+
+  .trust-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--text-mid);
+    white-space: nowrap;
+  }
+
+  .trust-check {
+    width: 18px; height: 18px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  /* ─── TOOLS SECTION ───────────────────────────────────────── */
+  .tools-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 32px;
+  }
+
+  .section-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 48px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Featured card */
+  .featured-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 28px 32px;
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 16px;
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .featured-card:hover { box-shadow: var(--shadow); }
+
+  .feat-icon-wrap {
+    width: 52px; height: 52px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 24px;
+  }
+
+  .feat-badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--gold-pale);
+    color: #7A5C1A;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .feat-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .feat-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    max-width: 580px;
+  }
+
+  .feat-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 7px;
+    transition: background 0.15s;
+  }
+
+  .feat-btn:hover { background: var(--navy-mid); }
+
+  /* Tool cards grid */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .tool-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: box-shadow 0.2s, transform 0.15s, border-color 0.15s;
+    cursor: pointer;
+  }
+
+  .tool-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+    border-color: var(--gold);
+  }
+
+  .tool-card-icon {
+    width: 40px; height: 40px;
+    background: var(--cream-dark);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  .tool-card-title {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .tool-card-desc {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .tool-card-link {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ─── HOW IT WORKS ────────────────────────────────────────── */
+  .how-section {
+    background: var(--cream-dark);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 72px 32px;
+  }
+
+  .how-inner { max-width: 1100px; margin: 0 auto; }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    margin-top: 48px;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: calc(16.66% + 24px);
+    right: calc(16.66% + 24px);
+    height: 1px;
+    background: var(--border);
+  }
+
+  .step { text-align: center; position: relative; }
+
+  .step-num {
+    width: 48px; height: 48px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-title {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  /* ─── WHY SECTION ─────────────────────────────────────────── */
+  .why-section {
+    background: var(--navy);
+    padding: 80px 32px;
+    text-align: center;
+  }
+
+  .why-inner { max-width: 680px; margin: 0 auto; }
+
+  .why-title {
+    font-family: var(--serif);
+    font-size: 34px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .why-title .gold { color: var(--gold); }
+
+  .why-text {
+    font-size: 16px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .why-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .why-highlight {
+    text-align: center;
+  }
+
+  .why-highlight-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .why-highlight-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── DISCLAIMER STRIP ────────────────────────────────────── */
+  .disclaimer-strip {
+    background: var(--cream-darker);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 32px;
+    text-align: center;
+  }
+
+  .disclaimer-strip p {
+    font-size: 12px;
+    color: var(--text-light);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .disclaimer-strip a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ─── FOOTER ──────────────────────────────────────────────── */
+  footer {
+    background: var(--navy);
+    padding: 56px 32px 32px;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .footer-brand-name {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .footer-brand-name .legal { color: var(--gold); }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .footer-disclaimer-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  .footer-col-heading {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .footer-link {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+    transition: color 0.12s;
+    cursor: pointer;
+  }
+
+  .footer-link:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-bottom-link {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: color 0.12s;
+  }
+
+  .footer-bottom-link:hover { color: rgba(255,255,255,0.6); }
+
+  /* ─── AD PLACEHOLDERS ─────────────────────────────────────── */
+  .ad-slot {
+    background: var(--cream-darker);
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    text-align: center;
+    padding: 12px;
+    font-size: 11px;
+    color: var(--text-light);
+    margin: 24px 0;
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── ANIMATIONS ──────────────────────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.5s ease both; }
+  .hero-title { animation: fadeUp 0.5s ease 0.1s both; }
+  .hero-sub { animation: fadeUp 0.5s ease 0.2s both; }
+  .hero-btn { animation: fadeUp 0.5s ease 0.3s both; }
+
+  /* ─── RESPONSIVE ──────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .hero-title { font-size: 34px; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; gap: 32px; }
+    .steps-grid::before { display: none; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .trust-inner { gap: 16px; }
+    .featured-card { flex-direction: column; }
+    .why-highlights { gap: 24px; }
+    .header-inner { padding: 0 16px; }
+    .nav-item span:not(.nav-arrow) { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─────────────────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <div class="logo-icon">
+        <svg width="36" height="34" viewBox="0 0 36 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="2,13 18,2 34,13" fill="#0D1B35"/>
+          <rect x="6"  y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+          <rect x="13" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+          <rect x="20" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+          <rect x="27" y="13" width="3.5" height="16" fill="#C4973A" rx="1"/>
+          <rect x="2"  y="29" width="32" height="3.5" fill="#0D1B35" rx="1"/>
+        </svg>
+      </div>
+      <div class="logo-divider"></div>
+      <div class="logo-text">
+        <span class="free">Free</span><span class="legal">Legal</span><span class="tools">Tools</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="/" class="nav-item active">Home</a>
+
+      <div class="nav-item">
+        Tools <span class="nav-arrow">▾</span>
+        <div class="mega-menu">
+          <a href="llc-comparison.html" class="mega-menu-item">
+            <div class="mega-icon">🏛️</div>
+            <div>
+              <div class="mega-item-title">LLC State Comparison Tool</div>
+              <div class="mega-item-desc">Find the best state to form your LLC based on fees, privacy, and taxes</div>
+            </div>
+          </a>
+          <a href="statute-of-limitations.html" class="mega-menu-item">
+            <div class="mega-icon">⏱️</div>
+            <div>
+              <div class="mega-item-title">Statute of Limitations Lookup</div>
+              <div class="mega-item-desc">Find your exact legal deadline by state and case type</div>
+            </div>
+          </a>
+          <a href="non-compete-checker.html" class="mega-menu-item">
+            <div class="mega-icon">📋</div>
+            <div>
+              <div class="mega-item-title">Non-Compete Enforceability Checker</div>
+              <div class="mega-item-desc">Find out if your non-compete agreement is likely enforceable</div>
+            </div>
+          </a>
+          <a href="severance-evaluator.html" class="mega-menu-item">
+            <div class="mega-icon">💼</div>
+            <div>
+              <div class="mega-item-title">Severance Package Evaluator</div>
+              <div class="mega-item-desc">Find out if your severance offer is fair for your situation</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <a href="about.html" class="nav-item">About</a>
+      <a href="disclaimer.html" class="nav-item">Disclaimer</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── HERO ────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-eyebrow">
+    <span class="hero-eyebrow-dot"></span>
+    100% Free &nbsp;·&nbsp; No Sign Up Required &nbsp;·&nbsp; All 50 States
+  </div>
+  <h1 class="hero-title">
+    Free Legal Tools.<br>
+    <span class="gold">No Lawyer Needed.</span>
+  </h1>
+  <p class="hero-sub">
+    Plain English answers to common legal questions — for everyday people, not attorneys. Get clear, instant results at no cost.
+  </p>
+  <a href="#tools" class="hero-btn">
+    Explore Our Tools &nbsp;→
+  </a>
+</section>
+
+<!-- ─── TRUST BAR ───────────────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-check">✓</div>
+      100% Free
+    </div>
+    <div class="trust-item">
+      <div class="trust-check">✓</div>
+      No Sign Up Required
+    </div>
+    <div class="trust-item">
+      <div class="trust-check">✓</div>
+      Updated Regularly
+    </div>
+    <div class="trust-item">
+      <div class="trust-check">✓</div>
+      Plain English Results
+    </div>
+    <div class="trust-item">
+      <div class="trust-check">✓</div>
+      Built for Regular People, Not Lawyers
+    </div>
+  </div>
+</div>
+
+<!-- ─── TOOLS SECTION ───────────────────────────────────────── -->
+<section class="tools-section" id="tools">
+  <div class="section-eyebrow">Free Legal Tools</div>
+  <h2 class="section-title">Pick Your Situation</h2>
+  <p class="section-sub">Choose the tool that matches your legal question — get a clear, personalized answer in minutes.</p>
+
+  <!-- Ad slot -->
+  <div class="ad-slot">Advertisement — Google AdSense</div>
+
+  <!-- Featured tool -->
+  <a href="llc-comparison.html" class="featured-card">
+    <div class="feat-icon-wrap">🏛️</div>
+    <div>
+      <div class="feat-badge">⭐ Most Popular</div>
+      <div class="feat-title">LLC State Comparison Tool</div>
+      <p class="feat-desc">Not sure which state to form your LLC in? Delaware, Wyoming, and Nevada are popular for good reasons — but the best state depends on your specific business type, budget, and priorities. Our free tool compares all 50 states and gives you a personalized recommendation.</p>
+      <div class="feat-btn">Use This Tool &nbsp;→</div>
+    </div>
+  </a>
+
+  <!-- Three tool cards -->
+  <div class="tools-grid">
+    <a href="statute-of-limitations.html" class="tool-card">
+      <div class="tool-card-icon">⏱️</div>
+      <div class="tool-card-title">Statute of Limitations Lookup</div>
+      <p class="tool-card-desc">Find your exact legal filing deadline by state and case type — with a precise date calculation so you know exactly how much time you have left.</p>
+      <div class="tool-card-link">Use Free Tool &nbsp;→</div>
+    </a>
+    <a href="non-compete-checker.html" class="tool-card">
+      <div class="tool-card-icon">📋</div>
+      <div class="tool-card-title">Non-Compete Enforceability Checker</div>
+      <p class="tool-card-desc">Find out if your non-compete agreement is likely to hold up in court based on your state, industry, and the specific terms you signed.</p>
+      <div class="tool-card-link">Use Free Tool &nbsp;→</div>
+    </a>
+    <a href="severance-evaluator.html" class="tool-card">
+      <div class="tool-card-icon">💼</div>
+      <div class="tool-card-title">Severance Package Evaluator</div>
+      <p class="tool-card-desc">Just got laid off? Find out if your severance offer is fair, below average, or worth negotiating — based on your industry, tenure, and job level.</p>
+      <div class="tool-card-link">Use Free Tool &nbsp;→</div>
+    </a>
+  </div>
+
+  <!-- Ad slot -->
+  <div class="ad-slot">Advertisement — Google AdSense</div>
+</section>
+
+<!-- ─── HOW IT WORKS ─────────────────────────────────────────── -->
+<section class="how-section">
+  <div class="how-inner">
+    <div class="section-eyebrow">Simple Process</div>
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-sub">Three simple steps to a clear legal answer — no jargon, no account, no cost.</p>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Choose Your Tool</div>
+        <p class="step-desc">Pick the free tool that matches your legal situation from our growing library.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Answer a Few Questions</div>
+        <p class="step-desc">No legal jargon. Just plain English questions anyone can answer in under two minutes.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Get Your Answer Instantly</div>
+        <p class="step-desc">Clear, straightforward results tailored to your specific situation — that you can actually understand and act on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY FREELEGALTOOLS ──────────────────────────────────── -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="section-eyebrow" style="color:rgba(196,151,58,0.7);">Our Mission</div>
+    <h2 class="why-title">Why <span class="gold">FreeLegalTools</span>?</h2>
+    <p class="why-text">Legal questions don't wait for convenient times. Whether you just got laid off, signed a contract you don't fully understand, or are ready to start a business — you deserve clear answers without expensive consultations or confusing legal jargon.</p>
+    <p class="why-text">FreeLegalTools.com was built for everyday people who just need straightforward answers to common legal questions. No lawyers. No fees. No accounts. Just free tools that give you the information you need to make confident decisions.</p>
+
+    <div class="why-highlights">
+      <div class="why-highlight">
+        <span class="why-highlight-num">4</span>
+        <span class="why-highlight-label">Free Tools</span>
+      </div>
+      <div class="why-highlight">
+        <span class="why-highlight-num">50</span>
+        <span class="why-highlight-label">States Covered</span>
+      </div>
+      <div class="why-highlight">
+        <span class="why-highlight-num">$0</span>
+        <span class="why-highlight-label">Always Free</span>
+      </div>
+      <div class="why-highlight">
+        <span class="why-highlight-num">0</span>
+        <span class="why-highlight-label">Accounts Needed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DISCLAIMER STRIP ────────────────────────────────────── -->
+<div class="disclaimer-strip">
+  <p>
+    <strong>Important:</strong> FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this site constitutes legal advice or creates an attorney-client relationship. Always consult a qualified attorney for advice specific to your situation.
+    <a href="disclaimer.html">Read full disclaimer →</a>
+  </p>
+</div>
+
+<!-- ─── FOOTER ──────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-brand-logo">
+          <svg width="28" height="26" viewBox="0 0 28 26" fill="none">
+            <polygon points="1,10 14,1 27,10" fill="#1A2E50"/>
+            <rect x="4"  y="10" width="3" height="12" fill="#C4973A" rx="0.75"/>
+            <rect x="10" y="10" width="3" height="12" fill="#C4973A" rx="0.75"/>
+            <rect x="16" y="10" width="3" height="12" fill="#C4973A" rx="0.75"/>
+            <rect x="22" y="10" width="3" height="12" fill="#C4973A" rx="0.75"/>
+            <rect x="1"  y="22" width="26" height="2.5" fill="#1A2E50" rx="0.75"/>
+          </svg>
+          <div class="footer-brand-name">Free<span class="legal">Legal</span>Tools</div>
+        </div>
+        <p class="footer-tagline">"Free legal tools. No lawyer needed."</p>
+        <p class="footer-disclaimer-note">General legal information only. Not legal advice. Not a law firm. Always consult a licensed attorney for your specific situation.</p>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Our Tools</div>
+        <a href="llc-comparison.html" class="footer-link">LLC State Comparison</a>
+        <a href="statute-of-limitations.html" class="footer-link">Statute of Limitations</a>
+        <a href="non-compete-checker.html" class="footer-link">Non-Compete Checker</a>
+        <a href="severance-evaluator.html" class="footer-link">Severance Evaluator</a>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Site</div>
+        <a href="/" class="footer-link">Home</a>
+        <a href="about.html" class="footer-link">About</a>
+        <a href="disclaimer.html" class="footer-link">Disclaimer</a>
+        <a href="privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="contact.html" class="footer-link">Contact</a>
+      </div>
+
+      <div>
+        <div class="footer-col-heading">Legal Notice</div>
+        <p class="footer-disclaimer-note" style="font-size:12px;">FreeLegalTools.com provides general legal information for educational purposes only. Nothing on this site constitutes legal advice or creates an attorney-client relationship.</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 FreeLegalTools.com · All Rights Reserved · Not a law firm · Not legal advice</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html" class="footer-bottom-link">Privacy Policy</a>
+        <a href="disclaimer.html" class="footer-bottom-link">Disclaimer</a>
+        <a href="contact.html" class="footer-bottom-link">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
